@@ -1,6 +1,6 @@
 body {
   color: #FFFFFF;
-  overflow: hidden;
+  padding-top: 70px;
 }
 
 .ui.two.row.main.container {
@@ -8,11 +8,12 @@ body {
   margin:0 !important;
 }
 
-.menuv2.row {
-  margin-top: -55px;
+.ui.top.fixed.menu.menuv2.container {
   background: black;
-  text-align: right;
-  padding: 20px 80px 20px 0;
+  text-align: center;
+  padding: 5px;
+  margin: 0!important;
+  width: 100%!important;
 }
 
 .play {

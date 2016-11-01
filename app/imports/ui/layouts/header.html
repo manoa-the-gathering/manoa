@@ -1,11 +1,23 @@
 <template name="Header">
-    <div class="ui top fixed borderless inverted menu">
-  <div class="ui container">
+    <div class="ui top fixed menu menuv2 container">
 
+    <a class="{{ isActiveRoute 'Home_Page'}} right item" href="{{ pathFor 'Home_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                  color: #FFFFFF;padding: 10px 20px">home</span>
+    </a>
+    <a class="{{ isActiveRoute 'Rules_Page'}} item" href="{{ pathFor 'Rules_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                  color: #FFFFFF;padding: 10px 20px">rules</span>
+    </a>
+
+    <a class="{{ isActiveRoute 'About_Page'}} item" href="{{ pathFor 'About_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                    color: #FFFFFF;padding: 10px 20px">about</span>
+    </a>
       {{#if currentUser}}
 
       {{/if}}
-      <a href="#" class="item">{{> loginButtons }} </a>
+     <!-- <a href="#" class="item">{{> loginButtons }} </a>-->
     </div>
-  </div>
+
 </template>
