@@ -1,0 +1,39 @@
+<template name="About_Page">
+
+  <div class="ui two row main container">
+    <div class="centered row" style="background: url('/images/landingv2.jpg')no-repeat center center;
+                            background-size: cover;height: 100vh; width: 100%">
+      <img class="ui left image item" src="/images/manoav2.png" style="padding: 20px; height: 100px">
+      <div class="ui container" style="width:100%;margin:0!important; height: 100%;background: rgba(0,0,0,0.9);
+                                            padding:20px 40px;">
+        <h2>Code of Conduct</h2>
+        <p>
+          stuff
+        </p>
+        <p>
+         stuff
+        </p>
+
+
+      </div>
+    </div>
+    <div class="menuv2 row">
+      <a class="{{ isActiveRoute 'Home_Page'}} item" href="{{ pathFor 'Home_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                  color: #FFFFFF;padding: 10px 20px">home</span>
+      </a>
+      <a class="{{ isActiveRoute 'Rules_Page'}} item" href="{{ pathFor 'Rules_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                  color: #FFFFFF;padding: 10px 20px">rules</span>
+      </a>
+
+      <a class="{{ isActiveRoute 'About_Page'}} item" href="{{ pathFor 'About_Page' }}">
+        <span style="font-size: 25px;font-weight: 600;
+                    color: #FFFFFF;padding: 10px 20px">about</span>
+      </a>
+    </div>
+
+  </div>
+
+
+</template>

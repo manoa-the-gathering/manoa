@@ -1,0 +1,26 @@
+body {
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.ui.two.row.main.container {
+  width: 100%!important;
+  margin:0 !important;
+}
+
+.menuv2.row {
+  margin-top: -55px;
+  background: black;
+  text-align: right;
+  padding: 20px 80px 20px 0;
+}
+
+.play {
+  border: 3px solid white!important;
+  border-radius: 10px!important;
+  padding: 15px 100px !important;
+  background: rgba(0,0,0,0.5)!important;
+  color: white!important;
+  font-size: 24px!important;
+  font-weight: 200!important;
+}
