@@ -1,4 +1,4 @@
-original name -- new name (picture/"flavor text") (if there is no new name, then the card won't be renamed)
+having funoriginal name -- new name (picture/"flavor text") (if there is no new name, then the card won't be renamed)
 
 Naya Burn:
 
@@ -60,8 +60,7 @@ Spells
 Artifacts
 4 Mox Opal -- Gate of Hope (Holmes Hall penne pasta sculpture)
 4 Springleaf Drum -- Rainbow Warrior Marching Band
-4 Cranial Plating -- 
-
+4 Cranial Plating (UH football helmet)
 Sideboard
 2 Chalice of the Void -- 
 2 Grafdigger's Cage -- 
