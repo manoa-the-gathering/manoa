@@ -1,6 +1,6 @@
 having funoriginal name -- new name (picture/"flavor text") (if there is no new name, then the card won't be renamed)
 
-Naya Burn:
+**Naya Burn:**
 
 Lands
 - 3 Arid Mesa -- Stan Sheriff Center **DONE**
@@ -13,9 +13,9 @@ Lands
 
 Creatures
 - 4 Goblin Guide -- Student Tour Guide (Those green-shirted students who show prospective students around campus/dorms)
-- 4 Monastery Swiftspear -- Dude practicing martial arts outside EW center **DONE**
+- 4 Monastery Swiftspear (Dude practicing martial arts outside EW center) **DONE**
 - 4 Eidolon of the Great Revel -- 
-- 4 Wild Nacatl -- Wild Campus Cat
+- 4 Wild Nacatl -- Wild Campus Cat **DONE**
 - 1 Grim Lavamancer -- Peter Michael Seidel
 
 Spells
@@ -27,38 +27,38 @@ Spells
 - 3 Rift Bolt -- 
 
 Sideboard
-- 4 Path to Exile -- Path to Expulsion
+- 4 Path to Exile -- Path to Expulsion (Guy walking up stairs next to CC) **DONE**
 - 2 Deflecting Palm -- 
 - 3 Destructive Revelry -- 
 - 3 Kor Firewalker -- 
 - 1 Lightning Helix -- 
 - 2 Skullcrack -- 
 
-Affinity:
+**Affinity:**
 
 Lands
-- 4 Blinkmoth Nexus -- Campus Center
-- 4 Darksteel Citadel -- Holmes Hall
-- 2 Glimmervoid -- POST
-- 4 Inkmoth Nexus -- Frear Hall
-- 1 Mountain (Diamond Head) 
-- 1 Swamp (taro field different part than bloodstained mire)
+- 4 Blinkmoth Nexus -- Campus Center **DONE**
+- 4 Darksteel Citadel -- Holmes Hall **DONE**
+- 2 Glimmervoid -- POST **DONE**
+- 4 Inkmoth Nexus -- IT Center **DONE**
+- 1 Mountain (Diamond Head) **DONE**
+- 1 Swamp (Duck pond) **DONE**
 
 Creatures
 - 3 Memnite -- 
-- 4 Ornithopter -- Quadcopter
+- 4 Ornithopter -- Quadcopter **DONE**
 - 4 Signal Pest -- 
-- 4 Arcbound Ravager -- Guardian Statues (Lion statues around Hamilton)
-- 1 Spellskite -- 
+- 4 Arcbound Ravager -- Guardian Statues (Lion statues around Hamilton) **DONE**
+- 1 Spellskite -- Art Building Enigma (Sculpture in front of art building) **DONE**
 - 4 Steel Overseer -- 
 - 4 Vault Skirge -- 
 - 4 Etched Champion -- 
 
 Spells
-- 4 Galvanic Blast -- Chance Meeting (Statue of three people in front of the law library)
+- 4 Galvanic Blast -- Chance Meeting (Statue of three people in front of the law library) **DONE**
 
 Artifacts
-- 4 Mox Opal -- Gate of Hope (Holmes Hall penne pasta sculpture)
+- 4 Mox Opal -- The Gate of Hope (Holmes Hall penne pasta sculpture) **DONE**
 - 4 Springleaf Drum -- Rainbow Warrior Marching Band
 - 4 Cranial Plating (UH football helmet)
 
