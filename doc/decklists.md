@@ -68,7 +68,7 @@ Sideboard
 - 2 Thoughtseize -- Bilger Learning Emporium
 - 1 Vandalblast -- 
 - 1 Ancient Grudge -- 
-- 2 Bitterblossom -- 
+- 2 Bitterblossom (UH flower) **DONE**
 - 2 Whipflare -- 
 - 1 Ensnaring Bridge -- Manoa Stream (tentative)
 - 2 Ghirapur Aether Grid -- UH Art Gallery
