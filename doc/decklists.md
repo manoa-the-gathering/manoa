@@ -3,17 +3,17 @@ having funoriginal name -- new name (picture/"flavor text") (if there is no new 
 Naya Burn:
 
 Lands
-3 Arid Mesa -- Stan Sheriff Center
-4 Wooded Foothills -- Japanese Tea Garden
+3 Arid Mesa -- Stan Sheriff Center **DONE**
+4 Wooded Foothills -- Japanese Tea Garden **DONE**
 4 Bloodstained Mire -- Ka Papa Loi O Kanewai (taro field)
-3 Sacred Foundry -- UH Manoa (Sign of UH Manoa)
+3 Sacred Foundry -- UH Manoa (Sign of UH Manoa) **DONE**
 2 Stomping Ground -- Campus Bookstore ("Unless you want to wait 10 days for Amazon, you must pay the price.")
-2 Copperline Gorge -- QLC
-2 Mountain (Diamond Head)
+2 Copperline Gorge -- QLC **DONE**
+2 Mountain (Diamond Head) **DONE**
 
 Creatures
 4 Goblin Guide -- Student Tour Guide (Those green-shirted students who show prospective students around campus/dorms)
-4 Monastery Swiftspear -- 
+4 Monastery Swiftspear -- Dude practicing martial arts outside EW center **DONE**
 4 Eidolon of the Great Revel -- 
 4 Wild Nacatl -- Wild Campus Cat
 1 Grim Lavamancer -- Peter Michael Seidel
