@@ -14,20 +14,20 @@ Lands
 Creatures
 - 4 Goblin Guide -- Student Tour Guide (Those green-shirted students who show prospective students around campus/dorms)
 - 4 Monastery Swiftspear (Dude practicing martial arts outside EW center) **DONE**
-- 4 Eidolon of the Great Revel -- 
+- 4 Eidolon of the Great Revel -- Drinking college students
 - 4 Wild Nacatl -- Wild Campus Cat **DONE**
-- 1 Grim Lavamancer -- Peter Michael Seidel
+- 1 Grim Lavamancer -- Dr. Johnson **DONE** (grab photo off of UHM Website)
 
 Spells
 - 4 Lightning Bolt -- 
 - 4 Lava Spike -- 
 - 4 Atarka's Command -- Gerald's Command
 - 4 Boros Charm -- 
-- 4 Searing Blaze -- 
+- 4 Searing Blaze -- Searing Glass (Keller Hall Stained Glass) **DONE**
 - 3 Rift Bolt -- 
 
 Sideboard
-- 4 Path to Exile -- Path to Expulsion (Guy walking up stairs next to CC) **DONE**
+- 4 Path to Exile -- Path to Expulsion (Guy walking down stairs next to CC) **DONE**
 - 2 Deflecting Palm -- 
 - 3 Destructive Revelry -- 
 - 3 Kor Firewalker -- 
@@ -45,14 +45,14 @@ Lands
 - 1 Swamp (Duck pond) **DONE**
 
 Creatures
-- 3 Memnite -- 
+- 3 Memnite -- Campus Mongoose**DONE**
 - 4 Ornithopter -- Quadcopter **DONE**
-- 4 Signal Pest -- 
-- 4 Arcbound Ravager -- Guardian Statues (Lion statues around Hamilton) **DONE**
+- 4 Signal Pest -- (Weird Holmes Hall sculpture on 1st floor) **DONE**
+- 4 Arcbound Ravager -- Ryukyu  (Lion statues around Hamilton) **DONE**
 - 1 Spellskite -- Art Building Enigma (Sculpture in front of art building) **DONE**
-- 4 Steel Overseer -- 
+- 4 Steel Overseer -- Grid Scape **Done**
 - 4 Vault Skirge -- 
-- 4 Etched Champion -- 
+- 4 Etched Champion -- Etched Luminary (Arthur D. Keller plaque) **DONE** 
 
 Spells
 - 4 Galvanic Blast -- Chance Meeting (Statue of three people in front of the law library) **DONE**
