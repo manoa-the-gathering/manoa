@@ -19,7 +19,7 @@ Creatures
 - 1 Grim Lavamancer -- Dr. Johnson **DONE** (grab photo off of UHM Website)
 
 Spells
-- 4 Lightning Bolt -- Moped Theft
+- 4 Lightning Bolt -- Moped Theft at Hale Noelani
 - 4 Lava Spike -- 
 - 4 Atarka's Command -- Gerald's Command
 - 4 Boros Charm -- 
@@ -50,7 +50,7 @@ Creatures
 - 4 Signal Pest -- (Weird Holmes Hall sculpture on 1st floor) **DONE**
 - 4 Arcbound Ravager -- Ryukyu  (Lion statues around Hamilton) **DONE**
 - 1 Spellskite -- The Fourth Sign (Sculpture in front of art building) https://en.wikipedia.org/wiki/The_Fourth_Sign **DONE**
-- 4 Steel Overseer -- Grid Scape **Done**
+- 4 Steel Overseer -- Grid/Scape **Done**
 - 4 Vault Skirge -- 
 - 4 Etched Champion -- Etched Luminary (Arthur D. Keller plaque) **DONE** 
 
