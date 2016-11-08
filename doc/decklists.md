@@ -48,7 +48,7 @@ Creatures
 - 3 Memnite -- Campus Mongoose **DONE**
 - 4 Ornithopter -- Quadcopter **DONE**
 - 4 Signal Pest -- (Weird Holmes Hall sculpture on 1st floor) **DONE**
-- 4 Arcbound Ravager -- Ryukyu  (Lion statues around Hamilton) **DONE**
+- 4 Arcbound Ravager -- Guardian Lion  (Lion statues around Hamilton) **DONE**
 - 1 Spellskite -- The Fourth Sign (Sculpture in front of art building) https://en.wikipedia.org/wiki/The_Fourth_Sign **DONE**
 - 4 Steel Overseer -- Grid/Scape **Done**
 - 4 Vault Skirge -- 
