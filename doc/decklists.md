@@ -1,4 +1,4 @@
-having funoriginal name -- new name (picture/"flavor text") (if there is no new name, then the card won't be renamed)
+original name -- new name (picture/"flavor text") (if there is no new name, then the card won't be renamed)
 
 **Naya Burn:**
 
@@ -45,7 +45,7 @@ Lands
 - 1 Swamp (Duck pond) **DONE**
 
 Creatures
-- 3 Memnite -- Campus Mongoose**DONE**
+- 3 Memnite -- Campus Mongoose **DONE**
 - 4 Ornithopter -- Quadcopter **DONE**
 - 4 Signal Pest -- (Weird Holmes Hall sculpture on 1st floor) **DONE**
 - 4 Arcbound Ravager -- Ryukyu  (Lion statues around Hamilton) **DONE**
