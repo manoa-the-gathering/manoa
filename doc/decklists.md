@@ -19,7 +19,7 @@ Creatures
 - 1 Grim Lavamancer -- Dr. Johnson **DONE** (grab photo off of UHM Website)
 
 Spells
-- 4 Lightning Bolt -- Moped Theft at Hale Noelani **DONE**
+- 4 Lightning Bolt -- Moped Theft at Hale Noelani ("Usually, there will be two emails a day with this subject line.") **DONE**
 - 4 Lava Spike -- 
 - 4 Atarka's Command -- Gerald's Command
 - 4 Boros Charm -- 
