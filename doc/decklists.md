@@ -5,7 +5,7 @@ original name -- new name (picture/"flavor text") (if there is no new name, then
 Lands
 - 3 Arid Mesa -- Stan Sheriff Center **DONE**
 - 4 Wooded Foothills -- Japanese Tea Garden **DONE**
-- 4 Bloodstained Mire -- Ka Papa Loi O Kanewai (taro field)
+- 4 Bloodstained Mire -- Ka Papa Loi O Kanewai (taro field) **DONE**
 - 3 Sacred Foundry -- UH Manoa (Sign of UH Manoa) **DONE**
 - 2 Stomping Ground -- Campus Bookstore ("Unless you want to wait 10 days for Amazon, you must pay the price.")
 - 2 Copperline Gorge -- QLC **DONE**
@@ -19,7 +19,7 @@ Creatures
 - 1 Grim Lavamancer -- Dr. Johnson **DONE** (grab photo off of UHM Website)
 
 Spells
-- 4 Lightning Bolt -- Moped Theft at Hale Noelani
+- 4 Lightning Bolt -- Moped Theft at Hale Noelani **DONE**
 - 4 Lava Spike -- 
 - 4 Atarka's Command -- Gerald's Command
 - 4 Boros Charm -- 
@@ -70,5 +70,5 @@ Sideboard
 - 1 Ancient Grudge -- 
 - 2 Bitterblossom (UH flower) **DONE**
 - 2 Whipflare -- 
-- 1 Ensnaring Bridge -- Manoa Stream (tentative)
+- 1 Ensnaring Bridge -- Manoa Stream **DONE**
 - 2 Ghirapur Aether Grid -- UH Art Gallery
