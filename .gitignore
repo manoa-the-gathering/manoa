@@ -12,3 +12,6 @@ settings.production.json
 
 # Build node_modules locally.
 node_modules/
+
+# Galaxy settings file
+settings.json
