@@ -25,6 +25,15 @@ FlowRouter.route('/about', {
   },
 });
 
+/* mod route to support ids */
+FlowRouter.route('/chat', {
+  name: 'Chat_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Chat_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });

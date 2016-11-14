@@ -30,6 +30,13 @@ body {
   height: 63px;
 }
 
+.mitem {
+  font-size: 25px;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 10px 20px;
+}
+
 .push {
   height: 63px;
 }
