@@ -3,17 +3,18 @@ body {
   height: 100%;
   background: url("/images/landingv2.jpg")
             center center no-repeat;
+  background-size: cover;
 }
 
 .ui.two.row.main.container {
   width: 100%!important;
   min-height: 100%;
-  margin:0 auto -63px!important;
+  margin:0 auto -63px !important;
 }
 
 .ui.container.info {
   width: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.6);
   padding: 20px 40px;
   margin: 0 auto!important;
   font-size: 18px;
