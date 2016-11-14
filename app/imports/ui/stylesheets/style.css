@@ -3,8 +3,6 @@ body {
   height: 100%;
   background: url("/images/landingv2.jpg")
             center center no-repeat;
-
-
 }
 
 .ui.two.row.main.container {
@@ -17,13 +15,17 @@ body {
   width: 100%;
   background: rgba(0,0,0,0.8);
   padding: 20px 40px;
-  margin: 0!important;
+  margin: 0 auto!important;
+  font-size: 18px;
 }
 
 .menuv2.row {
+  position: fixed;
+  right:0px;bottom: 0px;
   background: black;
   text-align: right;
-  padding: 20px 80px 20px 0;
+  padding: 20px 0px 20px 0;
+  width: 100%;
   height: 63px;
 }
 
@@ -38,4 +40,8 @@ body {
   color: white!important;
   font-size: 24px!important;
   font-weight: 200!important;
+}
+
+@media only screen and (max-width: 640px) {
+  .menuv2.row { text-align: center;}
 }
