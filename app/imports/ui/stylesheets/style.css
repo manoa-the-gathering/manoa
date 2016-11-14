@@ -1,24 +1,39 @@
 body {
   color: #FFFFFF;
-  overflow: hidden;
+  height: 100%;
+  background: url("/images/landingv2.jpg")
+            center center no-repeat;
+
+
 }
 
 .ui.two.row.main.container {
   width: 100%!important;
-  margin:0 !important;
+  min-height: 100%;
+  margin:0 auto -63px!important;
+}
+
+.ui.container.info {
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  padding: 20px 40px;
+  margin: 0!important;
 }
 
 .menuv2.row {
-  margin-top: -55px;
   background: black;
   text-align: right;
   padding: 20px 80px 20px 0;
+  height: 63px;
 }
 
+.push {
+  height: 63px;
+}
 .play {
   border: 3px solid white!important;
   border-radius: 10px!important;
-  padding: 15px 100px !important;
+  padding: 15px 90px !important;
   background: rgba(0,0,0,0.5)!important;
   color: white!important;
   font-size: 24px!important;
