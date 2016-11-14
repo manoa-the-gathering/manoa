@@ -1,7 +1,7 @@
 ## Landing-Page 
 <img class = "ui centered image" src="./doc/landingpage.png">
 
-## Rules-Page
+## Landing-Pagev
 <img class = "ui centered image" src="./doc/landingpagev2.png">
 
 ## About-Page 
