@@ -21,6 +21,7 @@ FlowRouter.route('/about', {
   name: 'About_Page',
   action() {
     BlazeLayout.render('App_Body2', { main: 'About_Page' });
+    BlazeLayout.setRoot('body');
   },
 });
 
