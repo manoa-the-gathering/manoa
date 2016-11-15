@@ -70,20 +70,19 @@ export const Messages = new Mongo.Collection("msgs");
     }
 }); **/
 
-/**if (Meteor.isServer) {
+if (Meteor.isServer) {
     // This code only runs on the server
-    Meteor.publish("messages", function () {
-        return Messages.find({}, {sort: {createdAt: -1}, limit: 5});
-    });
-}**/
+
+}
 
 /* scrolling code */
 
 if (Meteor.isClient) {
     // This code only runs on the client
+
     Meteor.subscribe("messages");
 
-    Template.body.helpers({
+    Template.Chat_Page.helpers({
         recentMessages: function () {
             return Messages.find({}, {sort: {createdAt: 1}});
         },
@@ -92,7 +91,7 @@ if (Meteor.isClient) {
 
     /*chat window scrolling*/
 
-    Template.body.events({
+    Template.Chat_Page.events({
         "submit .new-message": function (event) {
             var text = event.target.text.value;
 
