@@ -19,14 +19,6 @@ Template.Home_Page.events({
   },
 });
 
-// Here's how to do the required initialization for Semantic UI dropdown menus.
-/*Template.Home_Page.onRendered(function enableDropDown() {
-  this.$('.dropdown').dropdown({
-    action: 'select',
-  });
-});
-*/
-
 var hours = new Date();
 time = hours.getHours();
 if (time > 12) {
