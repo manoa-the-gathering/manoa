@@ -1,10 +1,7 @@
-/**
- * Created by john on 11/14/16.
- */
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 
-Template.Cas_Login.events({
+Template.Home_Page.events({
   /**
    * Handle the click on the logout link.
    * @param event The click event.
@@ -34,7 +31,7 @@ Template.Cas_Login.events({
 });
 
 // Here's how to do the required initialization for Semantic UI dropdown menus.
-Template.Cas_Login.onRendered(function enableDropDown() {
+Template.Home_Page.onRendered(function enableDropDown() {
   this.$('.dropdown').dropdown({
     action: 'select',
   });
