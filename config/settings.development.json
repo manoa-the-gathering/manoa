@@ -1,4 +1,9 @@
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://mtg:manoathegathering@ds145245.mlab.com:45245/mtgdb"
+    }
+  },
   "cas": {
     "baseUrl": "https://cas-test.its.hawaii.edu/cas/",
     "autoClose": true
@@ -14,6 +19,8 @@
   "allowed_users": [
     "johnson",
     "cmoore",
-    "jth9"
+    "jth9",
+    "cj38"
+    
   ]
 }
