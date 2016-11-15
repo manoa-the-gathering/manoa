@@ -19,6 +19,12 @@
         <span class="mitem">about</span>
       </a>
 
+      {{#if currentUser}}
+      <a class="item cas-logout" href="#">
+        <span class="mitem cas-logout">logout</span>
+      </a>
+      {{/if}}
+
     </div>
   </footer>
 </template>
