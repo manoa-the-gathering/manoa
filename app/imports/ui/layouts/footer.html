@@ -1,11 +1,30 @@
 <template name="Footer">
   <footer>
-    <!--<div style="padding-top: 15px" class="ui center aligned container">
-        <hr>
-        Department of Information and Computer Sciences <br />
-        University of Hawaii<br />
-        Honolulu, HI 96822
-    </div>-->
-    <!--insertmenu-->
+
+    <!--the shits-->
+    <div class="menuv2 row">
+      <a class="{{ isActiveRoute 'Home_Page'}} item" href="{{ pathFor 'Home_Page' }}">
+        <span class="mitem">home</span>
+      </a>
+      <a class="{{ isActiveRoute 'Rules_Page'}} item" href="{{ pathFor 'Rules_Page' }}">
+        <span class="mitem">rules</span>
+      </a>
+
+      <!-- wrap in log tags after CAS implementation -->
+      <a class="{{ isActiveRoute 'Chat_Page'}} item" href="{{ pathFor 'Chat_Page' }}">
+        <span class="mitem">chat</span>
+      </a>
+
+      <a class="{{ isActiveRoute 'About_Page'}} item" href="{{ pathFor 'About_Page' }}">
+        <span class="mitem">about</span>
+      </a>
+
+      {{#if currentUser}}
+      <a class="item cas-logout" href="#">
+        <span class="mitem cas-logout">logout</span>
+      </a>
+      {{/if}}
+
+    </div>
   </footer>
 </template>
