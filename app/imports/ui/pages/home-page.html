@@ -8,8 +8,11 @@
     <div class="centered row">
       <div class="ui text container" style="text-align: center;">
         <!-- submit event or href to CAS -->
+        {{#if currentUser}}
         <button class="ui button play">Play now</button>
-
+        {{else}}
+        <button class="ui button play cas-login">Play now</button>
+        {{/if}}
       </div>
       <div class="push"></div>
     </div>
