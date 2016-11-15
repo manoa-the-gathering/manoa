@@ -15,10 +15,3 @@ Template.Footer.events({
     return false;
   }
 });
-
-// Here's how to do the required initialization for Semantic UI dropdown menus.
-Template.Footer.onRendered(function enableDropDown() {
-  this.$('.dropdown').dropdown({
-    action: 'select',
-  });
-});
