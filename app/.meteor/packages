@@ -47,8 +47,6 @@ useraccounts:semantic-ui
 fabienb4:autoform-semantic-ui
 
 # For prototyping purposes, enable autopublish and insecure
-autopublish
-insecure
 
 
 atoy40:accounts-cas
