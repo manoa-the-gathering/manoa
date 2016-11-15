@@ -1,11 +1,8 @@
 <template name="Header">
     <div class="ui top fixed borderless inverted menu">
   <div class="ui container">
-
-      {{#if currentUser}}
-
-      {{/if}}
-      <a href="#" class="item">{{> loginButtons }} </a>
+      <a class="item" href="{{pathFor 'Home_Page'}}"><h1>Manoa: The Gathering</h1></a>
+      {{> Cas_Login }}
     </div>
   </div>
 </template>
