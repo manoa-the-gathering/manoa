@@ -1,3 +1,26 @@
 {
-  "defaultAccount": {"username": "John", "password": "changeme"}
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://mtg:manoathegathering@ds145245.mlab.com:45245/mtgdb"
+    }
+  },
+  "cas": {
+    "baseUrl": "https://cas-test.its.hawaii.edu/cas/",
+    "autoClose": true
+  },
+  "public": {
+    "cas": {
+      "loginUrl": "https://cas-test.its.hawaii.edu/cas/login",
+      "serviceParam": "service",
+      "popupWidth": 810,
+      "popupHeight": 610
+    }
+  },
+  "allowed_users": [
+    "johnson",
+    "cmoore",
+    "jth9",
+    "cj38"
+    
+  ]
 }
