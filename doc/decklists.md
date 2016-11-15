@@ -20,19 +20,19 @@ Creatures
 
 Spells
 - 4 Lightning Bolt -- Moped Theft at Hale Noelani ("Usually, there will be two emails a day with this subject line.") **DONE**
-- 4 Lava Spike -- 
+- 4 Lava Spike (Left side of upper left of Hawaiian Studies mural) **DONE**
 - 4 Atarka's Command -- Gerald's Command
-- 4 Boros Charm -- 
+- 4 Boros Charm -- Stained Glass **DONE**
 - 4 Searing Blaze -- Searing Glass (Keller Hall Stained Glass) **DONE**
-- 3 Rift Bolt -- 
+- 3 Rift Bolt (Right side of upper left of Hawaiian Studies mural) **DONE**
 
 Sideboard
 - 4 Path to Exile -- Path to Expulsion (Guy walking down stairs next to CC) **DONE**
-- 2 Deflecting Palm -- 
-- 3 Destructive Revelry -- 
-- 3 Kor Firewalker -- 
-- 1 Lightning Helix -- 
-- 2 Skullcrack -- 
+- 2 Deflecting Palm -- Rainbow Wahine Softball Stadium **DONE**
+- 3 Destructive Revelry -- Hale Aloha Towers **DONE**
+- 3 Kor Firewalker -- Campus Ducks **DONE**
+- 1 Lightning Helix -- Mana'o'i'o (swirly scultpure outside of stan sheriff center) **DONE**
+- 2 Skullcrack -- To the Nth Power **DONE**
 
 **Affinity:**
 
@@ -50,8 +50,8 @@ Creatures
 - 4 Signal Pest -- (Weird Holmes Hall sculpture on 1st floor) **DONE**
 - 4 Arcbound Ravager -- Guardian Lion  (Lion statues around Hamilton) **DONE**
 - 1 Spellskite -- The Fourth Sign (Sculpture in front of art building) https://en.wikipedia.org/wiki/The_Fourth_Sign **DONE**
-- 4 Steel Overseer -- Grid/Scape **Done**
-- 4 Vault Skirge -- 
+- 4 Steel Overseer -- Grid Scape **Done**
+- 4 Vault Skirge -- Vending Machine (Coca cola vending machine) **DONE**
 - 4 Etched Champion -- Etched Luminary (Arthur D. Keller plaque) **DONE** 
 
 Spells
@@ -63,12 +63,12 @@ Artifacts
 - 4 Cranial Plating (UH football helmet)
 
 Sideboard
-- 2 Chalice of the Void -- 
-- 2 Grafdigger's Cage -- 
+- 2 Chalice of the Void -- Free Store **DONE**
+- 2 Grafdigger's Cage -- Lantern (Lanterns by the tea garden) **DONE**
 - 2 Thoughtseize -- Bilger Learning Emporium
-- 1 Vandalblast -- 
-- 1 Ancient Grudge -- 
+- 1 Vandalblast -- Mongoose **DONE**
+- 1 Ancient Grudge -- Huge Tree / Rec Center **DONE**
 - 2 Bitterblossom (UH flower) **DONE**
-- 2 Whipflare -- 
+- 2 Whipflare -- Elements **DONE**
 - 1 Ensnaring Bridge -- Manoa Stream **DONE**
 - 2 Ghirapur Aether Grid -- UH Art Gallery
