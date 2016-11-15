@@ -6,7 +6,22 @@
       <div class="ui info container">
 
 
-        <!-- Insert Content -->
+        <ul>
+          {{#each recentMessages}}
+            <li>
+              <div class="username">{{username}}</div>
+              <div class="message">{{text}}</div>
+            </li>
+          {{/each}}
+        </ul>
+        <footer>
+
+          <form class = "new-message" style="color:black">
+            <input type="text" name="text" placeholder="Add a message" />
+          </form>
+
+        </footer>
+
 
       </div>
 
