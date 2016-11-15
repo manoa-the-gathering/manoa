@@ -1,5 +1,6 @@
 
 import './home-page.html';
+import './home-page.js';
 
 import './rules-page.html';
 import './rules-page.js';
