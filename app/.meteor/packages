@@ -30,7 +30,6 @@ aldeed:autoform
 sacha:spin
 
 # Account management
-accounts-password@1.3.0
 accounts-ui
 
 # Routing
@@ -51,3 +50,4 @@ fabienb4:autoform-semantic-ui
 
 atoy40:accounts-cas
 random
+accounts-password
