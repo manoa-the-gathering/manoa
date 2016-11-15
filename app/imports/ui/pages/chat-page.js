@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-export const Messages = new Mongo.Collection("messages");
+/**Messages = new Mongo.Collection("msgs");
 
 if (Meteor.isServer) {
     //this code only runs on the server
@@ -17,17 +17,22 @@ if (Meteor.isClient) {
     Meteor.subscribe("messages");
 }
 
-let sendMessage = function(message) {
-    //if (! Meteor.userId()) {
-    //   throw new Meteor.Error("not-authorized");
-    // }
+Meteor.methods( {
 
-    Messages.insert({
-        text: message,
-        createdAt: new Date(),
-        username: "anonymous"
-    });
-}
+    sendMessage:function(message) {
+        //if (! Meteor.userId()) {
+        //   throw new Meteor.Error("not-authorized");
+        // }
+
+        Messages.insert({
+            text: message,
+            createdAt: new Date(),
+            username: "anonymous"
+        });
+    }
+
+})
+
 
 
 if (Meteor.isClient) {
@@ -47,6 +52,59 @@ if (Meteor.isClient) {
             return false;
         }
     });
-}
+} **/
 
 //Meteor.call('sendMessage', 'hello from the browser console')
+
+export const Messages = new Mongo.Collection("msgs");
+
+/**Meteor.methods({
+    sendMessage: function (messageText) {
+        add authentication here 
+
+        Messages.insert({
+            messageText: messageText,
+            createdAt: new Date(),
+            username: "anonymous"
+        });
+    }
+}); **/
+
+/**if (Meteor.isServer) {
+    // This code only runs on the server
+    Meteor.publish("messages", function () {
+        return Messages.find({}, {sort: {createdAt: -1}, limit: 5});
+    });
+}**/
+
+/* scrolling code */
+
+if (Meteor.isClient) {
+    // This code only runs on the client
+    Meteor.subscribe("messages");
+
+    Template.body.helpers({
+        recentMessages: function () {
+            return Messages.find({}, {sort: {createdAt: 1}});
+        },
+        /* unread message helper */
+    });
+
+    /*chat window scrolling*/
+
+    Template.body.events({
+        "submit .new-message": function (event) {
+            var text = event.target.text.value;
+
+            Meteor.call("sendMessage", text);
+
+            event.target.text.value = "";
+            event.preventDefault();
+        },
+
+        /* scroll event */
+
+    });
+
+    /*account config*/
+}

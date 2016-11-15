@@ -6,20 +6,16 @@
       <div class="ui info container">
 
 
-        <ul>
+        <ul class="message-window">
           {{#each recentMessages}}
-            <li>
-              <div class="username">{{username}}</div>
-              <div class="message">{{text}}</div>
-            </li>
+          {{> message}}
           {{/each}}
         </ul>
+
         <footer>
-
-          <form class = "new-message" style="color:black">
-            <input type="text" name="text" placeholder="Add a message" />
+          <form class="new-message">
+            <input type="text" name="text" placeholder="Add a message" autocomplete="off" style="color:black"/>
           </form>
-
         </footer>
 
 
@@ -35,4 +31,10 @@
   </div>
 
 
+</template>
+<template name="message">
+  <li class="message">
+    <div class="username">{{username}}</div>
+    <div class="message-text">{{messageText}}</div>
+  </li>
 </template>
