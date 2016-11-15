@@ -5,9 +5,47 @@ body {
             center center no-repeat;
   background-size: cover;
 }
+/* SCROLL BAR
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 3px;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+
+  background-color: white;
+}
+*/
+
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: black;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+.nightbg {
+  background: url('/images/landingN.jpg')
+  center center no-repeat;
+  background-size: cover;
+}
 
 .rulesbg {
-  background: url('images/rulesbg.jpg')
+  background: url('/images/rulesbg.jpg')
             center center no-repeat;
   background-size: cover;
 }
