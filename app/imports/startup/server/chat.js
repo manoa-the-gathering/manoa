@@ -4,6 +4,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../ui/pages/chat-page'
 
+Meteor.publish("messages", function () {
+    return Messages.find({}, {sort: {createdAt: -1}, limit: 5});
+});
+
 Meteor.methods({
     sendMessage: function (messageText) {
         /* add authentication here */
@@ -14,8 +18,4 @@ Meteor.methods({
             username: "anonymous"
         });
     }
-});
-
-Meteor.publish("messages", function () {
-    return Messages.find({}, {sort: {createdAt: -1}, limit: 5});
 });
