@@ -6,6 +6,11 @@ body {
   background-size: cover;
 }
 
+.rulesbg {
+  background: url('images/rulesbg.jpg')
+            center center no-repeat;
+  background-size: cover;
+}
 .ui.two.row.main.container {
   width: 100%!important;
   min-height: 100%;
