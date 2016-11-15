@@ -30,7 +30,6 @@ aldeed:autoform
 sacha:spin
 
 # Account management
-accounts-password
 accounts-ui
 
 # Routing
