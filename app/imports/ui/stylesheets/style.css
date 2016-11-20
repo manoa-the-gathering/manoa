@@ -45,6 +45,12 @@ body {
   background-size: cover;
 }
 
+.matchbg {
+  background: url('/images/matchbg.jpg')
+  center center no-repeat;
+  background-size: cover;
+}
+
 .rulesbg {
   background: url('/images/rulesbg.jpg')
             center center no-repeat;

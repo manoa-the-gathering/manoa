@@ -9,7 +9,8 @@
       <div class="ui text container" style="text-align: center;">
         <!-- submit event or href to CAS -->
         {{#if currentUser}}
-        <button class="ui button play">Play now</button>
+        <a class="{{ isActiveRoute 'Match_Page'}} ui button play"
+           href="{{ pathFor 'Match_Page'}}">Find a Match</a>
         {{else}}
         <button class="ui button play cas-login">Play now</button>
         {{/if}}
