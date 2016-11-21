@@ -21,7 +21,7 @@ Template.Home_Page.events({
 
 var hours = new Date();
 time = hours.getHours();
-if (time > 12) {
+if (time > 19 || time < 6) {
 
   Template.Home_Page.onRendered(function () {
     $('body').addClass('nightbg');
