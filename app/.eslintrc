@@ -6,6 +6,9 @@
   "plugins": [
     "meteor"
   ],
+  "env": {
+    "jquery": true
+  },
   "extends": [
     "airbnb/base",
     "plugin:meteor/recommended"

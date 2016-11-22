@@ -2,8 +2,9 @@ body {
   color: #FFFFFF;
   height: 100%;
   background: url("/images/landingv2.jpg")
-            center center no-repeat;
+            black center center no-repeat;
   background-size: cover;
+
 }
 /* SCROLL BAR
 ::-webkit-scrollbar {
@@ -41,19 +42,19 @@ body {
 
 .nightbg {
   background: url('/images/landingN.jpg')
-  center center no-repeat;
+  black center center no-repeat;
   background-size: cover;
 }
 
 .matchbg {
   background: url('/images/matchbg.jpg')
-  center center no-repeat;
+  black center center no-repeat;
   background-size: cover;
 }
 
 .rulesbg {
   background: url('/images/rulesbg.jpg')
-            center center no-repeat;
+            black center center no-repeat;
   background-size: cover;
 }
 .ui.two.row.main.container {
@@ -104,7 +105,7 @@ body {
   box-sizing: border-box;
   padding:0 20px;
   background: rgba(0,0,0,0.8);
-  border: 5px solid #b01e17;
+  border: 4px solid #b01e17;
   border-radius: 6px;
   box-shadow: 0 1px 2px 2px #151515;
   font-size: 16px;
@@ -115,7 +116,7 @@ body {
 .userList {
   box-sizing: border-box;
   background: rgba(0,0,0,0.8);
-  border: 5px solid #b01e17;
+  border: 4px solid #b01e17;
   border-radius: 6px;
   box-shadow: 0 1px 2px 2px #151515;
   font-size: 16px;
@@ -124,10 +125,9 @@ body {
 }
 .ui.user.list {
   height: 90%;
-  padding-bottom: 10%;
   list-style-type: none;
   text-align: left;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 @media only screen and (max-width: 640px) {
   .menuv2.row { text-align: center;}
