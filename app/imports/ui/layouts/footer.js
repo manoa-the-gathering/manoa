@@ -9,9 +9,9 @@ Template.Footer.events({
    */
   'click .cas-logout': function casLogout(event) {
     event.preventDefault();
-    if (window.confirm("Would you like to log out?")) {
+    if (window.confirm('Would you like to log out?')) {
       Meteor.logout();
     }
     return false;
-  }
+  },
 });
