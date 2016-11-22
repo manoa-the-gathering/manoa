@@ -10,6 +10,10 @@ fghjhgfdhjgf
         <div class="three wide column userList">
           <h2>Online Users</h2>
           <ul class="ui user list">
+
+           {{#each listUsers}}
+             <li>{{this.profile.name}}</li>
+             {{/each}}
            <!-- <li>User 1</li>
             <li>User 2</li>
             <li>User 2</li>
