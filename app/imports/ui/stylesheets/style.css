@@ -125,10 +125,25 @@ body {
 }
 .ui.user.list {
   height: 90%;
+  margin: 0;
+  font-size: 18px;
   list-style-type: none;
   text-align: left;
   overflow-y: scroll;
 }
+
+.ui.user.list li {
+  display: inline-block;
+  width: 100%;
+  color: #FFFFFF;
+  padding: 5px!important;
+}
+
+.ui.user.list li:hover {
+  background: rgba(200,0,0,0.8);
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 640px) {
   .menuv2.row { text-align: center;}
 }
