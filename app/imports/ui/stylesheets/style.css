@@ -129,6 +129,9 @@ body {
   text-align: left;
   overflow-y: scroll;
 }
+@media only screen and (max-width: 640px) {
+  .menuv2.row { text-align: center;}
+}
 .title {
   color: #FFFFFF!important;
 }
@@ -137,8 +140,4 @@ body {
 }
 .ui.accordion {
   color: #FFFFFF!important;
-}
-
-@media only screen and (max-width: 640px) {
-  .menuv2.row { text-align: center;}
 }
