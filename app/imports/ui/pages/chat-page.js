@@ -94,8 +94,8 @@ if (Meteor.isClient) {
     Template.Chat_Page.events({
         "submit .new-message": function (event) {
             var text = event.target.text.value;
-
-            Meteor.call("sendMessage", text);
+            var userId = Meteor.userId();
+            Meteor.call("sendMessage", text, userId);
 
             event.target.text.value = "";
             event.preventDefault();

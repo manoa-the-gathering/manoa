@@ -9,13 +9,12 @@ Meteor.publish("messages", function () {
 });
 
 Meteor.methods({
-    sendMessage: function (messageText) {
+    sendMessage: function (messageText, userId) {
         /* add authentication here */
-
         Messages.insert({
             messageText: messageText,
             createdAt: new Date(),
-            username: "anonymous"
+            username: userId
         });
     }
 });
