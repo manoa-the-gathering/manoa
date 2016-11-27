@@ -106,4 +106,5 @@ if (Meteor.isClient) {
     });
 
     /*account config*/
+
 }
