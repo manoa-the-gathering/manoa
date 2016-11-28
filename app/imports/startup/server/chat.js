@@ -4,8 +4,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../ui/pages/match-page'
 
-Meteor.publish("messages", function () {
-    return Messages.find({}, {sort: {createdAt: -1}, limit: 13});
+Meteor.publish("messages", function (selected) {
+    return Messages.find({msgs: selected}, {sort: {createdAt: -1}, limit: 13});
 });
 
 Meteor.methods({
@@ -17,7 +17,6 @@ Meteor.methods({
             messageText: messageText,
             createdAt: new Date(),
             username: Meteor.user()
-
 
         });
     }

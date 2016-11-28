@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
+import { Session } from 'meteor/session';
 
 export const Messages = new Mongo.Collection("msgs");
 let id = 'Select a User';
@@ -37,9 +38,8 @@ Template.Match_Page.events({
 if (Meteor.isClient) {
   // This code only runs on the client
 
-  Meteor.subscribe("messages");
+  Meteor.subscribe("messages", Session.get('selected'));
   Meteor.subscribe('userStatus');
-
 
   Template.Match_Page.onRendered(function () {
     $('body').addClass('matchbg');
@@ -77,6 +77,7 @@ if (Meteor.isClient) {
     'click .ui.user.list li'(event) {
       event.preventDefault();
       id = Meteor.userId();
+      Session.set('selected', id);
       document.getElementById('result').innerHTML = 'User Id is '+id;
     },
 
