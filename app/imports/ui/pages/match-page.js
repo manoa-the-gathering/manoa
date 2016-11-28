@@ -34,8 +34,6 @@ Template.Match_Page.events({
 });
 **/
 
-let autoScrollingIsActive = false;
-thereAreUnreadMessages = new ReactiveVar(false);
 
 function scrollToBottom () {
 
@@ -50,7 +48,6 @@ if (Meteor.isClient) {
   Meteor.subscribe("messages", {
     onReady: function () {
       scrollToBottom();
-      autoScrollingIsActive = true;
     }
   });
 
@@ -59,16 +56,6 @@ if (Meteor.isClient) {
 
 
   Template.Match_Page.onRendered(function () {
-
-
-
-    if (autoScrollingIsActive) {
-      scrollToBottom();
-    } else {
-      if (Meteor.user() && this.data.username !== Meteor.user().username) {
-        thereAreUnreadMessages.set(true);
-      }
-    }
 
     $('body').addClass('matchbg');
     document.getElementById('result').innerHTML = id;
@@ -87,9 +74,6 @@ if (Meteor.isClient) {
     listUsers() {
       return Meteor.users.find();
     },
-    thereAreUnreadMessages: function () {
-      return thereAreUnreadMessages.get();
-    }
   });
   
   Template.Match_Page.events({
@@ -107,23 +91,6 @@ if (Meteor.isClient) {
       id = Meteor.userId();
       document.getElementById('result').innerHTML = 'User Id is '+id;
     },
-
-    "scroll .message-window": function () {
-      var howClose = 80;  // # pixels leeway to be considered "at Bottom"
-      var messageWindow = $(".message-window");
-      var scrollHeight = messageWindow.prop("scrollHeight");
-      var scrollBottom = messageWindow.prop("scrollTop") + messageWindow.height();
-      var atBottom = scrollBottom > (scrollHeight - howClose);
-      autoScrollingIsActive = atBottom ? true : false;
-      if (atBottom) {
-        thereAreUnreadMessages.set(false);
-      }
-    },
-
-    "click .more-messages": function () {
-      scrollToBottom();
-      thereAreUnreadMessages.set(false);
-    }
 
   });
 
