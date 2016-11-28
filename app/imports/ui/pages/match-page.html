@@ -4,12 +4,19 @@
     <div class="centered row">
       <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
       <div class="ui two column grid container">
-        <div class="thirteen wide column log">
+        <div class="thirteen wide column log" style="overflow:auto" id="chatbox">
           <h2>Chat</h2>
 
           {{#each recentMessages}}
            {{> message}}
           {{/each}}
+
+          {{#momentum plugin="fade"}}
+          {{#if thereAreUnreadMessages}}
+            <button class="more-messages">New Messages &#x25BE;</button>
+          {{/if}}
+          {{/momentum}}
+
         </div>
         <div class="three wide column userList">
 
