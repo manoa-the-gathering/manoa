@@ -54,7 +54,6 @@ if (Meteor.isClient) {
   Meteor.subscribe('userStatus');
 
 
-
   Template.Match_Page.onRendered(function () {
 
     $('body').addClass('matchbg');

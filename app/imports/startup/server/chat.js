@@ -4,19 +4,19 @@
 import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../ui/pages/match-page'
 
+
 Meteor.publish("messages", function () {
     return Messages.find({}, {sort: {createdAt: -1}, limit: 50});
 });
 
 Meteor.methods({
     sendMessage: function (messageText) {
-        /* add authentication here */
-
 
         Messages.insert({
+
             messageText: messageText,
             createdAt: new Date(),
-            username: Meteor.user()
+            username: Meteor.user(),
 
 
         });

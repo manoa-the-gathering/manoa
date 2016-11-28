@@ -4,12 +4,13 @@
     <div class="centered row">
       <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
       <div class="ui two column grid container">
-        <div class="thirteen wide column log" style="overflow:auto" id="chatbox">
-          <h2>Chat</h2>
-
-          {{#each recentMessages}}
-           {{> message}}
-          {{/each}}
+        <div class="thirteen wide column log" style="overflow:auto;" id="chatbox">
+          <div style="position:fixed; background-color: black; width: inherit; "> <h2>Chat</h2> </div>
+          <div style="padding-top:40px;">
+            {{#each recentMessages}}
+             {{> message}}
+            {{/each}}
+          </div>
 
 
         </div>
@@ -54,6 +55,6 @@
 <template name="message">
   <li class="message" style="list-style: none">
     <div class="username" style="font-weight:bold; color: red; display:inline">{{username.profile.name}}</div>
-    <div class="message-text" style="margin-bottom: 4px; margin-left: 10px; display: inline">{{messageText}}</div>
+    <div class="message-text" style="margin-bottom: 4px; margin-left: 10px; display:inline;">{{messageText}}</div>
   </li>
 </template>
