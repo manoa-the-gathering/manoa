@@ -1,0 +1,166 @@
+<template name="Terms_Page">
+
+<div class="ui two row main container">
+ <div class="centered row">
+  <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+  <div class="ui info container" style="text-align: left">
+
+   <!--//////// Terminology ////////////////////////-->
+   <div class="active title">
+    <h3>Terminology</h3>
+   </div>
+   <div class="active content">
+    There are many terms you'll need to become fluent with in order to make sense of the many interactions and aspects of Magic.
+    <div class="ui accordion">
+
+     <!--//////// Permanents ////////////////////////-->
+     <div class="title">
+      <i class="dropdown icon"></i>
+      Permanent
+     </div>
+     <div class="content">
+      A card which stays on the battlefield for more than one phase of a turn. Generally includes Lands, Creatures, Artifacts, and Enchantments.
+     </div>
+
+     <!--//////// State Based Actions ////////////////-->
+     <div class="title">
+      <i class="dropdown icon"></i>
+      State-based action (SBA)
+     </div>
+     <div class="content">
+      An effect which triggers due to the moment-by-moment state of the board. These are instantaneous actions not taken by either player, but rather by the rules themselves. For example, if at any point your life total is equal to or less than 0, you lose the game as an SBA. If your creature’s toughness equals or is less than 0, it dies as an SBA. If you enter your Draw phase, you take a card from the top of your library and place it in your hand, as an SBA. These are things which cannot be interacted with, changed, or interrupted by any means after they have started.
+     </div>
+
+     <!--//////// Zones //////////////////////////////-->
+     <div class="title">
+      <i class="dropdown icon"></i>
+      Zones
+     </div>
+     <div class="content">
+      <p>A zone is a place where objects can be during a game. There are normally seven zones: library, hand, battlefield, graveyard, stack, exile, and command. Each player has his or her own library, hand, and graveyard. The other zones are shared by all players. I have included an informal diagram courtesy of Loading Ready Run.</p>
+      <img src="/images/diagram.png" height=400px>
+
+      <div class="accordion">
+      <!--//////// Library //////////////////////////////-->
+       <div class="title">
+        <i class="dropdown icon"></i>
+        Library (The Pile)
+       </div>
+       <div class="content">
+        <p>
+         Your deck begins play in this zone, shuffled and face down. If you would draw a card from your library, but there are no cards in this zone, you lose the game. (This is called “being milled out”. The library represents your store of knowledge, or your mind.
+        </p>
+       </div>
+
+       <!--//////// Hand //////////////////////////////-->
+       <div class="title"><i class="dropdown icon"></i>
+        Hand
+       </div>
+       <div class="content">
+        <p>
+	 Like a normal hand of cards, these are the cards you currently have access to and which you are always holding while you are at the table. You will start the game with a hand of 7 cards from the top of your library, cast spells from your hand to the battlefield, and replace them by drawing from the top of (or searching) your library.
+	</p>
+       </div>
+
+       <!--//////// Battlefield //////////////////////////////-->
+       <div class="title">
+        <i class="dropdown icon"></i>
+        Battlefield (Fighty Place, Dudes, Lands & Junk)
+       </div>
+       <div class="content">
+        <p>Permanents stay here, facing you. When you cast a creature spell and it resolves, put it into Dudes. New Dudes enter on your right. When you attack with a creature, move it into the Fighty Place. When you play a land, artifact (which is not also a creature), or enchantment, place it in Lands & Junk.</p>
+       </div>
+
+       <!--//////// Graveyard //////////////////////////////-->
+       <div class="title">
+        <i class="dropdown icon"></i>
+        Graveyard (Dead Stuff)
+       </div>
+       <div class="content">
+        <p>When a creature is killed, or a spell resolves (or is countered, or fizzles), or an enchantment or artifact is destroyed, move it to the yard.</p>
+       </div>
+
+       <!--//////// Stack //////////////////////////////-->
+       <div class="title">
+        <i class="dropdown icon"></i>
+        Stack
+       </div>
+       <div class="content">
+        <p>Cards which have been cast, but not yet resolved. When you cast a spell, put it onto the top of the stack. Now, you may either retain priority (in which case you may be the first to cast instants and activate abilities) or give priority to your opponent. If you retain, you must give priority after. There is no way to deny priority to your opponent completely. If they decide to respond, they may cast instants and activate abilities, any of which may or may not affect your spell. Items on the stack will be resolved in reverse order, just like a programming stack (last in, first out).</p>
+       </div>
+       <div class="title">
+        <i class="dropdown icon"></i>
+        Exile (Really, Really Dead Stuff)
+      </div>
+      <div class="content">
+       <p>Sometimes, an effect will say to exile a card. This effectively removes it from the game. Only a very few cards are able to bring other cards back from exile, and none of them are present in Manoa. If a card goes here, it is not coming back.<br>
+       /////////////////////////////////////
+       </p>
+      </div>
+     </div><!--//End Accordion-->
+    </div><!--//End Zones-->
+
+    <div class="title"><i class="dropdown icon"></i>
+     CMC
+    </div>
+    <div class="content">
+     <p>Converted mana cost. How many mana it takes to activate the spell.</p>
+    </div>
+		
+    <div class="title"><i class="dropdown icon"></i>
+     Resolution
+    </div>
+    <div class="content">
+     <p>When a spell is successfully cast.</p>
+    </div>
+
+    <div class="title"><i class="dropdown icon"></i>
+     Fizzle
+    </div>
+    <div class="content">
+     <p>If a spell which targets something has no valid targets when it would resolve, no part of the spell resolves. This is called fizzling. The card goes to the graveyard without affecting the game, even if part of its effect was still valid.</p>
+    </div>
+
+    <div class="title"><i class="dropdown icon"></i>
+     Tap
+    </div>
+    <div class="content">
+     <p>To turn a card sideways. In the lore of the game, this is similar to how you might tap a tree for maple syrup; you take something from it to use. This could be taking mana from the land, using a creature's time and energy to attack your opponent, or entering a library to search for knowledge.<br>
+     Tapped cards may not be tapped again until they are untapped. When you use a land to gain mana, you must tap it. When you attack with a creature, you must tap it. If any card has the (t) symbol as part of an ability, you must tap the card to use the ability.<br>
+     Note: the mechanic “Vigilance” exempts a creature who has it from tapping to attack.</p>
+    </div>
+
+    <div class="title"><i class="dropdown icon"></i>
+     Summoning Sickness
+    </div>
+    <div class="content">
+     <p>A creature card which has been cast during the current turn is considered sick and cannot tap. This prevents newly played creatures from attacking or using abilities, and gives the opponent a turn in which to prepare for them.<br>
+     Note: the mechanic “Haste” exempts a creature who has it from Sickness.</p>
+    </div>
+     <div class="title"><i class="dropdown icon"></i>
+     Speed
+     </div>
+     <div class="content">
+      <p>There are two “speeds”, instant and sorcery. If something works at instant speed, it may be played at almost any time. Some things cannot be responded to, and do not trigger an opportunity for instants (for example, drawing cards). If something works at sorcery speed, it may only be played by the active player (whose turn it is) when nothing else is on the stack.
+      </p>
+      <ul>
+       <li>
+        Sorcery speed effects: Permanents without the ability “Flash”. Playing lands from your hand to the battlefield. Sorcery spells.
+       </li>
+       <li>Instant speed effects: Permanents with the ability “Flash”. Abilities written on permanents which do not say “Activate this ability only any time you could cast a sorcery”. Instant spells.</li>
+      </ul>
+     </div>
+
+     <div class="title"><i class="dropdown icon"></i>
+     Counter
+     </div>
+     <div class="content">
+      <p>Some cards may indicate that they counter a spell. These will always be instants. In order to use them, while another spell is on the top of the stack, play your counter targeting the stacked spell. This causes the targeted (countered) spell to go directly to the graveyard without causing any effect.
+      </p>
+     </div>
+    </div><!-- End Main Accordion -->
+  </div>
+  </div>
+ </div>
+</div>
+</template>
