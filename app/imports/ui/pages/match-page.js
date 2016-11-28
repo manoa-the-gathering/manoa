@@ -39,6 +39,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe("messages");
   Meteor.subscribe('userStatus');
+  
 
 
   Template.Match_Page.onRendered(function () {
