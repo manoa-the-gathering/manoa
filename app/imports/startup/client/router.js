@@ -37,7 +37,15 @@ FlowRouter.route('/chat', {
 FlowRouter.route('/match', {
   name: 'Match_Page',
   action() {
-    BlazeLayout.render('App_Body2', { main: 'Match_Page'});
+    BlazeLayout.render('App_Body2', { main: 'Match_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/battle/:_identifier', {
+  name: 'Battle_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Battle_Page' });
     BlazeLayout.setRoot('body');
   },
 });

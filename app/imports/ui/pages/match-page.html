@@ -29,14 +29,20 @@
     <div class="centered row">
       <div class="ui two column grid container">
         <div class="eleven wide column log" style="height: 20vh">
-
+          <p style="padding-bottom: 5px">
+            {{#each listRequests}}
+              {{this.requestString}}<br/>
+            {{/each}}
+          </p>
         </div>
-        <div class="five wide column userList" style="height: 20vh">
-          <button class="ui button mRequest">Match Request</button>
-          <button class="ui button">Message</button>
-          <button class="ui button">Accept</button>
-          <p id="result"></p>
-          <p id="select"></p>
+        <div class="five wide column userList" style="height: 20vh;">
+          <div class="ui container">
+            <button class="ui button mRequest">Match Request</button>
+            <button class="ui button accept">Accept</button>
+            <button class="ui button">Message</button>
+            <p id="result"></p>
+            <p id="select"></p>
+          </div>
         </div>
       </div>
       <div class="push" style="height: 83px"></div>

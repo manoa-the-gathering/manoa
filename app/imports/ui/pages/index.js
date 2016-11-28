@@ -12,3 +12,6 @@ import './chat-page.js';
 
 import './match-page.html';
 import './match-page.js';
+
+import './battle-page.html';
+import './battle-page.js';

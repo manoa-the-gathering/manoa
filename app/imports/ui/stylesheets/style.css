@@ -57,6 +57,12 @@ body {
             black center center no-repeat;
   background-size: cover;
 }
+
+.battlebg {
+  background: url('/images/battlebg.jpg')
+  black center center no-repeat;
+  background-size: cover;
+}
 .ui.two.row.main.container {
   width: 100%!important;
   min-height: 100%;
@@ -111,6 +117,7 @@ body {
   font-size: 16px;
   text-align: left;
   height:60vh;
+  overflow: auto;
 }
 
 .userList {
