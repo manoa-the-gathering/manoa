@@ -34,7 +34,7 @@
       <div class="ui two column grid container">
         <div class="eleven wide column log" style="height: 20vh">
           <form class="new-message" style="margin-left: 19%; margin-right:19%">
-            <input type="text" name="text" placeholder="Add a message" autocomplete="off" style="color:black"/>
+            <input type="text" name="text" placeholder="Add a message" autocomplete="off" style="color:black" maxlength="150"/>
           </form>
         </div>
         <div class="five wide column userList" style="height: 20vh">
@@ -48,4 +48,10 @@
     </div>
   </div>
 
+</template>
+<template name="message">
+  <li class="message" style="list-style: none">
+    <div class="username" style="font-weight:bold; color: red; display:inline">{{username.profile.name}}</div>
+    <div class="message-text" style="margin-bottom: 4px; margin-left: 10px; display: inline">{{messageText}}</div>
+  </li>
 </template>

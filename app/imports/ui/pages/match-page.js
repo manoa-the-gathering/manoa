@@ -61,10 +61,7 @@ if (Meteor.isClient) {
     },
     /* unread message helper */
   });
-
-
-  /*chat window scrolling*/
-
+  
   Template.Match_Page.events({
     "submit .new-message": function (event) {
       var text = event.target.text.value;
@@ -81,7 +78,6 @@ if (Meteor.isClient) {
       document.getElementById('result').innerHTML = 'User Id is '+id;
     },
 
-    /* scroll event */
 
   });
 
