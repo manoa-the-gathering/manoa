@@ -37,6 +37,7 @@ FlowRouter.route('/chat', {
 FlowRouter.route('/match', {
   name: 'Match_Page',
   action() {
+    Session.setDefault('chat', 'general');
     BlazeLayout.render('App_Body2', { main: 'Match_Page'});
     BlazeLayout.setRoot('body');
   },

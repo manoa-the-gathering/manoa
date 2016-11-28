@@ -38,7 +38,11 @@ Template.Match_Page.events({
 if (Meteor.isClient) {
   // This code only runs on the client
 
-  Meteor.subscribe("messages", Session.get('selected'));
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'));
+  });
+
+  //Meteor.subscribe("messages");
   Meteor.subscribe('userStatus');
 
   Template.Match_Page.onRendered(function () {
@@ -74,7 +78,7 @@ if (Meteor.isClient) {
     'click .ui.user.list li'(event) {
       event.preventDefault();
       id = Meteor.userId();
-      Session.set('selected', id);
+      Session.set('chat', id);
       document.getElementById('result').innerHTML = 'User Id is '+id;
     },
 
