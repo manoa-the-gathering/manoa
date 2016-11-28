@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../ui/pages/match-page'
 
 Meteor.publish("messages", function () {
-    return Messages.find({}, {sort: {createdAt: -1}, limit: 26});
+    return Messages.find({}, {sort: {createdAt: -1}, limit: 50});
 });
 
 Meteor.methods({
