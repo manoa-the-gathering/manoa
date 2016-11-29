@@ -1,20 +1,20 @@
 /**
  * Created by irene on 11/14/16.
  */
-import { Meteor } from 'meteor/meteor';
-import { Messages } from '../../ui/pages/chat-page'
+import {Meteor} from 'meteor/meteor';
+import {Messages} from '../../ui/pages/match-page'
 
 Meteor.publish("messages", function () {
-    return Messages.find({}, {sort: {createdAt: -1}, limit: 15});
+  return Messages.find({}, { sort: { createdAt: -1 }, limit: 50 });
 });
 
 Meteor.methods({
-    sendMessage: function (messageText, userId) {
-        /* add authentication here */
-        Messages.insert({
-            messageText: messageText,
-            createdAt: new Date(),
-            username: userId
-        });
-    }
+  sendMessage: function (messageText, userId) {
+    /* add authentication here */
+    Messages.insert({
+      messageText: messageText,
+      createdAt: new Date(),
+      username: Meteor.user(),
+    });
+  },
 });

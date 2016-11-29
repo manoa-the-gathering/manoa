@@ -154,3 +154,12 @@ body {
 @media only screen and (max-width: 640px) {
   .menuv2.row { text-align: center;}
 }
+.title {
+  color: #FFFFFF!important;
+}
+.content {
+  color: #FFFFFF!important;
+}
+.ui.accordion {
+  color: #FFFFFF!important;
+}

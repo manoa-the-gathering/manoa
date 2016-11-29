@@ -56,7 +56,7 @@ if (Meteor.isClient) {
 
 //Meteor.call('sendMessage', 'hello from the browser console')
 
-export const Messages = new Mongo.Collection("msgs");
+//export const Messages = new Mongo.Collection("msgs");
 
 /**Meteor.methods({
     sendMessage: function (messageText) {
@@ -69,13 +69,6 @@ export const Messages = new Mongo.Collection("msgs");
         });
     }
 }); **/
-
-if (Meteor.isServer) {
-    // This code only runs on the server
-
-}
-
-/* scrolling code */
 
 if (Meteor.isClient) {
     // This code only runs on the client
@@ -105,5 +98,6 @@ if (Meteor.isClient) {
 
     });
 
-    /*account config*/
+
 }
+

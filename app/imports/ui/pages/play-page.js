@@ -1,13 +1,13 @@
 import { Template } from 'meteor/templating';
 
 
-Template.Rules_Page.onRendered(function () {
+Template.Gameplay_Page.onRendered(function () {
   $('body').addClass('rulesbg');
   $('.ui.accordion')
    .accordion()
   ;
 });
 
-Template.Rules_Page.onDestroyed(function () {
+Template.Gameplay_Page.onDestroyed(function () {
   $('body').removeClass('rulesbg');
 });

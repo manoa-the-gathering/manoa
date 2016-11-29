@@ -4,7 +4,13 @@
     <div class="centered row">
       <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
       <div class="ui two column grid container">
-        <div class="thirteen wide column log">
+        <div class="thirteen wide column log" style="overflow:auto" id="chatbox">
+          <h2>Chat</h2>
+
+          {{#each recentMessages}}
+           {{> message}}
+          {{/each}}
+
 
         </div>
         <div class="three wide column userList">
@@ -29,11 +35,17 @@
     <div class="centered row">
       <div class="ui two column grid container">
         <div class="eleven wide column log" style="height: 20vh">
+
+          <form class="new-message" style="margin-left: 19%; margin-right:19%">
+            <input type="text" name="text" placeholder="Enter message here" autocomplete="off" style="color:black" maxlength="150"/>
+          </form>
+
           <p style="padding-bottom: 5px">
             {{#each listRequests}}
               {{this.requestString}}<br/>
             {{/each}}
           </p>
+
         </div>
         <div class="five wide column userList" style="height: 20vh;">
           <div class="ui container">
@@ -49,5 +61,10 @@
     </div>
   </div>
 
-
+</template>
+<template name="message">
+  <li class="message" style="list-style: none">
+    <div class="username" style="font-weight:bold; color: red; display:inline">{{username.profile.name}}</div>
+    <div class="message-text" style="margin-bottom: 4px; margin-left: 10px; display: inline">{{messageText}}</div>
+  </li>
 </template>
