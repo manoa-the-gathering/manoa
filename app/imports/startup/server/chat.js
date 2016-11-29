@@ -17,7 +17,7 @@ Meteor.methods({
             messageText: messageText,
             createdAt: new Date(),
             username: Meteor.user(),
-            chat: Session.get('chat')
+            //chat: Session.get('chat')
         });
     }
 });

@@ -69,6 +69,7 @@ if (Meteor.isClient) {
   Template.Match_Page.events({
     "submit .new-message": function (event) {
       var text = event.target.text.value;
+      text.chat = Session.get('chat');
 
       Meteor.call("sendMessage", text);
 
