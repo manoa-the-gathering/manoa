@@ -25,15 +25,6 @@ FlowRouter.route('/about', {
   },
 });
 
-/* mod route to support ids */
-FlowRouter.route('/chat', {
-  name: 'Chat_Page',
-  action() {
-    BlazeLayout.render('App_Body2', { main: 'Chat_Page' });
-    BlazeLayout.setRoot('body');
-  },
-});
-
 FlowRouter.route('/match', {
   name: 'Match_Page',
   action() {
@@ -46,6 +37,22 @@ FlowRouter.route('/battle/:_identifier', {
   name: 'Battle_Page',
   action() {
     BlazeLayout.render('App_Body2', { main: 'Battle_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/terms', {
+  name: 'Terms_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Terms_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/gameplay', {
+  name: 'Gameplay_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Gameplay_Page' });
     BlazeLayout.setRoot('body');
   },
 });

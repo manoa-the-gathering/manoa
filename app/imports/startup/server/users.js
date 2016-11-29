@@ -25,4 +25,7 @@ Meteor.methods({
     Requests.insert({ targetUser: user2, requestString: `${user1.profile.name} 
     has accepted your request. Select them from the list and click accept to begin the match.` });
   },
+  'cleanup'(user2, user1) {
+    Requests.remove({ });
+  },
 });

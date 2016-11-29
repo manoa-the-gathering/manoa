@@ -8,7 +8,7 @@
           <h2>Chat</h2>
 
           {{#each recentMessages}}
-           {{> message}}
+            {{> message}}
           {{/each}}
 
 
@@ -35,23 +35,29 @@
     <div class="centered row">
       <div class="ui two column grid container">
         <div class="eleven wide column log" style="height: 20vh">
+          <div class="row container" style="height: 100%">
+            <div class="row" style="height: 60%; overflow: auto">
+              <p style="padding-bottom: 5px">
+                {{#each listRequests}}
+                  {{this.requestString}}<br/>
+                {{/each}}
+              </p>
+            </div>
 
-          <form class="new-message" style="margin-left: 19%; margin-right:19%">
-            <input type="text" name="text" placeholder="Enter message here" autocomplete="off" style="color:black" maxlength="150"/>
-          </form>
-
-          <p style="padding-bottom: 5px">
-            {{#each listRequests}}
-              {{this.requestString}}<br/>
-            {{/each}}
-          </p>
-
+            <div class="row" style="height: 40%">
+              <form class="ui form new-message">
+                <div class="field">
+                  <input type="text" name="text" placeholder="Enter message here" autocomplete="off" style="color:black"
+                         maxlength="150">
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
         <div class="five wide column userList" style="height: 20vh;">
           <div class="ui container">
             <button class="ui button mRequest">Match Request</button>
             <button class="ui button accept">Accept</button>
-            <button class="ui button">Message</button>
             <p id="result"></p>
             <p id="select"></p>
           </div>

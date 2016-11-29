@@ -4,9 +4,6 @@ import './home-page.js';
 
 import './about-page.html';
 
-import './chat-page.html';
-import './chat-page.js';
-
 import './match-page.html';
 import './match-page.js';
 

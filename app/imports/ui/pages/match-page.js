@@ -89,6 +89,7 @@ if (Meteor.isClient) {
         from the list and click accept to begin the match.`
                   }]
               })) {
+            Meteor.call('cleanup', id, selected);
             FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
           }
           else {
