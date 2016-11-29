@@ -13,7 +13,7 @@
     In order to play a game of Magic, you need to know how turns and priority work. Priority is what determines who can play what sort of cards or abilities at what time, and how those cards can affect other parts of the game.
     <div class="ui accordion">
      <!--///////// Phases ////////////////////////-->
-     <div class="title">
+     <div class="active title">
       <i class="dropdown icon"></i>
       Phases of a Turn
      </div>
@@ -21,45 +21,84 @@
       The Phases of a turn are the actions you take in order to complete your turn. Some are optional, some are not.
       <!--///////// Phases Accordion ////////////////////////-->
       <div class="accordion">
-       <div class="title"> Untap
+       <div class="title"> <h2>Untap</h2>
        </div>
-       <div class="content">
+       <div class="content"> For every permanent you control, if that permanent is tapped and does not have any effects which would prevent this, return it to the upright (untapped) position.
        </div>
-       <div class="title"> Upkeep
+       <div class="title"> <h2>Upkeep</h2>
        </div>
-       <div class="content">
+       <div class="content"> Take care of all effects which trigger on upkeep. They will say something like:
+	<ul>
+	 <li>"At the beginning of your upkeep..."</li>
+	 <li>"At the beginning of the next upkeep..."</li>
+	 <li>"During your upkeep..."</li>
+	</ul>
+	The Active Player may order these effects in whichever order they choose, regardless of whose card has the effect (in the case of "the next upkeep" type effects).
        </div>
-       <div class="title"> Draw
+       <div class="title"> <h2>Draw</h2>
        </div>
-       <div class="content">
+       <div class="content"> Draw the top card of your library (put it into your hand).<br> Note: the first player to take a turn skips their first Draw step. This leads to the slang forms of "being on the play" or "being on the draw", since you will either play first and skip your draw step or play second and get to draw a card.
        </div>
-       <div class="title"> First Main
+       <div class="title"> <h2>First Main</h2>
        </div>
-       <div class="content">
+       <div class="content"> The primary phase of the game. You may cast any spells, activate any abilities, attach equipments, and so on.
        </div>
-       <div class="title"> Combat
+       <div class="title"> <h2>Combat</h2>
        </div>
-       <div class="content">
+       <div class="content"> If you wish to have your creatures attack your opponent, you may declare "going to combat". You may now make any final preparations for combat, if you didn't do them during your first Main.
        </div>
-       <div class="title"> Attacks
+       <div class="title"> <h2>Attacks</h2>
        </div>
-       <div class="content">
+       <div class="content"> The active player may have any of their creatures who may attack do so. To declare attacks, indicate a creature and its target: an enemy player or planeswalker. You cannot attack your opponent's creatures directly.<br> Note the following:
+	<ul>
+	 <li>Creatures with Defender cannot attack.</li>
+	 <li>Creatures with<b>out</b> Haste who entered the battlefield this turn (since the last Untap) cannot attack.</li>
+	 <li>Creatures with<b>out</b> Vigilance become tapped when attacking.</li>
+	 <li>If you have any effects which trigger "when a creature attacks" or when a creature becomes tapped, resolve those. Like other simultaneous triggers, if more than one happens, you may order them.</li>
+	</ul>
+	The active player, after declaring attackers, passes priority around the table before moving to blocks.
        </div>
-       <div class="title"> Blocks
+       <div class="title"> <h2>Blocks</h2>
        </div>
-       <div class="content">
+       <div class="content"> Any player who is being attacked by a creature (or whose allied planeswalker is being attacked) may declare blockers.
+	<ul>
+	 <li>Creatures with Menace cannot be blocked by only one creature.</li>
+	 <li>Creatures with Flying can only be blocked by creatures with Flying or Reach.</li>
+	 <li>Creatures with Trample, if they are blocked, may assign <b>extra</b> damage to the player whose creatures blocked it. Extra damage is any damage above and beyond what is needed to destroy all blocking creatures.</li>
+	</ul>
+	The defending player, after declaring blockers, passes priority back to the active player before moving to blocks. 
        </div>
-       <div class="title"> Damage
+       <div class="title"> <h2>Damage</h2>
        </div>
-       <div class="content">
+       <div class="content"> Once all blockers are assigned to legal attackers, damage is calculated.<br>
+First, the attacking player chooses what order the blocking creatures will be in for each instance of blocking.<br>
+Then First Strike damage is calculated; then normal damage.<br>
+Any creatures who have the ability "first strike" deals damage during first strike, and those without it deal damage after.<br> Creatures with "double strike" deal their damage twice, once during first strike and once during normal damage.<br>
+For each of these steps:
+	<ul>
+	 <li>Relevant creatures mark damage on the creatures they are fighting equal to their power.</li>
+	 <li>Any creatures blocked by more than one creature only assign as much damage to the first blocker as is necessary to destroy it, if it deals more than enough to do so. Additional damage is assigned to the next blocker, and so on.</li>
+	 <li>Any creatures with toughness equal to or less than the damaged marked are destroyed.</li>
+	 <li>Note that creatures destroyed in first strike damage are not around to prevent normal damage, and if they do not deal first strike damage, do not deal any.</li>
+	</ul>
+Relevant abilities:
+	<ul>
+	 <li>Deathtouch: a creature with deathtouch only needs to deal one damage to a creature to kill it. This does mean that for multiple blockers, each blocker only takes 1 damage, and is destroyed.</li>
+	 <li>Indestructable: a creature with indestructable is NOT destroyed by combat damage and can absorb infinite damage. However, remember that the active player may order blockers such that indestructable creatures are last in the order, so don't rely on this to protect other blockers.</li>
+	 <li>Lifelink: a creature with lifelink heals its controller for as much damage as it deals. Notes: if a lifelinker with 4 power is blocked by a creature with 1 toughness, the player is still healed for 4. If damage is prevented, this also prevents healing from lifelink.</li>
+	</ul>
        </div>
-       <div class="title"> Second Main
+       <div class="title"> <h2>Second Main</h2>
        </div>
-       <div class="content">
+       <div class="content"> This is identical to the first main.
        </div>
-       <div class="title"> End
+       <div class="title"> <h2>End</h2>
        </div>
-       <div class="content">
+       <div class="content"> Activate abilities and cast instants. This is most commonly used by the non-active player as a "right before I untap, I'll use my unused mana" option.
+       </div>
+       <div class="title"> <h2>Cleanup</h2>
+       </div>
+       <div class="content"> If you have more than 7 cards in your hand, discard down to 7.
        </div>
       </div> <!--End phases accordion-->
      </div> <!--End phases content-->
