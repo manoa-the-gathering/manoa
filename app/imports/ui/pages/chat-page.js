@@ -69,36 +69,35 @@ if (Meteor.isClient) {
         });
     }
 }); **/
-/* scrolling code */
-//
-// if (Meteor.isClient) {
-//     // This code only runs on the client
-//
-//     Meteor.subscribe("messages");
-//
-//     Template.Chat_Page.helpers({
-//         recentMessages: function () {
-//             return Messages.find({}, {sort: {createdAt: 1}});
-//         },
-//         /* unread message helper */
-//     });
-//
-//     /*chat window scrolling*/
-//
-//     Template.Chat_Page.events({
-//         "submit .new-message": function (event) {
-//             var text = event.target.text.value;
-//
-//             Meteor.call("sendMessage", text);
-//
-//             event.target.text.value = "";
-//             event.preventDefault();
-//         },
-//
-//         /* scroll event */
-//
-//     });
-//
-//     /*account config*/
-//
-// }
+
+if (Meteor.isClient) {
+    // This code only runs on the client
+
+    Meteor.subscribe("messages");
+
+    Template.Chat_Page.helpers({
+        recentMessages: function () {
+            return Messages.find({}, {sort: {createdAt: 1}});
+        },
+        /* unread message helper */
+    });
+
+    /*chat window scrolling*/
+
+    Template.Chat_Page.events({
+        "submit .new-message": function (event) {
+            var text = event.target.text.value;
+            var userId = Meteor.userId();
+            Meteor.call("sendMessage", text, userId);
+
+            event.target.text.value = "";
+            event.preventDefault();
+        },
+
+        /* scroll event */
+
+    });
+
+
+}
+
