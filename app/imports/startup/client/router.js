@@ -9,10 +9,10 @@ FlowRouter.route('/', {
   },
 });
 
-FlowRouter.route('/rules', {
-  name: 'Rules_Page',
+FlowRouter.route('/tutorial', {
+  name: 'Tutorial_Page',
   action() {
-    BlazeLayout.render('App_Body2', { main: 'Rules_Page' });
+    BlazeLayout.render('App_Body2', { main: 'Tutorial_Page' });
     BlazeLayout.setRoot('body');
   },
 });
@@ -53,6 +53,14 @@ FlowRouter.route('/gameplay', {
   name: 'Gameplay_Page',
   action() {
     BlazeLayout.render('App_Body2', { main: 'Gameplay_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/siterules', {
+  name: 'Siterules_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Siterules_Page' });
     BlazeLayout.setRoot('body');
   },
 });
