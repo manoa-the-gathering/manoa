@@ -2,10 +2,11 @@ import './app-body.html';
 import './app-body.js';
 import './app-not-found.html';
 import './footer.html';
-import './footer.js'
+import './footer.js';
 import './header.html';
 import './header.js';
 import './if-logged-in.html';
 import './if-logged-in.js';
 import './loading.html';
 import './app-body2.html';
+import './message.html';

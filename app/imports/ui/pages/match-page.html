@@ -1,5 +1,5 @@
 <template name="Match_Page">
-
+{{#If_Logged_In}}
   <div class="ui two row main container">
     <div class="centered row">
       <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
@@ -8,7 +8,7 @@
           <h2>Chat</h2>
 
           {{#each recentMessages}}
-            {{> message}}
+            {{> Message}}
           {{/each}}
 
 
@@ -66,11 +66,5 @@
       <div class="push" style="height: 83px"></div>
     </div>
   </div>
-
-</template>
-<template name="message">
-  <li class="message" style="list-style: none">
-    <div class="username" style="font-weight:bold; color: red; display:inline">{{username.profile.name}}</div>
-    <div class="message-text" style="margin-bottom: 4px; margin-left: 10px; display: inline">{{messageText}}</div>
-  </li>
+  {{/If_Logged_In}}
 </template>
