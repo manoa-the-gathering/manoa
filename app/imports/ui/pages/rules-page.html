@@ -1,16 +1,20 @@
-<template name="Rules_Page">
+<template name="Tutorial_Page">
 
 <div class="ui two row main container">
- <div class="centered row">
-  <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
-  <div class="ui info container" style="text-align: left">
-   <i class="caret right icon"></i>
-   <a class="{{ isActiveRoute 'Terms_Page'}} item" href="{{ pathFor 'Terms_Page' }}">Terminology and Mechanics</a>
-   <br>
-   <i class="caret right icon"></i>
-   <a class="{{ isActiveRoute 'Gameplay_Page'}} item" href="{{ pathFor 'Gameplay_Page' }}">Step-by-Step Gameplay</a>
+	<div class="centered row">
+	<img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+		<div class="ui info container" style="text-align: left">
 
-  </div>
- </div>
+			<i class="caret right icon"></i>
+			<a class="{{ isActiveRoute 'Siterules_Page'}} item" href="{{ pathFor 'Siterules_Page' }}">Code of Conduct</a>
+			<br>
+			<i class="caret right icon"></i>
+			<a class="{{ isActiveRoute 'Terms_Page'}} item" href="{{ pathFor 'Terms_Page' }}">Terminology and Mechanics</a>
+			<br>
+			<i class="caret right icon"></i>
+			<a class="{{ isActiveRoute 'Gameplay_Page'}} item" href="{{ pathFor 'Gameplay_Page' }}">Step-by-Step Gameplay</a>
+			
+		</div>
+	</div>
 </div>
 </template>
