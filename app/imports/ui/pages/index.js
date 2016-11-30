@@ -16,3 +16,4 @@ import './terms-page.html';
 import './terms-page.js';
 import './play-page.html';
 import './play-page.js';
+import './basicrules-page.html';
