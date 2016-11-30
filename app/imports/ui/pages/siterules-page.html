@@ -1,0 +1,62 @@
+<template name="Siterules_Page">
+
+<div class="ui two row main container">
+  <div class="centered row">
+    <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+    <div class="ui info container" style="text-align: left">
+
+    <!--back button-->
+      <div>
+       <a class="{{ isActiveRoute 'Tutorial_Page'}} item" href="{{ pathFor 'Tutorial_Page' }}">
+        <div class="ui inverted animated right floated button" tabindex="0">
+          <div class="visible content">Back</div>
+          <div class="hidden content">
+            <i class="right arrow icon"></i>
+          </div>
+        </div>
+       </a>
+      </div>
+
+    <!--//////// Rules ////////////////////////-->
+      <div class="active title">
+      <h3>Rules of this app</h3>
+      </div>
+      <div class="active content">
+      If you're going to use this app, there are a few rules you'll have to abide by. They're very simple and mostly consist of the common sense rules for interacting with others in a game setting.
+      </div>
+
+      <br>
+      <div class="active title">
+        <i class="caret right icon"></i>
+        Don't be a Dick
+      </div>
+      <div class="content">
+        This is the most important - and simple - rule of Manoa: the Gathering. No flaming, harassing, bullying, threatening... anything like that.
+      </div>
+
+      <br>
+      <div class="active title">
+        <i class="caret right icon"></i>
+        No Cheating
+      </div>
+      <div class="content">
+        Do not attempt to cheat in any way. If you accidentally find a bug which gives you an advantage, finish out your current game (assuming you're in one), message the developers with a description of what happened, and we'll work with you until it's fixed.<br>
+        Cheating also includes intentionally misleading another player with regard to the game (how to play, what you're allowed to do, or whatever else).<br>
+        In general, if it's cheaty, don't do it. If you're not clear on rules, consult the tutorial and/or official rules on <a href="http://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"> the WOTC site</a>.
+      </div>
+
+      <br>
+      <div class="active title">
+        <i class="caret right icon"></i>
+        Wins not Guaranteed
+      </div>
+      <div class="content">
+        We are imperfect developers, and you may discover cheats, bugs, and loopholes in our implementation of the game. There are over 800 pages of rules for paper Magic. So all of the weird little edge cases might break code in ways we can't foresee. This is very unlikely as we start off, as we only have a few decks and limited options decrease the availability of bugs. Also, we're doing this for free in whatever time we can, of our own volition. Even the official M:TG Online client, which is a paid service maintained by WOTC, has known bugs.<br>
+        This means that if something goes wrong and a bug or problem makes you lose, we're sorry. We really are. But you didn't give up anything to play, so there is no compensation we can give you. We may be able to remove the record of that game, if you want, and we'll fix the bug as soon as we can.
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</template>
