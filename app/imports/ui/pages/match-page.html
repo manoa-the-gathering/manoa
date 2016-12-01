@@ -1,70 +1,75 @@
 <template name="Match_Page">
-{{#If_Logged_In}}
-  <div class="ui two row main container">
-    <div class="centered row">
-      <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
-      <div class="ui two column grid container">
-        <div class="thirteen wide column log" style="overflow:auto" id="chatbox">
-          <h2>Chat</h2>
-
-          {{#each recentMessages}}
-            {{> Message}}
-          {{/each}}
-
-
-        </div>
-        <div class="three wide column userList">
-
-          <h2>
-            Online Users
-          </h2>
-
-          <ul class="ui user list">
-            {{#each listUsers}}
-              <li>{{this.profile.name}}</li>
-            {{/each}}
-          </ul>
-        </div>
-
-        <br/><br/>
-
-      </div>
-    </div>
-
-
-    <div class="centered row">
-      <div class="ui two column grid container">
-        <div class="eleven wide column log" style="height: 20vh">
-          <div class="row container" style="height: 100%">
-            <div class="row" style="height: 60%; overflow: auto">
-              <p style="padding-bottom: 5px">
-                {{#each listRequests}}
-                  {{this.requestString}}<br/>
+  {{#If_Logged_In}}
+    <div class="ui two row main container">
+      <div class="centered row" style="height: 60%">
+        <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+        <div class="ui two column grid container">
+          <div class="thirteen wide column log">
+            <div class="row" style="height: 30px">
+              <h2>Chat</h2>
+            </div>
+            <div class="row" id="chatbox" style="height: calc(100% - 30px);overflow: auto ">
+              <div class="ui list" style="margin-left: 10px;">
+                {{#each recentMessages}}
+                  {{> Message}}
                 {{/each}}
-              </p>
+                <div style="height: 25px;"></div>
+              </div>
             </div>
 
-            <div class="row" style="height: 40%">
-              <form class="ui form new-message">
-                <div class="field">
-                  <input type="text" name="text" placeholder="Enter message here" autocomplete="off" style="color:black"
-                         maxlength="150">
-                </div>
-              </form>
+          </div>
+          <div class="three wide column userList">
+            <div class="row">
+              <h2>Online Users</h2>
+            </div>
+            <div class="row" id="uList">
+              <div class="ui user list">
+                {{#each listUsers}}
+                  <div class="item">{{this.profile.name}}</div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+
+      <div class="centered row" style="height: 40%">
+        <div class="ui two column grid container">
+          <div class="eleven wide column log" style="height: 19vh">
+            <div class="row container" style="height: 100%;">
+              <div class="row" id="rlog" style="height: calc(100% - 37px); overflow: auto">
+                <p>
+                  {{#each listRequests}}
+                    {{this.requestString}}<br/>
+                  {{/each}}
+                </p>
+              </div>
+
+              <div class="row" style="height: 37px; width: calc(100% - 45px); position:absolute;bottom: 4px">
+                <form class="ui form new-message">
+                  <div class="field">
+                    <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
+                           style="color:black"
+                           maxlength="150">
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="five wide column userList" style="height: 19vh;">
+            <div class="ui container" style="overflow: auto">
+              <button class="ui small button mRequest">Match Request</button>
+              <button class="ui small button accept">Accept</button>
+              <p style="font-size: 12px" id="result"></p>
+              <p style="font-size: 12px" id="select"></p>
             </div>
           </div>
         </div>
-        <div class="five wide column userList" style="height: 20vh;">
-          <div class="ui container">
-            <button class="ui button mRequest">Match Request</button>
-            <button class="ui button accept">Accept</button>
-            <p id="result"></p>
-            <p id="select"></p>
-          </div>
-        </div>
+        <div class="push" style="height: 83px"></div>
       </div>
-      <div class="push" style="height: 83px"></div>
     </div>
-  </div>
   {{/If_Logged_In}}
 </template>
