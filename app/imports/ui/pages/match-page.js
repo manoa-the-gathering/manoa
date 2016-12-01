@@ -4,46 +4,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Requests } from '../../api/requests/requests.js';
 import { Messages } from '../../api/msgs/msgs.js';
 
-
 let id;
 let selected = 'Select a User';
-
-function scrollToBottom() {
-  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
-}
-
-Template.Match_Page.onCreated(function () {
-  Meteor.subscribe('messages', {
-    onReady() {
-      return scrollToBottom();
-    },
-  });
-  Meteor.subscribe('userStatus');
-  Meteor.subscribe('requests');
-  id = Meteor.user();
-});
-
-Template.Match_Page.onRendered(function () {
-  $('body').addClass('matchbg');
-  document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
-  document.getElementById('select').innerHTML = 'Select a User';
-});
-
-Template.Match_Page.onDestroyed(function () {
-  $('body').removeClass('matchbg');
-});
-
-Template.Match_Page.helpers({
-  recentMessages() {
-    return Messages.find({}, { sort: { createdAt: 1 } });
-  },
-  listUsers() {
-    return Meteor.users.find();
-  },
-  listRequests() {
-    return Requests.find({ 'targetUser._id': Meteor.userId() });
-  },
-});
 
 Template.Match_Page.events({
   'submit .new-message'(event) {
@@ -55,12 +17,13 @@ Template.Match_Page.events({
 
     event.target.text.value = '';
   },
-  'click .ui.user.list li'(event) {
+  'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
     selected = Meteor.users.findOne({ 'profile.name': selected });
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'() {
+    event.preventDefault();
     if (selected === 'Select a User' || selected === 'Please select a user') {
       document.getElementById('select').innerHTML = 'Please select a user';
     }
@@ -69,6 +32,7 @@ Template.Match_Page.events({
     }
   },
   'click .ui.button.accept'() {
+    event.preventDefault();
     if (selected === 'Select a User' || selected === 'Please select a user') {
       document.getElementById('select').innerHTML = 'Please select a user';
     }
@@ -88,7 +52,6 @@ Template.Match_Page.events({
         from the list and click accept to begin the match.`
                 }]
             })) {
-          Meteor.call('cleanup');
           FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
         }
         else {
@@ -97,3 +60,42 @@ Template.Match_Page.events({
     }
   },
 });
+
+Template.Match_Page.onDestroyed(function () {
+  $('body').removeClass('matchbg');
+});
+
+Template.Match_Page.helpers({
+  recentMessages() {
+    return Messages.find({}, { sort: { createdAt: 1 } });
+  },
+  listUsers() {
+    return Meteor.users.find();
+  },
+  listRequests() {
+    return Requests.find({ 'targetUser._id': Meteor.userId() });
+  },
+});
+
+function scrollToBottom() {
+  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+}
+
+Template.Match_Page.onCreated(function () {
+  Meteor.subscribe('messages', {
+    onReady() {
+      return scrollToBottom();
+    },
+  });
+  Meteor.subscribe('userStatus');
+  Meteor.subscribe('requests');
+  id = Meteor.user();
+});
+
+Template.Match_Page.onRendered(function () {
+  $('body').addClass('matchbg');
+  document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
+  document.getElementById('select').innerHTML = 'Select a User';
+});
+
+

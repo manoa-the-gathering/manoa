@@ -13,6 +13,7 @@ Meteor.methods({
   'request'(rqUser, targetUser) {
     const requestString = `${rqUser.profile.name} wants to battle! Accept their request from the list.`;
     const newRequest = { targetUser, requestString };
+    Requests.remove({});
     Requests.insert(newRequest);
   },
   'acceptError'(user) {
@@ -21,8 +22,7 @@ Meteor.methods({
   'notify'(user1, user2) {
     Requests.insert({
       targetUser: user2, requestString: `${user1.profile.name} 
-    has accepted your request. Select them from the list and click accept to begin the match.`
-    });
+    has accepted your request. Select them from the list and click accept to begin the match.` });
   },
   'cleanup'() {
     Requests.remove({});
