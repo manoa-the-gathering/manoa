@@ -37,15 +37,14 @@ Template.Match_Page.events({
       document.getElementById('select').innerHTML = 'Please select a user';
     }
     else {
-      if (Requests.findOne({
+      if (Requests.find({
             $and: [{ 'targetUser._id': id._id },
               { requestString: `${selected.profile.name} wants to battle! Accept their request from the list.` }]
           })) {
         Meteor.call('notify', id, selected);
         FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
       }
-      else
-        if (Requests.findOne({
+      else if (Requests.find({
               $and: [{ 'targetUser._id': id._id },
                 {
                   requestString: `${selected.profile.name} has accepted your request. Select them 
@@ -73,7 +72,7 @@ Template.Match_Page.helpers({
     return Meteor.users.find();
   },
   listRequests() {
-    return Requests.find({ 'targetUser._id': Meteor.userId() });
+    return Requests.find({ 'targetUser.profile.name': id.profile.name });
   },
 });
 

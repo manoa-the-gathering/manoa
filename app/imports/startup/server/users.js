@@ -10,11 +10,11 @@ Meteor.publish('requests', function () {
 });
 
 Meteor.methods({
-  'request'(rqUser, targetUser) {
-    const requestString = `${rqUser.profile.name} wants to battle! Accept their request from the list.`;
-    const newRequest = { targetUser, requestString };
+  'request'(rqUser, targetUsr) {
     Requests.remove({});
-    Requests.insert(newRequest);
+    Requests.insert({ targetUser: targetUsr, requestString: `${rqUser.profile.name} wants to battle! 
+    Accept their request from the list.` });
+    Requests.insert({ targetUser: rqUser, requestString: `Request sent to ${targetUsr.profile.name}` });
   },
   'acceptError'(user) {
     Requests.insert({ targetUser: user, requestString: 'No Match Request found' });
