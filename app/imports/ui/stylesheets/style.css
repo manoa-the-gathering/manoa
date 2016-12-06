@@ -57,6 +57,12 @@ body {
             black center center no-repeat;
   background-size: cover;
 }
+
+.battlebg {
+  background: url('/images/battlebg.jpg')
+  black center center no-repeat;
+  background-size: cover;
+}
 .ui.two.row.main.container {
   width: 100%!important;
   min-height: 100%;
@@ -124,29 +130,43 @@ body {
   height:60vh;
 }
 .ui.user.list {
-  height: 90%;
-  margin: 0;
+  margin:0;
   font-size: 18px;
   list-style-type: none;
   text-align: left;
-  overflow-y: scroll;
 }
 
-.ui.user.list li {
+.ui.user.list div {
   display: inline-block;
   width: 100%;
   color: #FFFFFF;
   padding: 5px!important;
 }
 
-.ui.user.list li:hover {
+.ui.user.list div:hover {
   background: rgba(200,0,0,0.8);
   cursor: pointer;
 }
 
+#uList {
+  height: calc(100% - 30px);
+  overflow: auto;
+}
 @media only screen and (max-width: 640px) {
   .menuv2.row { text-align: center;}
 }
+@media only screen and (max-width: 991px) {
+  #uList {
+    height: calc(100% - 60px);
+    overflow: auto;
+  }
+}
+@media only screen and (max-height: 720px) {
+  .log { height:50vh }
+  .userList { height:50vh }
+
+}
+
 .title {
   color: #FFFFFF!important;
 }

@@ -1,14 +1,29 @@
-<template name="Rules_Page">
+<template name="Terms_Page">
 
 <div class="ui two row main container">
  <div class="centered row">
   <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
   <div class="ui info container" style="text-align: left">
+
+    <!--back button-->
+      <div>
+       <a class="{{ isActiveRoute 'Tutorial_Page'}} item" href="{{ pathFor 'Tutorial_Page' }}">
+        <div class="ui inverted animated right floated button" tabindex="0">
+          <div class="visible content">Back</div>
+          <div class="hidden content">
+            <i class="right arrow icon"></i>
+          </div>
+        </div>
+       </a>
+      </div>
+
+   <!--//////// Terminology ////////////////////////-->
    <div class="active title">
-    Terminology
+    <h3>Terminology</h3>
    </div>
    <div class="active content">
     There are many terms you'll need to become fluent with in order to make sense of the many interactions and aspects of Magic.
+
     <div class="ui accordion">
 
      <!--//////// Permanents ////////////////////////-->
@@ -157,7 +172,7 @@
       </p>
      </div>
     </div><!-- End Main Accordion -->
-   </div>
+  </div>
   </div>
  </div>
 </div>

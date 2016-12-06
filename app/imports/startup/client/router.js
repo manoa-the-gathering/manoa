@@ -9,10 +9,10 @@ FlowRouter.route('/', {
   },
 });
 
-FlowRouter.route('/rules', {
-  name: 'Rules_Page',
+FlowRouter.route('/tutorial', {
+  name: 'Tutorial_Page',
   action() {
-    BlazeLayout.render('App_Body2', { main: 'Rules_Page' });
+    BlazeLayout.render('App_Body2', { main: 'Tutorial_Page' });
     BlazeLayout.setRoot('body');
   },
 });
@@ -25,20 +25,43 @@ FlowRouter.route('/about', {
   },
 });
 
-/* mod route to support ids */
-FlowRouter.route('/chat', {
-  name: 'Chat_Page',
-  action() {
-    BlazeLayout.render('App_Body2', { main: 'Chat_Page' });
-    BlazeLayout.setRoot('body');
-  },
-});
-
 FlowRouter.route('/match', {
   name: 'Match_Page',
   action() {
     Session.setDefault('chat', 'general');
-    BlazeLayout.render('App_Body2', { main: 'Match_Page'});
+    BlazeLayout.render('App_Body2', { main: 'Match_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/battle/:_identifier', {
+  name: 'Battle_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Battle_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/terms', {
+  name: 'Terms_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Terms_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/gameplay', {
+  name: 'Gameplay_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Gameplay_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
+FlowRouter.route('/siterules', {
+  name: 'Siterules_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Siterules_Page' });
     BlazeLayout.setRoot('body');
   },
 });
