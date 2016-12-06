@@ -10,14 +10,14 @@ Meteor.publish("messages", function (chat) {
 });
 
 Meteor.methods({
-    sendMessage: function (messageText) {
+    sendMessage: function (messageText, chat) {
         /* add authentication here */
 
         Messages.insert({
             messageText: messageText,
             createdAt: new Date(),
             username: Meteor.user(),
-            //chat: Session.get('chat')
+            chat: chat
         });
     }
 });
