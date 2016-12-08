@@ -1,5 +1,5 @@
-import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor';
+import {Template} from 'meteor/templating';
+import {Meteor} from 'meteor/meteor';
 
 Template.Home_Page.events({
   /**
@@ -19,12 +19,14 @@ Template.Home_Page.events({
   },
 });
 
-var hours = new Date();
-time = hours.getHours();
+const hours = new Date();
+const time = hours.getHours();
 if (time > 19 || time < 6) {
-
   Template.Home_Page.onRendered(function () {
     $('body').addClass('nightbg');
+    $('.logo').transition('scale in', '1s');
+    $('.play.cas-login').transition('swing down in', '2s');
+    $('.match').transition('swing down in', '2s');
   });
 }
 

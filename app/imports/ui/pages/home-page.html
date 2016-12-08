@@ -2,14 +2,15 @@
 
   <div class="ui two row main container">
     <div class="centered row">
-      <img class="ui fluid image" src="/images/manoa90.png" style="padding:70px 70px 10px">
+      <img class="ui fluid image logo" src="/images/manoa90.png" style="padding:70px 70px 10px">
 
     </div>
     <div class="centered row">
       <div class="ui text container" style="text-align: center;">
         <!-- submit event or href to CAS -->
         {{#if currentUser}}
-        <a class="{{ isActiveRoute 'Match_Page'}} ui button play"
+          <div id="welcome">Hello {{currentUser.profile.name}}</div>
+          <a class="{{ isActiveRoute 'Match_Page'}} ui button play match"
            href="{{ pathFor 'Match_Page'}}">Find a Match</a>
         {{else}}
         <button class="ui button play cas-login">Play now</button>

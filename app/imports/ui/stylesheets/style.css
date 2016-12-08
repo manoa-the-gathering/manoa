@@ -176,3 +176,11 @@ body {
 .ui.accordion {
   color: #FFFFFF!important;
 }
+
+#welcome {
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 1px 1px black;
+  position: relative;
+  top: -20px;
+}
