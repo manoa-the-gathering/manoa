@@ -103,7 +103,7 @@ Template.Match_Page.onCreated(function () {
 Template.Match_Page.onRendered(function () {
   $('body').addClass('matchbg');
   $('.ui.two.row.main.container').transition('slide down in', '0.4s');
-  document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
+  // document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
   document.getElementById('select').innerHTML = 'Select a User';
 });
 

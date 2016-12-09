@@ -164,7 +164,7 @@ body {
 @media only screen and (max-height: 720px) {
   .log { height:50vh }
   .userList { height:50vh }
-
+  .ui.bt.container { zoom: 0.8; -moz-transform: scale(0.8); }
 }
 
 .title {
