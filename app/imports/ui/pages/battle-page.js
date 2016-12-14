@@ -4,11 +4,8 @@ import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Messages } from '../../api/msgs/msgs.js';
 
-let greenLp = 20;
-let blueLp = 20;
-
 Template.Battle_Page.events({
-  'submit .new-message'(evet) {
+  'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
     let chat = Session.get('chat');
@@ -35,9 +32,6 @@ Template.Battle_Page.helpers({
   listUsers() {
     return Meteor.users.find();
   },
-  greenTotal() {
-    return greenLp;
-  }
 });
 
 
