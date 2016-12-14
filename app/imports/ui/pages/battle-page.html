@@ -1,17 +1,122 @@
 <template name="Battle_Page">
-
-  <div class="ui two row main container">
-    <div class="centered row">
+  {{#If_Logged_In}}
+  <!--<div class="ui two row main container">
+    <div class="left floated row" style="height: 60%">
       <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
       <div class="ui two column grid container">
+        <div class="left floated five wide column log">
+          <div class="row" style="height: 30px">
+            <h2>Chat</h2>
+          </div>
+          <div class="row" id="chatbox" style="height: calc(100% - 30px);overflow: auto ">
+            <div class="ui list" style="margin-left: 10px;">
+              {{#each recentMessages}}
+              {{> Message}}
+              {{/each}}
+              <div style="height: 25px;"></div>
+            </div>
+          </div>
 
+        </div>
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+
+    <div class="left floated row" style="height: 40%">
+      <div class="ui two column grid container">
+        <div class="left floated five wide column log" style="height: 7vh">
+          <div class="row container" style="height: 100%;">
+
+
+            <div class="row" style="height: 37px; width: calc(100% - 45px); position:absolute;bottom: 10px">
+              <form class="ui form new-message">
+                <div class="field">
+                  <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
+                         style="color:black"
+                         maxlength="45">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="push" style="height: 83px"></div>
+    </div>
+    <div class="left floated row" style="height: 40%">
+      <div class="ui two column grid container">
+        <div class="five wide column log" style="height: 7vh">
+          <div class="row container" style="height: 100%;">
+
+
+            <div class="row" style="height: 37px; width: calc(100% - 45px); position:absolute;bottom: 10px">
+              <center><h2><b>LP:</b> &nbsp; &nbsp; &nbsp; &nbsp;   <span style="color: blue;">20</span> &nbsp; &nbsp; <span style="color: green;">20</span></h2></center>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="centered row">
 
-    </div>
-    <div class="push"></div>
+
+  </div>-->
+  <div class="ui three column fluid container">
+
+      <div class="ui three column grid">
+
+        <div class="three column row">
+
+          <div class="three wide column">
+
+            <div class="ui centered grid">
+              <div class="row">
+                <button class="big ui green button greenplus">+</button>
+                <button class="big ui green button">-</button>
+              </div>
+              <div class="row">
+                <h1>LP: {{greenTotal}} </h1>
+              </div>
+            </div>
+            <div class="ui hidden divider"></div>
+
+            <div class="three wide column log" style="height: 45vh">
+              <div class="row" style="height: 30px">
+                <h2>Chat</h2>
+              </div>
+              <div class="row" id="chatbox" style="height: calc(100% - 40px);overflow: auto ">
+                <div class="ui list">
+                  {{#each recentMessages}}
+                  {{> Message}}
+                  {{/each}}
+                  <div style="height: 25px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="three wide column log" style="height: 7vh">
+              <div class="row container" style="height: 100%;">
+                <div class="row" style="height: 37px; width: calc(100% - 70px); position:absolute;bottom: 10px">
+                  <form class="ui form new-message">
+                    <div class="field">
+                      <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
+                             style="color:black"
+                             maxlength="45">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="nine wide column">
+
+          </div>
+
+          <div class="four wide column">
+
+          </div>
+        </div>
+      </div>
+
   </div>
-
+  {{/If_Logged_In}}
 </template>

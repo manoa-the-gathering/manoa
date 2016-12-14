@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../api/msgs/msgs.js';
 import { Session } from 'meteor/session';
 
+
 Meteor.publish('messages', function (chat) {
   return Messages.find({chat: chat}, {sort: {createdAt: -1}, limit: 50});
 });
