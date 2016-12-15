@@ -7,22 +7,32 @@ import { Messages } from '../../api/msgs/msgs.js';
 
 let id;
 let selected = 'Select a User';
+let chatSession = 'general';
 
 Template.Match_Page.events({
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
     let chat = Session.get('chat');
-
-    Meteor.call('sendMessage', text, chat);
-    scrollToBottom();
-
+    if (text === 'rainbows') {
+      $('body').addClass('matchbg2');
+      event.target.text.value = '';
+      return;
+    }
+    switch (text) {
+      case 'rainbows': $('body').addClass('matchbg2');
+        break;
+      case 'no rainbows': $('body').removeClass('matchbg2');
+        break;
+      default: {Meteor.call('sendMessage', text, chat); scrollToBottom();}
+    }
     event.target.text.value = '';
   },
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
     selected = Meteor.users.findOne({ 'profile.name': selected });
-    Session.set('chat', selected._id);
+    chatSession = [selected.profile.name, id.profile.name].sort().join("+");
+    Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'() {
@@ -62,13 +72,15 @@ Template.Match_Page.events({
     }
   },
   'click .ui.button.gChat'() {
-    Session.set('chat', 'general');
+    chatSession = 'general';
+    Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = 'Please select a user';
   },
 });
 
 Template.Match_Page.onDestroyed(function () {
   $('body').removeClass('matchbg');
+  $('body').removeClass('matchbg2');
 });
 
 Template.Match_Page.helpers({
