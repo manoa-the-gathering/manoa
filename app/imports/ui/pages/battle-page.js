@@ -44,11 +44,24 @@ Template.Battle_Page.events({
   },
   'images': function() {
     return Images.find();
+  },
+  'click .card': function() {
+    event.preventDefault();
+    tap();
+    console.log("clicked a card");
   }
 });
 
 function scrollToBottom() {
   $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+}
+
+function tap() {
+
+  $('.arrow').on("click", function (event) {
+    $('.arrow-img').toggleClass('rotate');
+    $('.arrow-img').toggleClass('rotate-reset');
+  });
 }
 
 Template.Battle_Page.onCreated (function(){

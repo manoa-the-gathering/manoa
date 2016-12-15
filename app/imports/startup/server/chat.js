@@ -35,4 +35,7 @@ Meteor.methods({
   'deleteSysMessages'() {
     Messages.remove({ username: { $eq: 'System' } } );
   },
+  'deleteEarlier'() {
+    Messages.remove(Messages.findOne({ username: { $eq: 'System'} }));
+  },
 });
