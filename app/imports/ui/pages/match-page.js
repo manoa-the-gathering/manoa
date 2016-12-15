@@ -22,7 +22,7 @@ Template.Match_Page.events({
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
     selected = Meteor.users.findOne({ 'profile.name': selected });
-    Session.set('chat', selected._id);
+    Session.set('chat', [selected.profile.name, id.profile.name].sort().join("+"));
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'() {
