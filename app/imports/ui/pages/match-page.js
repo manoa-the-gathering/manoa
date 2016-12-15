@@ -7,6 +7,7 @@ import { Messages } from '../../api/msgs/msgs.js';
 
 let id;
 let selected = 'Select a User';
+let chatSession = 'general';
 
 Template.Match_Page.events({
   'submit .new-message'(event) {
@@ -22,7 +23,8 @@ Template.Match_Page.events({
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
     selected = Meteor.users.findOne({ 'profile.name': selected });
-    Session.set('chat', selected._id);
+    chatSession = [selected.profile.name, id.profile.name].sort().join("+");
+    Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'() {
@@ -62,7 +64,8 @@ Template.Match_Page.events({
     }
   },
   'click .ui.button.gChat'() {
-    Session.set('chat', 'general');
+    chatSession = 'general';
+    Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = 'Please select a user';
   },
 });
