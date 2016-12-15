@@ -56,4 +56,4 @@ reactive-var
 percolate:momentum
 cfs:standard-packages
 cfs:gridfs
-cfs:filesystem
+cfs:s3
