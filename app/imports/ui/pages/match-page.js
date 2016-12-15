@@ -14,10 +14,18 @@ Template.Match_Page.events({
     event.preventDefault();
     const text = event.target.text.value;
     let chat = Session.get('chat');
-
-    Meteor.call('sendMessage', text, chat);
-    scrollToBottom();
-
+    if (text === 'rainbows') {
+      $('body').addClass('matchbg2');
+      event.target.text.value = '';
+      return;
+    }
+    switch (text) {
+      case 'rainbows': $('body').addClass('matchbg2');
+        break;
+      case 'no rainbows': $('body').removeClass('matchbg2');
+        break;
+      default: {Meteor.call('sendMessage', text, chat); scrollToBottom();}
+    }
     event.target.text.value = '';
   },
   'click .ui.user.list div'(event) {
@@ -72,6 +80,7 @@ Template.Match_Page.events({
 
 Template.Match_Page.onDestroyed(function () {
   $('body').removeClass('matchbg');
+  $('body').removeClass('matchbg2');
 });
 
 Template.Match_Page.helpers({
