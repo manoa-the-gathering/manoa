@@ -20,7 +20,19 @@ Meteor.methods({
       chat: chat
     });
   },
+  'sysMessage'(messageText, chat) {
+    /* add authentication here */
+    Messages.insert({
+      messageText: messageText,
+      createdAt: new Date(),
+      username: 'System',
+      chat: chat
+    });
+  },
   'deleteAll'() {
     Messages.remove({});
+  },
+  'deleteSysMessages'() {
+    Messages.remove({ username: { $eq: 'System' } } );
   },
 });

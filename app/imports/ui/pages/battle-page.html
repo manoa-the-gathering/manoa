@@ -25,6 +25,10 @@
               </div>
               <div class="row" id="chatbox" style="height: calc(100% - 40px);overflow: auto ">
                 <div class="ui list">
+                  {{#each recentSysMessages}}
+                  {{> Message}}
+                  {{/each}}
+                  <hr>
                   {{#each recentMessages}}
                   {{> Message}}
                   {{/each}}

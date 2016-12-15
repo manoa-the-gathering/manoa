@@ -55,7 +55,7 @@ Template.Match_Page.events({
               { requestString: `${selected.profile.name} wants to battle! Accept their request from the list.` }]
           })) {
         Meteor.call('notify', id, selected);
-        FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
+        FlowRouter.go('Battle_Page', { _identifier: [selected.profile.name, id.profile.name].sort().join("+") });
       }
       else if (Requests.find({
               $and: [{ 'targetUser._id': id._id },
@@ -64,7 +64,7 @@ Template.Match_Page.events({
         from the list and click accept to begin the match.`
                 }]
             })) {
-          FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
+          FlowRouter.go('Battle_Page', { _identifier: [selected.profile.name, id.profile.name].sort().join("+") });
         }
         else {
           Meteor.call('acceptError', id);
@@ -85,7 +85,7 @@ Template.Match_Page.onDestroyed(function () {
 
 Template.Match_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { createdAt: 1 } });
+    return Messages.find({ username: { $ne: 'System' } }, { sort: { createdAt: 1 } });
   },
   listUsers() {
     return Meteor.users.find();

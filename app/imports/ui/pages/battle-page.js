@@ -67,7 +67,10 @@ Template.Battle_Page.onCreated (function(){
 
 Template.Battle_Page.helpers({
   recentMessages() {
-    return Messages.find({}, { sort: { createdAt: 1 } });
+    return Messages.find({ username: { $ne: 'System' } }, { sort: { createdAt: 1 } });
+  },
+  recentSysMessages() {
+    return Messages.find({ username: { $eq: 'System' } }, { sort: { createdAt: 1 } });
   },
   listUsers() {
     return Meteor.users.find();
@@ -89,10 +92,18 @@ Template.Battle_Page.onRendered(function () {
   Session.set("blue", 20);
 
   $('body').addClass('battlebg');
+
+  const num = Math.random();
+  if (num > 0.5) {
+    Meteor.call('sysMessage', "Green, you're on the play!", Session.get('chat'));
+  } else {
+    Meteor.call('sysMessage', "Blue, you're on the play!", Session.get('chat'));
+  }
 });
 
 Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
+  Meteor.call('deleteSysMessages');
 });
 
 /**var incrementLimit = function(templateInstance) {
