@@ -57,3 +57,4 @@ percolate:momentum
 cfs:standard-packages
 cfs:gridfs
 cfs:s3
+cfs:filesystem

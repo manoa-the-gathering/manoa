@@ -51,6 +51,20 @@ function scrollToBottom() {
   $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
 }
 
+Template.Battle_Page.onCreated (function(){
+
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'), {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
+    Meteor.subscribe('images');
+  });
+
+
+});
+
 Template.Battle_Page.helpers({
   recentMessages() {
     return Messages.find({}, { sort: { createdAt: 1 } });
@@ -64,26 +78,11 @@ Template.Battle_Page.helpers({
   blueTotal() {
     return Session.get("blue");
   },
+  images() {
+    return Session.get(Images.find());
+  }
 });
 
-Images.allow({
-  insert: function() { return true; },
-  update: function() { return true; },
-  download: function() { return true; }
-
-});
-
-Template.Battle_Page.onCreated( function() {
-  var self = this;
-
-  self.limit = new ReactiveVar;
-  self.limit.set(parseInt(5));
-
-  Tracker.autorun(function() {
-    Meteor.subscribe('images', self.limit.get());
-  });
-
-});
 
 Template.Battle_Page.onRendered(function () {
   Session.set("green", 20);
@@ -96,13 +95,9 @@ Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
 });
 
-var incrementLimit = function(templateInstance) {
+/**var incrementLimit = function(templateInstance) {
   var newLimit = templateInstance.limit.get() +
       parseInt(5);
   templateInstance.limit.set(newLimit);
-}
+}**/
 
-
-export const store = {
-  bucket: 'manoa-the-gathering',
-}
