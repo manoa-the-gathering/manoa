@@ -4,16 +4,12 @@ import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Messages } from '../../api/msgs/msgs.js';
 import { Deck } from '../../api/battle/deck.js';
+import { FS } from 'meteor/cfs:base-package';
+import { ReactiveVar } from 'meteor/reactive-var'
+import { Images } from '../../api/cards/cards.js';
 
 let green = 20;
 let blue = 20;
-
-const nayaCards = ["arid mesa", "mountain", "lightning bolt", "grim lavamancer", "wild nacatl", "eidolon of the great revel", "boros charm", "atarka's command"];
-
-const NayaBurn = new Deck(nayaCards);
-NayaBurn.shuffle();
-NayaBurn.deal();
-NayaBurn.draw();
 
 Template.Battle_Page.events({
   'submit .new-message'(event) {
@@ -46,6 +42,9 @@ Template.Battle_Page.events({
     Session.set("blue", blue);
     console.log(blue);
   },
+  'images': function() {
+    return Images.find();
+  }
 });
 
 function scrollToBottom() {
@@ -64,9 +63,27 @@ Template.Battle_Page.helpers({
   },
   blueTotal() {
     return Session.get("blue");
-  }
+  },
 });
 
+Images.allow({
+  insert: function() { return true; },
+  update: function() { return true; },
+  download: function() { return true; }
+
+});
+
+Template.Battle_Page.onCreated( function() {
+  var self = this;
+
+  self.limit = new ReactiveVar;
+  self.limit.set(parseInt(5));
+
+  Tracker.autorun(function() {
+    Meteor.subscribe('images', self.limit.get());
+  });
+
+});
 
 Template.Battle_Page.onRendered(function () {
   Session.set("green", 20);
@@ -79,3 +96,13 @@ Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
 });
 
+var incrementLimit = function(templateInstance) {
+  var newLimit = templateInstance.limit.get() +
+      parseInt(5);
+  templateInstance.limit.set(newLimit);
+}
+
+
+export const store = {
+  bucket: 'manoa-the-gathering',
+}
