@@ -30,7 +30,7 @@ export class Deck {
     }
 
     draw() {
-        card = this.cards.pop()
+        let card = this.cards.pop()
         //console.log(card);
         this.cards.pop()
         //console.log(this.cards);
