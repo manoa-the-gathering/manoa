@@ -29,13 +29,6 @@ if (time > 19 || time < 6) {
     $('.match').transition('swing down in', '2s');
   });
 }
-else {
-  Template.Home_Page.onRendered(function () {
-    $('.logo').transition('scale in', '1s');
-    $('.play.cas-login').transition('swing down in', '2s');
-    $('.match').transition('swing down in', '2s');
-  });
-}
 
 Template.Home_Page.onDestroyed(function () {
   $('body').removeClass('nightbg');

@@ -1,133 +1,17 @@
 <template name="Battle_Page">
-  {{#If_Logged_In}}
-  <div class="ui three column fluid container">
 
-      <div class="ui three column grid">
+  <div class="ui two row main container">
+    <div class="centered row">
+      <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+      <div class="ui two column grid container">
 
-        <div class="three column row">
-
-          <div class="two wide column">
-
-            <div class="ui centered grid">
-              <div class="row" style="margin-top: 20px">
-                <button class="big ui green button greenplus">+</button>
-                <button class="big ui green button greenminus">-</button>
-              </div>
-              <div class="row">
-                <button class="massive ui green button">LP: {{greenTotal}} </button>
-              </div>
-            </div>
-            <div class="ui hidden divider"></div>
-
-            <div class="two wide column log" style="height: 45vh">
-              <div class="row" style="height: 30px">
-                <h2>Chat</h2>
-              </div>
-              <div class="row" id="chatbox" style="height: calc(100% - 40px);overflow: auto ">
-                <div class="ui list">
-                  {{#each recentSysMessages}}
-                  {{> Message}}
-                  {{/each}}
-                  <hr>
-                  {{#each recentMessages}}
-                  {{> Message}}
-                  {{/each}}
-                  <div style="height: 25px;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="two wide column log" style="height: 7vh">
-              <div class="row container" style="height: 100%; margin-top: 5px;">
-                <!--<div class="row" style="height: 40px; width: calc(100% - 50px); position:absolute;bottom: 10px">-->
-                  <form class="ui form new-message">
-                    <div class="field">
-                      <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
-                             style="color:black"
-                             maxlength="45">
-                    </div>
-                  </form>
-                <!--</div>-->
-              </div>
-              <div class="ui hidden divider"></div>
-              <div class="ui hidden divider"></div>
-
-              <div class="ui centered grid">
-                <div class="row">
-                  <button class="massive ui blue button">LP: {{blueTotal}} </button>
-                </div>
-                <div class="row">
-                  <button class="big ui blue button blueplus">+</button>
-                  <button class="big ui blue button blueminus">-</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="eleven wide column">
-
-            <div class="ui centered grid">
-              <div class="row">
-                <img class="ui centered image card" src="/images/Naya/Lands/Diamondhead.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn');
-">
-                <img class="ui centered image card" src="/images/Naya/Lands/JapaneseTeaGarden.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Naya/Lands/StanSheriffCenter.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Naya/Creatures/JeffersonHallSwiftspear.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Naya/Creatures/CampusCatfolk.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Naya/Spells/KellerCharm.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Naya/Spells/MopedThef.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-              </div>
-            </div>
-            <div class="row">
-              <div class="eleven wide column log" style="height: 17vh">
-              </div>
-            </div>
-            <div class="row">
-              <div class="eleven wide column log" style="height: 22vh">
-              </div>
-            </div>
-            <div class="row">
-              <div class="eleven wide column log" style="height: 22vh">
-              </div>
-            </div>
-            <div class="row">
-              <div class="eleven wide column log" style="height: 17vh">
-              </div>
-            </div>
-            <div class="ui centered grid">
-              <div class="row">
-                <img class="ui centered image card" src="/images/Affinity/Lands/Duckpond.png" style="height:150px; width:110px; " onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Affinity/Lands/InfoTechCenter.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Affinity/Creatures/HolmesSculpture.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Affinity/Creatures/Thopter.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Affinity/Spells/ChanceMeeting.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-                <img class="ui centered image card" src="/images/Affinity/Creatures/GuardianLion.png" style="height:150px; width:110px;" onclick="$(this).toggleClass('rotateOn')">
-
-
-              </div>
-            </div>
-          </div>
-
-          <div class="three wide column">
-
-            <div class="ui centered grid">
-              <div class="row" style="margin-top: 30px">
-                <button class="big ui green button greendraw"> Draw </button>
-                <button class="big ui green button greengrave"> View Graveyard </button>
-              </div>
-                <img class="ui centered image" src="/images/lightningbolt-side.jpg" style="margin-top: 30px">
-              <div class="row" style="margin-top: 30px">
-
-                <button class="big ui blue button bluegrave"> View Graveyard </button>
-                <button class="big ui blue button bluedraw"> Draw </button>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
+    </div>
 
+    <div class="centered row">
+
+    </div>
+    <div class="push"></div>
   </div>
-  {{/If_Logged_In}}
+
 </template>

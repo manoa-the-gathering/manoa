@@ -54,7 +54,3 @@ accounts-password
 mizzao:user-status
 reactive-var
 percolate:momentum
-cfs:standard-packages
-cfs:gridfs
-cfs:s3
-cfs:filesystem
