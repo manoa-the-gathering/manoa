@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Affinity } from '../../api/affinity/affinity.js';
 import { Naya } from '../../api/naya/naya.js';
 import { _ } from 'meteor/underscore';
@@ -45,9 +46,13 @@ Naya.deny({
 
 if (Naya.find().count() === 0) {
   let newFile = new FS.File();
-  newFile.attachData('https://tournamentcenter.eu/sites/default/files/mtg-logo.png', function (error) {
+  newFile.attachData(Assets.absoluteFilePath('glass.png'), function (error) {
     if (error) throw error;
     newFile.metadata = { card: 'land' };
     Naya.insert(newFile);
   });
 }
+
+Meteor.publish('naya', function () {
+  return Naya.find();
+});
