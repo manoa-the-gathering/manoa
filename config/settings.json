@@ -1,7 +1,7 @@
 {
   "galaxy.meteor.com": {
     "env": {
-      "MONGO_URL": "mongodb://mtg:manoathegathering@ds145245.mlab.com:45245/mtgdb"
+      "MONGO_URL": "mongodb://chan:1705819@ds139869.mlab.com:39869/manoadb"
     }
   },
   "cas": {

@@ -1,5 +1,4 @@
 import './accounts.js';
 import './chat.js';
 import './users.js';
-import './cardpublish.js';
-
+import './decks.js';
