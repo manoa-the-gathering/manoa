@@ -58,6 +58,14 @@ FlowRouter.route('/gameplay', {
   },
 });
 
+FlowRouter.route('/deckspage', {
+  name: 'Decks_Page',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Decks_Page' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
 FlowRouter.route('/siterules', {
   name: 'Siterules_Page',
   action() {

@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 
-
 Template.Decks_Page.onRendered(function () {
   $('body').addClass('rulesbg');
   $('.ui.accordion')
