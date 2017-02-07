@@ -190,3 +190,31 @@ body {
   position: relative;
   top: -20px;
 }
+
+.celled.field.grid {
+  height: 100vh;
+}
+.opHand {
+  height: 65px;
+  text-align: center;
+  transform: rotate(180deg);
+  overflow: hidden;
+}
+.opLand {
+  height: calc((100% - 320px)/4);
+}
+.opMon {
+  height: calc((100% - 320px)/4);
+}
+.pMon {
+  height: calc((100% - 320px)/4);
+}
+.pLand {
+  height: calc((100% - 320px)/4);
+}
+.pHand {
+  text-align: center;
+}
+.pHand img{
+  height: 200px;
+}
