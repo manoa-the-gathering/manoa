@@ -37,7 +37,7 @@ FlowRouter.route('/match', {
 FlowRouter.route('/battle/:_identifier', {
   name: 'Battle_Page',
   action() {
-    BlazeLayout.render('App_Body2', { main: 'Battle_Page' });
+    BlazeLayout.render('BattleLayout', { main: 'Battle_Page' });
     BlazeLayout.setRoot('body');
   },
 });

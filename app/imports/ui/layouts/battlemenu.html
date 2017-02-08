@@ -1,0 +1,23 @@
+<template name="BattleMenu">
+  <footer>
+
+    <!--the shits-->
+    <div class="menuv2 row" style="height: 40px; padding: 10px 0">
+      <a href="#">
+        <span class="bitem leave">home</span>
+      </a>
+
+      <a class="item">
+        <span class="bitem">draw</span>
+      </a>
+
+
+      {{#if currentUser}}
+      <a class="item cas-logout" href="#">
+        <span class="bitem cas-logout">logout</span>
+      </a>
+      {{/if}}
+
+    </div>
+  </footer>
+</template>

@@ -88,13 +88,20 @@ body {
   right:0px;bottom: 0px;
   background: black;
   text-align: right;
-  padding: 20px 0px 20px 0;
+  padding: 20px 0 20px 0;
   width: 100%;
   height: 63px;
 }
 
 .mitem {
   font-size: 25px;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 10px 20px;
+}
+
+.bitem {
+  font-size: 20px;
   font-weight: 600;
   color: #FFFFFF;
   padding: 10px 20px;
@@ -193,10 +200,10 @@ body {
 
 .celled.field.grid {
   height: 100vh;
+  margin: 0 auto;
 }
 .opHand {
   height: 65px;
-  text-align: center;
   transform: rotate(180deg);
   overflow: hidden;
 }
