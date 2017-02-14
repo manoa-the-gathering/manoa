@@ -19,7 +19,7 @@ Template.Battle_Page.onCreated(function () {
 });
 
 Template.Battle_Page.helpers({
-  // 'images'() {
-  //   return Naya.find();
-  // },
+  'images'() {
+    return Naya.find();
+  },
 });
