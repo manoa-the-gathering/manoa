@@ -32,7 +32,7 @@
         <div class="pLand row"></div>
 
         <!--player hand-->
-        <div class="pHand row">
+        <div class="pSide row">
           <div class="two wide column">
             <div class="ui icon header">
               <i class="user icon"></i>
@@ -43,32 +43,53 @@
 
           </div>
 
-          <div class="eleven wide column" style="margin: 0 auto">
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
+          <div class="eleven wide pHand column" style="margin: 0 auto">
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+
           </div>
 
-          <div class="three wide column">
-            <img src="/images/card_back.png"/>
+          <div class="three wide deck column">
+            <img onclick="" src="/images/card_back.png"/>
           </div>
         </div>
       </div>
 
-    </div>
+      <div class="ui basic modal">
+        <div class="ui icon header">
+          <i class="archive icon"></i>
+          Draw
+        </div>
+        <div class="content">
+          <p>You cannot draw another card at this time</p>
+        </div>
+        <div class="actions">
+          <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i>
+            No
+          </div>
+          <div class="ui green ok inverted button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+
+    </div> <!--battle div-->
 
 
     <!--Display all-->
-    <div class="centered row">
-      {{#each images}}
-    <a href="{{this.url}}" target="_blank" class="thumbnail">
-    <img src="{{this.path}}" />
-    </a>
-      {{/each}}
-    </div>
-    <div class="push"></div>
-  </div>
+    <!--<div class="centered row">-->
+      <!--{{#each images}}-->
+    <!--<a href="{{this.url}}" target="_blank" class="thumbnail">-->
+    <!--<img src="{{this.path}}" />-->
+    <!--</a>-->
+      <!--{{/each}}-->
+    <!--</div>-->
+    <!--<div class="push"></div>-->
+  </div> <!--Main Container div -->
 
 </template>

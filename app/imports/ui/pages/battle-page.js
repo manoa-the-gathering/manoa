@@ -23,3 +23,12 @@ Template.Battle_Page.helpers({
     return Naya.find();
   },
 });
+
+Template.Battle_Page.events({
+  'click .deck'() {
+    Meteor.call('draw')
+    // $('.ui.basic.modal')
+    //     .modal('setting', 'closable', false)
+    //     .modal('show');
+  },
+});

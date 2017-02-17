@@ -219,7 +219,7 @@ body {
 .pLand {
   height: calc((100% - 320px)/4);
 }
-.pHand {
+.pSide {
   text-align: center;
 }
 .pHand img{
