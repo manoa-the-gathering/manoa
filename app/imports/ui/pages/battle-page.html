@@ -33,27 +33,24 @@
 
         <!--player hand-->
         <div class="pSide row">
-          <div class="two wide column">
+          <div class="one wide column" style="box-shadow: none">
             <div class="ui icon header">
+              <div class="ui hidden divider"></div>
               <i class="user icon"></i>
               <div class="content" id="name">
-                Account Settings
               </div>
             </div>
 
           </div>
 
-          <div class="eleven wide pHand column" style="margin: 0 auto">
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-
+          <div class="thirteen wide pHand column" style="margin: 0 auto">
+            {{#each cardInHand}}
+              <img src="{{this.path}}" />
+            {{/each}}
           </div>
 
-          <div class="three wide deck column">
-            <img onclick="" src="/images/card_back.png"/>
+          <div class="two wide deck column">
+            <img src="/images/card_back.png" style="height: 200px"/>
           </div>
         </div>
       </div>

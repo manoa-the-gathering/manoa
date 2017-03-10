@@ -1,7 +1,13 @@
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
+
 // import { Affinity } from '../../api/affinity/affinity.js';
 import { Naya } from '../../api/naya/naya.js';
+import { Hand } from '../../api/pHand/pHand.js';
 import { _ } from 'meteor/underscore';
+
+export const results = new Mongo.Collection('results');
+export const draws = new Mongo.Collection('draws');
 
 // Affinity.allow({
 //   'download'() {
@@ -246,7 +252,7 @@ const nayaBurnCards = [
     card: 'Monastery Swiftspear',
     type: 'creature',
     location: 'deck',
-    path: '/images/NayaBurn/MonasterySwitspear2.jpg',
+    path: '/images/NayaBurn/MonasterySwiftspear2.jpg',
   },
   {
     card: 'Monastery Swiftspear',
@@ -258,7 +264,7 @@ const nayaBurnCards = [
     card: 'Monastery Swiftspear',
     type: 'creature',
     location: 'deck',
-    path: '/images/NayaBurn/MonasterySwitspear4.jpg',
+    path: '/images/NayaBurn/MonasterySwiftspear4.jpg',
   },
   {
     card: 'Mountain',
@@ -414,4 +420,28 @@ if (Naya.find().count() === 0) {
 
 Meteor.publish('naya', function () {
   return Naya.find();
+});
+
+Meteor.publish('pHand', function (userId) {
+  return Hand.find({ player: userId });
+});
+
+Meteor.methods({
+  'newGame'(userId) {
+    Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
+    results.update({}, { $set: { player: userId } }, { multi: true });
+    results.find().forEach(function (x) { Hand.insert(x, { ordered: false }); });
+  },
+  'draw'(userId) {
+    Hand.aggregate(
+        [{ $match: { player: userId } },
+          { $match: { location: 'deck' } },
+          { $sample: { size: 1 } },
+          { $out: 'draws' },
+        ]);
+    Hand.update({ _id: draws.findOne()._id }, { $set: { location: 'hand' } });
+  },
+  'quitGame'(userId) {
+    Hand.remove({ player: userId });
+  },
 });
