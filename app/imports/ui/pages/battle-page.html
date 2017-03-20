@@ -37,8 +37,10 @@
             <div class="ui icon header">
               <div class="ui hidden divider"></div>
               <i class="user icon"></i>
-              <div class="content" id="name">
-              </div>
+              <div class="content" id="name"></div>
+              <div class="ui hidden divider"></div>
+              <a href="#" class="content leave" data-tooltip="Quit Game"
+                 data-position="top center">Leave</a>
             </div>
 
           </div>
@@ -49,7 +51,7 @@
             {{/each}}
           </div>
 
-          <div class="two wide deck column">
+          <div class="two wide deck column" data-tooltip="Draw Card" data-position="top center" data-inverted="">
             <img src="/images/card_back.png" style="height: 200px"/>
           </div>
         </div>

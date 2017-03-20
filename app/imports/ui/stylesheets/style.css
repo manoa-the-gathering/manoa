@@ -208,16 +208,16 @@ body {
   overflow: hidden;
 }
 .opLand {
-  height: calc((100% - 320px)/4);
+  height: calc((100% - 298px)/4);
 }
 .opMon {
-  height: calc((100% - 320px)/4);
+  height: calc((100% - 298px)/4);
 }
 .pMon {
-  height: calc((100% - 320px)/4);
+  height: calc((100% - 298px)/4);
 }
 .pLand {
-  height: calc((100% - 320px)/4);
+  height: calc((100% - 298px)/4);
 }
 .pSide {
   text-align: center;

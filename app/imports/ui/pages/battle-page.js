@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 // import { Naya } from '../../api/naya/naya.js';
 import { Hand } from '../../api/pHand/pHand.js';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 let id;
 
@@ -40,5 +41,10 @@ Template.Battle_Page.events({
     // $('.ui.basic.modal')
     //     .modal('setting', 'closable', false)
     //     .modal('show');
+  },
+  'click .leave'() {
+    if (window.confirm('Are you sure you want to leave this game?')) {
+      FlowRouter.go('Home_Page');
+    }
   },
 });
