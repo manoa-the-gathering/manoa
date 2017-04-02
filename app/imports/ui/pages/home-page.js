@@ -7,16 +7,16 @@ Template.Home_Page.events({
    * @param event The click event.
    * @returns {boolean} False.
    */
-  'click .cas-login': function casLogin(event, instance) {
-    event.preventDefault();
-    const callback = function loginCallback(error) {
-      if (error) {
-        console.log(error);
-      }
-    };
-    Meteor.loginWithCas(callback);
-    return false;
-  },
+  // 'click .cas-login': function casLogin(event, instance) {
+  //   event.preventDefault();
+  //   const callback = function loginCallback(error) {
+  //     if (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   Meteor.loginWithCas(callback);
+  //   return false;
+  // },
 });
 
 const hours = new Date();
@@ -28,7 +28,7 @@ if (time > 19 || time < 6) {
 }
 Template.Home_Page.onRendered(function () {
   $('.logo').transition('scale in', '1s');
-  $('.play.cas-login').transition('swing down in', '2s');
+  // $('.play.cas-login').transition('swing down in', '2s');
   $('.match').transition('swing down in', '2s');
 });
 
