@@ -50,21 +50,22 @@ Template.Match_Page.events({
       document.getElementById('select').innerHTML = 'Please select a user';
     }
     else {
-      if (Requests.find({
+      if (Requests.findOne({
             $and: [{ 'targetUser._id': id._id },
-              { requestString: `${selected.profile.name} wants to battle! Accept their request from the list.` }]
-          })) {
+              { requestString: `${selected.profile.name} battle` }]
+          }) !== undefined) {
         Meteor.call('notify', id, selected);
-        FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
+        Meteor.call('cleanup', id._id);
+        FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
       }
-      else if (Requests.find({
+      else if (Requests.findOne({
               $and: [{ 'targetUser._id': id._id },
                 {
-                  requestString: `${selected.profile.name} has accepted your request. Select them 
-        from the list and click accept to begin the match.`
+                  requestString: `${selected.profile.name} accepted`
                 }]
-            })) {
-          FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
+            }) !== undefined) {
+        Meteor.call('cleanup', id._id);
+        FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
         }
         else {
           Meteor.call('acceptError', id);
@@ -110,6 +111,9 @@ Template.Match_Page.onCreated(function () {
   Meteor.subscribe('userStatus');
   Meteor.subscribe('requests');
   id = Meteor.user();
+  chatSession = 'general';
+  Session.set('chat', chatSession);
+  selected = 'Select a user';
 });
 
 Template.Match_Page.onRendered(function () {
