@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-// import { Accounts } from 'meteor/accounts-base';
+import { Accounts } from 'meteor/accounts-base';
 // import { _ } from 'meteor/underscore';
 
 /* eslint-disable no-console */
@@ -17,7 +17,22 @@ Accounts.validateNewUser(function (user) {
 });
 */
 
+// Cas login homepage html and js
 
-if (!Meteor.settings.cas) {
-  console.log('CAS settings not found! Hint: "meteor --settings ../config/settings.development.json"');
+// if (!Meteor.settings.cas) {
+//   console.log('CAS settings not found! Hint: "meteor --settings ../config/settings.development.json"');
+// }
+
+// Temp regular accounts
+if (Meteor.users.find().count() === 0) {
+  Accounts.createUser({
+    username: 'Creighton',
+    password: 'stuff',
+    profile: { name: 'Creighton' },
+  });
+  Accounts.createUser({
+    username: 'John',
+    password: 'stuff2',
+    profile: { name: 'John' },
+  });
 }

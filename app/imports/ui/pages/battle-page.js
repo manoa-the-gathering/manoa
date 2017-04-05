@@ -21,7 +21,7 @@ Template.Battle_Page.onCreated(function () {
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id);
   });
-  Meteor.subscribe('naya');
+  // Meteor.subscribe('naya');
   Meteor.call('newGame', id._id);
 });
 

@@ -1,13 +1,14 @@
-import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
+import {Meteor} from 'meteor/meteor';
+import {Mongo} from 'meteor/mongo';
 
 // import { Affinity } from '../../api/affinity/affinity.js';
-import { Naya } from '../../api/naya/naya.js';
-import { Hand } from '../../api/pHand/pHand.js';
-import { _ } from 'meteor/underscore';
+import {Naya} from '../../api/naya/naya.js';
+import {Hand} from '../../api/pHand/pHand.js';
+import {_} from 'meteor/underscore';
 
 export const results = new Mongo.Collection('results');
 export const draws = new Mongo.Collection('draws');
+// let count = 0;
 
 // Affinity.allow({
 //   'download'() {
@@ -48,7 +49,7 @@ export const draws = new Mongo.Collection('draws');
 // });
 
 // Naya Burn Fill
-const nayaBurnCards = [
+const allCards = [
   {
     card: 'Arid Mesa',
     type: 'land',
@@ -412,15 +413,15 @@ const nayaBurnCards = [
   },
 ];
 
-if (Naya.find().count() === 0) {
-  _.each(nayaBurnCards, function seedNaya(stuff) {
-    Naya.insert(stuff);
-  });
-}
+// if (Naya.find().count() === 0) {
+//   _.each(nayaBurnCards, function seedNaya(stuff) {
+//     Naya.insert(stuff);
+//   });
+// }
 
-Meteor.publish('naya', function () {
-  return Naya.find();
-});
+// Meteor.publish('naya', function () {
+//   return Naya.find();
+// });
 
 Meteor.publish('pHand', function (userId) {
   return Hand.find({ player: userId });
@@ -428,9 +429,33 @@ Meteor.publish('pHand', function (userId) {
 
 Meteor.methods({
   'newGame'(userId) {
-    Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
+    // Load default deck if none
+    Meteor.users.update({ _id: userId, deck: { $exists: false } },
+      {
+        $set: {
+          deck: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14',
+          '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28',
+          '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42',
+          '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56',
+          '57', '58', '59', '60'],
+        },
+      });
+    let player = Meteor.users.findOne({ _id: userId });
+    player = JSON.parse(JSON.stringify(player.deck));
+    for (let i = 0; i < player.length; i++) {
+      let index = player[i];
+      results.insert(allCards[index]);
+    }
+    // userId.deck.forEach(function (x) {
+    //   results.insert(nayaBurnCards[x]);
+    // });
+    // Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
     results.update({}, { $set: { player: userId } }, { multi: true });
-    results.find().forEach(function (x) { Hand.insert(x, { ordered: false }); });
+    // results.update({}, { $set: { player: userId, _id: ++count } }, { multi: true });
+    results.find().forEach(function (x) {
+      Hand.insert(x, { ordered: false });
+    });
+    results.remove({ player: userId });
   },
   'draw'(userId) {
     Hand.aggregate(

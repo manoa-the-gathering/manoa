@@ -13,7 +13,8 @@
           <a class="{{ isActiveRoute 'Match_Page'}} ui button play match"
            href="{{ pathFor 'Match_Page'}}">Find a Match</a>
         {{else}}
-        <button class="ui button play cas-login">Play now</button>
+        <!--<button class="ui button play cas-login">Play now</button>-->
+          {{> loginButtons }}
         {{/if}}
       </div>
       <div class="push"></div>
