@@ -1,13 +1,14 @@
-import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
+import {Meteor} from 'meteor/meteor';
+import {Mongo} from 'meteor/mongo';
 
 // import { Affinity } from '../../api/affinity/affinity.js';
-import { Naya } from '../../api/naya/naya.js';
-import { Hand } from '../../api/pHand/pHand.js';
-import { _ } from 'meteor/underscore';
+import {Naya} from '../../api/naya/naya.js';
+import {Hand} from '../../api/pHand/pHand.js';
+import {_} from 'meteor/underscore';
 
 export const results = new Mongo.Collection('results');
 export const draws = new Mongo.Collection('draws');
+// let count = 0;
 
 // Affinity.allow({
 //   'download'() {
@@ -412,15 +413,15 @@ const nayaBurnCards = [
   },
 ];
 
-if (Naya.find().count() === 0) {
-  _.each(nayaBurnCards, function seedNaya(stuff) {
-    Naya.insert(stuff);
-  });
-}
+// if (Naya.find().count() === 0) {
+//   _.each(nayaBurnCards, function seedNaya(stuff) {
+//     Naya.insert(stuff);
+//   });
+// }
 
-Meteor.publish('naya', function () {
-  return Naya.find();
-});
+// Meteor.publish('naya', function () {
+//   return Naya.find();
+// });
 
 Meteor.publish('pHand', function (userId) {
   return Hand.find({ player: userId });
@@ -428,9 +429,32 @@ Meteor.publish('pHand', function (userId) {
 
 Meteor.methods({
   'newGame'(userId) {
-    Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
+    Meteor.users.update({ _id: userId, deck: { $exists: false } },
+      {
+        $set: {
+          deck: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '59'],
+        },
+      });
+    // for (let card of userId.deck) {
+    //   results.insert(nayaBurnCards[card]);
+    // }
+    let player = Meteor.users.findOne({ _id: userId });
+    player = JSON.parse(JSON.stringify(player.deck));
+    console.log(player);
+    for (let i = 0; i < player.length; i++) {
+      let index = player[i];
+      results.insert(nayaBurnCards[index]);
+    }
+    // userId.deck.forEach(function (x) {
+    //   results.insert(nayaBurnCards[x]);
+    // });
+    // Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
     results.update({}, { $set: { player: userId } }, { multi: true });
-    results.find().forEach(function (x) { Hand.insert(x, { ordered: false }); });
+    // results.update({}, { $set: { player: userId, _id: ++count } }, { multi: true });
+    results.find().forEach(function (x) {
+      Hand.insert(x, { ordered: false });
+    });
+    results.remove({ player: userId });
   },
   'draw'(userId) {
     Hand.aggregate(
