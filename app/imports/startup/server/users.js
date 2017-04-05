@@ -22,8 +22,8 @@ Meteor.methods({
     Requests.insert({
       targetUser: user2, requestString: `${user1.profile.name} accepted` });
   },
-  'cleanup'() {
-    Requests.remove({});
+  'cleanup'(id) {
+    Requests.remove({ 'targetUser._id': id });
   },
 });
 

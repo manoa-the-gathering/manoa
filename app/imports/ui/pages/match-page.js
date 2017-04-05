@@ -55,6 +55,7 @@ Template.Match_Page.events({
               { requestString: `${selected.profile.name} battle` }]
           }) !== undefined) {
         Meteor.call('notify', id, selected);
+        Meteor.call('cleanup', id._id);
         FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
       }
       else if (Requests.findOne({
@@ -63,15 +64,11 @@ Template.Match_Page.events({
                   requestString: `${selected.profile.name} accepted`
                 }]
             }) !== undefined) {
+        Meteor.call('cleanup', id._id);
         FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
-        // FlowRouter.go('Battle_Page', { _identifier: id._id + selected._id });
         }
         else {
           Meteor.call('acceptError', id);
-        // console.log(Requests.findOne({
-        //   $and: [{ 'targetUser._id': id._id },
-        //     { requestString: `${selected.profile.name} wants to battle! Accept their request from the list.` }]
-        // }));
         }
     }
   },
@@ -114,6 +111,9 @@ Template.Match_Page.onCreated(function () {
   Meteor.subscribe('userStatus');
   Meteor.subscribe('requests');
   id = Meteor.user();
+  chatSession = 'general';
+  Session.set('chat', chatSession);
+  selected = 'Select a user';
 });
 
 Template.Match_Page.onRendered(function () {
