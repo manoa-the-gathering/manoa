@@ -47,4 +47,27 @@ Template.Battle_Page.events({
       FlowRouter.go('Home_Page');
     }
   },
+  'click .card'(event) {
+    let card = event.target.getAttribute('src');
+    card = Hand.findOne({ path: card });
+    $(event.target).popup({
+      // title: 'Popup Title',
+      // title: `${card.card}`,
+      hoverable: false,
+      on: 'click',
+      variation: 'basic inverted',
+      html: `<div class="ui one column center aligned grid">
+              <div class="column">
+                <h4 class="ui header">${card.card}</h4>
+                <div class="ui vertical basic inverted buttons">
+                  <button class="ui button">Play</button>
+                  <button class="ui button">Discard</button>
+                </div>
+              <!--<div class="ui inverted actionPlay button">Play</div>-->
+            </div>`,
+    }).popup('toggle');
+  },
+  'click .actionPlay'(event) {
+    event.stopPropagation();
+  }
 });

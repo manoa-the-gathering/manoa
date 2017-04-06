@@ -197,7 +197,12 @@ body {
   position: relative;
   top: -20px;
 }
-
+.ui.celled.grid > .row {
+  box-shadow: none;
+}
+.ui.celled.grid > .row > .column {
+  box-shadow: none;
+}
 .celled.field.grid {
   height: 100vh;
   margin: 0 auto;

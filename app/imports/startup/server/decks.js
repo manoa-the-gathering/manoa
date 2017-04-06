@@ -1,10 +1,11 @@
-import {Meteor} from 'meteor/meteor';
-import {Mongo} from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 
 // import { Affinity } from '../../api/affinity/affinity.js';
-import {Naya} from '../../api/naya/naya.js';
-import {Hand} from '../../api/pHand/pHand.js';
-import {_} from 'meteor/underscore';
+// import {Naya} from '../../api/naya/naya.js';
+// import {_} from 'meteor/underscore';
+import { Hand } from '../../api/pHand/pHand.js';
+import { Field } from '../../api/field/field.js';
 
 export const results = new Mongo.Collection('results');
 export const draws = new Mongo.Collection('draws');
