@@ -198,6 +198,23 @@ body {
   top: -20px;
 }
 
+#opponent {
+  transform: rotate(180deg);
+  font-size: 1.28em;
+  margin-right: -1em;
+  font-weight: bold;
+  color: black;
+}
+.ui.celled.grid > .row {
+  box-shadow: none;
+}
+.ui.celled.grid > .row > img {
+  max-width: 140px;
+  padding: 2px 0;
+}
+.ui.celled.grid > .row > .column {
+  box-shadow: none;
+}
 .celled.field.grid {
   height: 100vh;
   margin: 0 auto;
@@ -209,9 +226,11 @@ body {
 }
 .opLand {
   height: calc((100% - 298px)/4);
+  transform: rotate(180deg);
 }
 .opMon {
   height: calc((100% - 298px)/4);
+  transform: rotate(180deg);
 }
 .pMon {
   height: calc((100% - 298px)/4);

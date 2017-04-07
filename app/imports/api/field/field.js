@@ -1,7 +1,2 @@
-import { FS } from 'meteor/cfs:base-package';
-
-const fieldStore = new FS.Store.GridFS('field');
-
-export const Field = new FS.Collection('field', {
-  stores: [fieldStore],
-});
+import { Mongo } from 'meteor/mongo';
+export const Field = new Mongo.Collection('field');
