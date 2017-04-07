@@ -84,6 +84,25 @@ Template.Battle_Page.events({
             </div>`,
     }).popup('toggle');
   },
+  'click .mons'() {
+    card = event.target.getAttribute('src');
+    card = Hand.findOne({ path: card });
+    $(event.target).popup({
+      hoverable: false,
+      on: 'click',
+      position: 'top center',
+      variation: 'basic inverted',
+      html: `<div class="ui one column center aligned grid">
+              <div class="column">
+                <h4 class="ui header">${card.card}</h4>
+                <div class="ui vertical basic inverted buttons">
+                  <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
+                  <button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>
+                </div>
+              <!--<div class="ui inverted actionPlay button">Play</div>-->
+            </div>`,
+    }).popup('toggle');
+  },
   'click .card'(event) {
     card = event.target.getAttribute('src');
     card = Hand.findOne({ path: card });

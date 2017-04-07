@@ -50,15 +50,25 @@
         <!--opponent creatures-->
         <div class="opMon centered row">
           {{#each opMon}}
-            <img class="mon" src="{{this.path}}" />
-            &nbsp;&nbsp;
+            {{#if this.tap}}
+              <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
+              &nbsp;&nbsp;
+            {{else}}
+              <img class="mon" src="{{this.path}}" />
+              &nbsp;&nbsp;
+            {{/if}}
           {{/each}}
         </div>
         <!--player creatures-->
         <div class="pMon centered row">
           {{#each pMon}}
-            <img class="mon" src="{{this.path}}" />
-            &nbsp;&nbsp;
+            {{#if this.tap}}
+              <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
+              &nbsp;&nbsp;
+            {{else}}
+              <img class="mons" src="{{this.path}}" />
+              &nbsp;&nbsp;
+            {{/if}}
           {{/each}}
         </div>
 
