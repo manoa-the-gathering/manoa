@@ -33,8 +33,6 @@ Template.Match_Page.events({
     selected = Meteor.users.findOne({ 'profile.name': selected });
     sessionStorage.removeItem('opponent');
     sessionStorage.setItem('opponent', JSON.stringify(selected));
-    console.log(selected);
-    console.log(JSON.parse(sessionStorage.getItem('opponent')));
     chatSession = [selected.profile.name, id.profile.name].sort().join("+");
     Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
@@ -106,14 +104,15 @@ function scrollToBottom() {
 
 Template.Match_Page.onCreated(function () {
   Meteor.autorun(function () {
-    Meteor.subscribe('messages', Session.get('chat'), {
+    Meteor.defer(Meteor.subscribe('messages', Session.get('chat'), {
       onReady() {
         return scrollToBottom();
       },
-    });
+    }));
   });
   Meteor.subscribe('userStatus');
   Meteor.subscribe('requests');
+  // while (Meteor.userId() === null);
   id = Meteor.user();
   chatSession = 'general';
   Session.set('chat', chatSession);

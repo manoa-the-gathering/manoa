@@ -210,6 +210,7 @@ body {
 }
 .ui.celled.grid > .row > img {
   max-width: 140px;
+  padding: 2px 0;
 }
 .ui.celled.grid > .row > .column {
   box-shadow: none;
@@ -229,6 +230,7 @@ body {
 }
 .opMon {
   height: calc((100% - 298px)/4);
+  transform: rotate(180deg);
 }
 .pMon {
   height: calc((100% - 298px)/4);

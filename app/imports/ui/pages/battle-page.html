@@ -44,10 +44,19 @@
         </div>
 
         <!--opponent creatures-->
-        <div class="opMon row"></div>
-
+        <div class="opMon centered row">
+          {{#each opMon}}
+            <img class="mon" src="{{this.path}}" />
+            &nbsp;&nbsp;
+          {{/each}}
+        </div>
         <!--player creatures-->
-        <div class="pMon row"></div>
+        <div class="pMon centered row">
+          {{#each pMon}}
+            <img class="mon" src="{{this.path}}" />
+            &nbsp;&nbsp;
+          {{/each}}
+        </div>
 
         <!--player lands-->
         <div class="pLand centered row">

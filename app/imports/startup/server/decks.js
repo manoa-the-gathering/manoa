@@ -428,8 +428,8 @@ Meteor.publish('pHand', function (userId) {
   return Hand.find({ player: userId });
 });
 
-Meteor.publish('field', function () {
-  return Field.find();
+Meteor.publish('field', function (id1, id2) {
+  return Field.find({ $or: [{ player: id1 }, { player: id2 }] });
 });
 
 Meteor.methods({

@@ -21,10 +21,11 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
+  // while (Meteor.userId() === null);
   id = Meteor.user();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id);
-    Meteor.subscribe('field');
+    Meteor.subscribe('field', id._id, opponent._id);
   });
   // Meteor.subscribe('naya');
   Meteor.call('newGame', id._id);
@@ -42,6 +43,12 @@ Template.Battle_Page.helpers({
   },
   'opLand'() {
     return Field.find({ $and: [{ type: 'land' }, { player: opponent._id }] });
+  },
+  'pMon'() {
+    return Field.find({ $and: [{ type: 'creature' }, { player: id._id }] });
+  },
+  'opMon'() {
+    return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
   },
 });
 
