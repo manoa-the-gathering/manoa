@@ -31,6 +31,9 @@ Template.Match_Page.events({
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
     selected = Meteor.users.findOne({ 'profile.name': selected });
+    sessionStorage.setItem('opponent', JSON.stringify(selected));
+    // console.log(selected);
+    // console.log(JSON.parse(sessionStorage.getItem('opponent')));
     chatSession = [selected.profile.name, id.profile.name].sort().join("+");
     Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;

@@ -8,16 +8,29 @@
     <div class="centered row">
       <div class="ui celled field grid">
         <!--opponent hand-->
-        <div class="opHand sixteen wide column row">
-          <div class="ui centered small images">
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
-            <img src="/images/card_back.png"/>
+        <div class="opHand row">
+          <div class="two wide deck column">
+            <img class="ui image" src="/images/card_back.png" style="height: 200px"/>
           </div>
+          <div class="thirteen wide column" style="margin: 0 auto">
+
+          </div>
+          <div class="one wide column">
+            <div class="ui icon header">
+              <div class="ui hidden divider"></div>
+              <i class="user icon"></i>
+              <div class="content" id="opponent"></div>
+            </div>
+          </div>
+          <!--<div class="ui centered small images">-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+            <!--<img src="/images/card_back.png"/>-->
+          <!--</div>-->
         </div>
         <!--opponent lands-->
         <div class="opLand row"></div>
@@ -29,7 +42,12 @@
         <div class="pMon row"></div>
 
         <!--player lands-->
-        <div class="pLand row"></div>
+        <div class="pLand centered row">
+          {{#each pLand}}
+            <img class="land" src="{{this.path}}" />
+            &nbsp;&nbsp;
+          {{/each}}
+        </div>
 
         <!--player hand-->
         <div class="pSide row">

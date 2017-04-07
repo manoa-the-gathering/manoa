@@ -200,6 +200,9 @@ body {
 .ui.celled.grid > .row {
   box-shadow: none;
 }
+.ui.celled.grid > .row > img {
+  max-width: 140px;
+}
 .ui.celled.grid > .row > .column {
   box-shadow: none;
 }

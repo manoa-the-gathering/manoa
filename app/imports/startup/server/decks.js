@@ -65,67 +65,67 @@ const allCards = [
     path: '/images/NayaBurn/AridMesa2.jpg',
   },
   {
-    card: 'Bloodstained Mire.jpg',
+    card: 'Bloodstained Mire',
     type: 'land',
     location: 'deck',
     path: '/images/NayaBurn/BloodstainedMire1.jpg',
   },
   {
-    card: 'Bloodstained Mire.jpg',
+    card: 'Bloodstained Mire',
     type: 'land',
     location: 'deck',
     path: '/images/NayaBurn/BloodstainedMire2.jpg',
   },
   {
-    card: 'Bloodstained Mire.jpg',
+    card: 'Bloodstained Mire',
     type: 'land',
     location: 'deck',
     path: '/images/NayaBurn/BloodstainedMire3.jpg',
   },
   {
-    card: 'Boros Charm.jpg',
+    card: 'Boros Charm',
     type: 'spell',
     location: 'deck',
     path: '/images/NayaBurn/BorosCharm1.jpg',
   },
   {
-    card: 'Boros Charm.jpg',
+    card: 'Boros Charm',
     type: 'spell',
     location: 'deck',
     path: '/images/NayaBurn/BorosCharm2.jpg',
   },
   {
-    card: 'Boros Charm.jpg',
+    card: 'Boros Charm',
     type: 'spell',
     location: 'deck',
     path: '/images/NayaBurn/BorosCharm3.jpg',
   },
   {
-    card: 'Boros Charm.jpg',
+    card: 'Boros Charm',
     type: 'spell',
     location: 'deck',
     path: '/images/NayaBurn/BorosCharm4.jpg',
   },
   {
-    card: 'Eidolon of the Great Revel.jpg',
+    card: 'Eidolon of the Great Revel',
     type: 'creature',
     location: 'deck',
     path: '/images/NayaBurn/EidolonoftheGreatRevel1.jpg',
   },
   {
-    card: 'Eidolon of the Great Revel.jpg',
+    card: 'Eidolon of the Great Revel',
     type: 'creature',
     location: 'deck',
     path: '/images/NayaBurn/EidolonoftheGreatRevel2.jpg',
   },
   {
-    card: 'Eidolon of the Great Revel.jpg',
+    card: 'Eidolon of the Great Revel',
     type: 'creature',
     location: 'deck',
     path: '/images/NayaBurn/EidolonoftheGreatRevel3.jpg',
   },
   {
-    card: 'Eidolon of the Great Revel.jpg',
+    card: 'Eidolon of the Great Revel',
     type: 'creature',
     location: 'deck',
     path: '/images/NayaBurn/EidolonoftheGreatRevel4.jpg',
@@ -428,6 +428,10 @@ Meteor.publish('pHand', function (userId) {
   return Hand.find({ player: userId });
 });
 
+Meteor.publish('field', function () {
+  return Field.find();
+});
+
 Meteor.methods({
   'newGame'(userId) {
     // Load default deck if none
@@ -467,7 +471,12 @@ Meteor.methods({
         ]);
     Hand.update({ _id: draws.findOne()._id }, { $set: { location: 'hand' } });
   },
+  'play'(cardId) {
+    Hand.update({ _id: cardId }, { $set: { location: 'field' } });
+    Field.insert(Hand.findOne({ _id: cardId }));
+  },
   'quitGame'(userId) {
     Hand.remove({ player: userId });
+    Field.remove({ player: userId });
   },
 });
