@@ -455,7 +455,7 @@ Meteor.methods({
     //   results.insert(nayaBurnCards[x]);
     // });
     // Naya.aggregate([{ $match: {} }, { $out: 'results' }]);
-    results.update({}, { $set: { player: userId } }, { multi: true });
+    results.update({}, { $set: { player: userId, tap: false } }, { multi: true });
     // results.update({}, { $set: { player: userId, _id: ++count } }, { multi: true });
     results.find().forEach(function (x) {
       Hand.insert(x, { ordered: false });
@@ -474,6 +474,12 @@ Meteor.methods({
   'play'(cardId) {
     Hand.update({ _id: cardId }, { $set: { location: 'field' } });
     Field.insert(Hand.findOne({ _id: cardId }));
+  },
+  'tap'(cardId) {
+    Field.update({ _id: cardId }, { $set: { tap: true } });
+  },
+  'untap'(cardId) {
+    Field.update({ _id: cardId }, { $set: { tap: false } });
   },
   'quitGame'(userId) {
     Hand.remove({ player: userId });
