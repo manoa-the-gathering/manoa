@@ -197,6 +197,14 @@ body {
   position: relative;
   top: -20px;
 }
+
+#opponent {
+  transform: rotate(180deg);
+  font-size: 1.28em;
+  margin-right: -1em;
+  font-weight: bold;
+  color: black;
+}
 .ui.celled.grid > .row {
   box-shadow: none;
 }
@@ -217,6 +225,7 @@ body {
 }
 .opLand {
   height: calc((100% - 298px)/4);
+  transform: rotate(180deg);
 }
 .opMon {
   height: calc((100% - 298px)/4);

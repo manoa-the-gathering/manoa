@@ -38,7 +38,10 @@ Template.Battle_Page.helpers({
     return Hand.find({ location: 'hand' });
   },
   'pLand'() {
-    return Field.find({ type: 'land' });
+    return Field.find({ $and: [{ type: 'land' }, { player: id._id }] });
+  },
+  'opLand'() {
+    return Field.find({ $and: [{ type: 'land' }, { player: opponent._id }] });
   },
 });
 
