@@ -38,31 +38,50 @@
         <!--opponent lands-->
         <div class="opLand centered row">
           {{#each opLand}}
-            <img class="land" src="{{this.path}}" />
+            {{#if this.tap}}
+            <img class="land" src="{{this.path}}" style="transform: rotate(90deg)" />
             &nbsp;&nbsp;
+              {{else}}
+              <img class="land" src="{{this.path}}" />
+              {{/if}}
           {{/each}}
         </div>
 
         <!--opponent creatures-->
         <div class="opMon centered row">
           {{#each opMon}}
-            <img class="mon" src="{{this.path}}" />
-            &nbsp;&nbsp;
+            {{#if this.tap}}
+              <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
+              &nbsp;&nbsp;
+            {{else}}
+              <img class="mon" src="{{this.path}}" />
+              &nbsp;&nbsp;
+            {{/if}}
           {{/each}}
         </div>
         <!--player creatures-->
         <div class="pMon centered row">
           {{#each pMon}}
-            <img class="mon" src="{{this.path}}" />
-            &nbsp;&nbsp;
+            {{#if this.tap}}
+              <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
+              &nbsp;&nbsp;
+            {{else}}
+              <img class="mons" src="{{this.path}}" />
+              &nbsp;&nbsp;
+            {{/if}}
           {{/each}}
         </div>
 
         <!--player lands-->
         <div class="pLand centered row">
           {{#each pLand}}
-            <img class="land" src="{{this.path}}" />
+            {{#if this.tap}}
+            <img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>
             &nbsp;&nbsp;
+            {{else}}
+              <img class="lands" src="{{this.path}}" />
+              &nbsp;&nbsp;
+            {{/if}}
           {{/each}}
         </div>
 

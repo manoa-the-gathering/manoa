@@ -103,20 +103,20 @@ function scrollToBottom() {
 }
 
 Template.Match_Page.onCreated(function () {
-  Meteor.autorun(function () {
-    Meteor.defer(Meteor.subscribe('messages', Session.get('chat'), {
-      onReady() {
-        return scrollToBottom();
-      },
-    }));
-  });
-  Meteor.subscribe('userStatus');
-  Meteor.subscribe('requests');
-  // while (Meteor.userId() === null);
   id = Meteor.user();
   chatSession = 'general';
   Session.set('chat', chatSession);
   selected = 'Select a user';
+  Meteor.subscribe('userStatus');
+  Meteor.subscribe('requests');
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'), {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
+  });
+  // while (Meteor.userId() === null);
 });
 
 Template.Match_Page.onRendered(function () {
