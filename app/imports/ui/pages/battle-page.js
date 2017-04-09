@@ -81,7 +81,6 @@ Template.Battle_Page.events({
                   <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
                   <button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>
                 </div>
-              <!--<div class="ui inverted actionPlay button">Play</div>-->
             </div>`,
     }).popup('toggle');
   },
@@ -100,7 +99,6 @@ Template.Battle_Page.events({
                   <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
                   <button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>
                 </div>
-              <!--<div class="ui inverted actionPlay button">Play</div>-->
             </div>`,
     }).popup('toggle');
   },

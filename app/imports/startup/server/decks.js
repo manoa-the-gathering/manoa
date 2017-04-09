@@ -482,6 +482,6 @@ Meteor.methods({
     Field.remove({ player: userId });
   },
   'mull'(userId) {
-    Hand.update({}, { $set: { location: 'deck' } }, { multi: true });
+    Hand.update({ $and: [{ player: userId }, { location: 'hand' }] }, { $set: { location: 'deck' } }, { multi: true });
   },
 });
