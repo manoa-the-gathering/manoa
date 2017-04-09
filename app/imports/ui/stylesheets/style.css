@@ -252,8 +252,20 @@ body {
 .pLand {
   height: calc((100% - 298px)/4);
 }
+/*.pLand img, .pMon img, .opMon img, .opLand img {*/
+  /*padding: 0 1px;*/
+  /*max-width: 100%;*/
+  /*max-height: 100%;*/
+  /*!*margin: auto;*!*/
+/*}*/
+/*.pLands img {*/
+/*padding: 0 1px;*/
+/*max-width: 100%;*/
+/*margin: auto;*/
+/*}*/
 .pSide {
   text-align: center;
+  background: rgba(0,0,0,0.2);
 }
 .pHand img{
   height: 200px;

@@ -1,9 +1,6 @@
 <template name="Battle_Page">
 
   <div class="ui two row main container">
-    <!--<div class="centered row">-->
-    <!--<img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">-->
-    <!--</div>-->
 
     <div class="centered row">
       <div class="ui celled field grid">
@@ -26,65 +23,75 @@
           </div>
 
           <!--<div class="ui centered small images">-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
-            <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
+          <!--<img src="/images/card_back.png"/>-->
           <!--</div>-->
         </div>
-        <!--opponent lands-->
-        <div class="opLand centered row">
-          {{#each opLand}}
-            {{#if this.tap}}
-            <img class="land" src="{{this.path}}" style="transform: rotate(90deg)" />
-            &nbsp;&nbsp;
-              {{else}}
-              <img class="land" src="{{this.path}}" />
-              {{/if}}
-          {{/each}}
-        </div>
+        <div class="ui three column grid container">
+          <div class="stretched row">
+            <div class="column">
+              <div class="ui segment">
+                cardzoom
+              </div>
+            </div>
 
-        <!--opponent creatures-->
-        <div class="opMon centered row">
-          {{#each opMon}}
-            {{#if this.tap}}
-              <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
-              &nbsp;&nbsp;
-            {{else}}
-              <img class="mon" src="{{this.path}}" />
-              &nbsp;&nbsp;
-            {{/if}}
-          {{/each}}
-        </div>
-        <!--player creatures-->
-        <div class="pMon centered row">
-          {{#each pMon}}
-            {{#if this.tap}}
-              <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
-              &nbsp;&nbsp;
-            {{else}}
-              <img class="mons" src="{{this.path}}" />
-              &nbsp;&nbsp;
-            {{/if}}
-          {{/each}}
-        </div>
+            <div class="column">
+              <!--opponent lands-->
+              <div class="ui segment opLand centered">
+                {{#each opLand}}
+                  {{#if this.tap}}
+                    <img class="land" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                  {{else}}
+                    <img class="land" src="{{this.path}}"/>
+                  {{/if}}
+                {{/each}}
+              </div>
 
-        <!--player lands-->
-        <div class="pLand centered row">
-          {{#each pLand}}
-            {{#if this.tap}}
-            <img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>
-            &nbsp;&nbsp;
-            {{else}}
-              <img class="lands" src="{{this.path}}" />
-              &nbsp;&nbsp;
-            {{/if}}
-          {{/each}}
-        </div>
+              <!--opponent creatures-->
+              <div class="ui segment opMon centered">
+                {{#each opMon}}
+                  {{#if this.tap}}
+                    <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                  {{else}}
+                    <img class="mon" src="{{this.path}}"/>
+                  {{/if}}
+                {{/each}}
+              </div>
+              <!--player creatures-->
+              <div class="ui segment pMon centered">
+                {{#each pMon}}
+                  {{#if this.tap}}
+                    <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                  {{else}}
+                    <img class="mons" src="{{this.path}}"/>
+                  {{/if}}
+                {{/each}}
+              </div>
 
+              <!--player lands-->
+              <div class="ui segment pLand centered">
+                {{#each pLand}}
+                  {{#if this.tap}}
+                    <img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                  {{else}}
+                    <img class="lands" src="{{this.path}}"/>
+                  {{/if}}
+                {{/each}}
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui segment">
+                chat
+              </div>
+            </div>
+          </div>
+        </div>
         <!--player hand-->
         <div class="pSide centered row">
           <div class="two wide column">
@@ -93,7 +100,8 @@
               <i class="user icon"></i>
               <div class="content" id="name" style="color: black!important;"></div>
               <div class="ui hidden divider"></div>
-              <a href="#" class="content redraw" style="color: black!important;" data-tooltip="Click to Mulligan" data-position="top center">Mulligan</a>
+              <a href="#" class="content redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
+                 data-position="top center">Mulligan</a>
               <div class="ui hidden divider"></div>
               <a href="#" class="content leave" style="color: black!important;" data-tooltip="Quit Game"
                  data-position="top center">Leave</a>
@@ -101,15 +109,16 @@
 
           </div>
 
-          <div class="twelve wide pHand column" style="margin: 0 auto">
+          <div class="twelve wide pHand column" style="margin: auto">
             {{#each cardInHand}}
               <span>
-              <img class="card" src="{{this.path}}" />
+              <img class="card" src="{{this.path}}"/>
               </span>
             {{/each}}
           </div>
 
-          <div class="two wide deck column" data-tooltip="Draw Card" data-position="top center" data-inverted="">
+          <div class="two wide deck column" data-tooltip="Draw Card" data-position="top center" data-inverted=""
+               style="margin: auto">
             <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
           </div>
         </div>
