@@ -4,14 +4,26 @@ import { Template } from 'meteor/templating';
 import { Hand } from '../../api/pHand/pHand.js';
 import { Field } from '../../api/field/field.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Messages } from '../../api/msgs/msgs.js';
 
 let id;
 let opponent;
+
+function scrollToBottom() {
+  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+}
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'), {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
+  });
   // console.log(JSON.parse(sessionStorage.getItem('opponent')));
 });
 
@@ -49,6 +61,9 @@ Template.Battle_Page.helpers({
   },
   'opMon'() {
     return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
+  },
+  'recentMessages'() {
+    return Messages.find({}, { sort: { createdAt: 1 } });
   },
 });
 

@@ -33,9 +33,11 @@
           <!--</div>-->
         </div>
         <div class="cntr row">
+
           <div class="three wide column">cardzoom</div>
+
           <div class="ten wide column">
-            <div class="ui celled cards grid" style="margin: 0">
+            <div class="ui celled cards grid" style="margin: 0; background: rgba(0,0,0,0.5)">
 
               <!--opponent lands-->
               <div class="opLand centered row">
@@ -97,7 +99,30 @@
               </div>
             </div>
           </div>
-          <div class="three wide column">chat</div>
+
+          <div class="three wide column" style="display: block;">
+            <div style="height: 50%; width: 100%; background: rgba(0,0,0,0.4)">
+              <h2>Instant</h2>
+              <img class="ui image" src="/images/card_back.png" style="height: 200px"/>
+            </div>
+            <div class="log" id="chatbox" style="height: 50%; width: 100%; overflow: auto; padding: 0 5px 35px;  border: 4px solid black;">
+              <div class="ui list">
+                {{#each recentMessages}}
+                  {{> Message}}
+                {{/each}}
+                </div>
+              <div style="height: 37px; position: absolute; bottom: 0px;left: 0; width: 100%">
+                <form class="ui form new-message">
+                  <div class="field">
+                    <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
+                           style="color:black"
+                           maxlength="150">
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!--player hand-->
