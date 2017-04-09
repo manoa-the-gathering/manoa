@@ -32,66 +32,58 @@
           <!--<img src="/images/card_back.png"/>-->
           <!--</div>-->
         </div>
-        <div class="ui three column grid container">
-          <div class="stretched row">
-            <div class="column">
-              <div class="ui segment">
-                cardzoom
-              </div>
-            </div>
+        <div class="cntr row">
+          <div class="three wide column">cardzoom</div>
+          <div class="ten wide column">
+            <!--<div class="ui celled grid">-->
 
-            <div class="column">
-              <!--opponent lands-->
-              <div class="ui segment opLand centered">
-                {{#each opLand}}
-                  {{#if this.tap}}
-                    <img class="land" src="{{this.path}}" style="transform: rotate(90deg)"/>
-                  {{else}}
-                    <img class="land" src="{{this.path}}"/>
-                  {{/if}}
-                {{/each}}
-              </div>
+              <!--&lt;!&ndash;opponent lands&ndash;&gt;-->
+              <!--<div class="opLand centered row">-->
+                <!--{{#each opLand}}-->
+                  <!--{{#if this.tap}}-->
+                    <!--<img class="land" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
+                  <!--{{else}}-->
+                    <!--<img class="land" src="{{this.path}}"/>-->
+                  <!--{{/if}}-->
+                <!--{{/each}}-->
+              <!--</div>-->
 
-              <!--opponent creatures-->
-              <div class="ui segment opMon centered">
-                {{#each opMon}}
-                  {{#if this.tap}}
-                    <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
-                  {{else}}
-                    <img class="mon" src="{{this.path}}"/>
-                  {{/if}}
-                {{/each}}
-              </div>
-              <!--player creatures-->
-              <div class="ui segment pMon centered">
-                {{#each pMon}}
-                  {{#if this.tap}}
-                    <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
-                  {{else}}
-                    <img class="mons" src="{{this.path}}"/>
-                  {{/if}}
-                {{/each}}
-              </div>
+              <!--&lt;!&ndash;opponent creatures&ndash;&gt;-->
+              <!--<div class="opMon centered row">-->
+                <!--{{#each opMon}}-->
+                  <!--{{#if this.tap}}-->
+                    <!--<img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
+                  <!--{{else}}-->
+                    <!--<img class="mon" src="{{this.path}}"/>-->
+                  <!--{{/if}}-->
+                <!--{{/each}}-->
+              <!--</div>-->
+              <!--&lt;!&ndash;player creatures&ndash;&gt;-->
+              <!--<div class="pMon centered row">-->
+                <!--{{#each pMon}}-->
+                  <!--{{#if this.tap}}-->
+                    <!--<img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
+                  <!--{{else}}-->
+                    <!--<img class="mons" src="{{this.path}}"/>-->
+                  <!--{{/if}}-->
+                <!--{{/each}}-->
+              <!--</div>-->
 
-              <!--player lands-->
-              <div class="ui segment pLand centered">
-                {{#each pLand}}
-                  {{#if this.tap}}
-                    <img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>
-                  {{else}}
-                    <img class="lands" src="{{this.path}}"/>
-                  {{/if}}
-                {{/each}}
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="ui segment">
-                chat
-              </div>
-            </div>
+              <!--&lt;!&ndash;player lands&ndash;&gt;-->
+              <!--<div class="pLand centered row">-->
+                <!--{{#each pLand}}-->
+                  <!--{{#if this.tap}}-->
+                    <!--<img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
+                  <!--{{else}}-->
+                    <!--<img class="lands" src="{{this.path}}"/>-->
+                  <!--{{/if}}-->
+                <!--{{/each}}-->
+              <!--</div>-->
+            <!--</div>-->
           </div>
+          <div class="three wide column">chat</div>
         </div>
+
         <!--player hand-->
         <div class="pSide centered row">
           <div class="two wide column">
@@ -122,27 +114,28 @@
             <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
           </div>
         </div>
-      </div>
 
-      <div class="ui basic modal">
-        <div class="ui icon header">
-          <!--<i class="archive icon"></i>-->
-          Do you want to mulligan?
-        </div>
-        <div class="content">
-          <p>Shuffle your hand into your deck and draw up to one less of what you had before.</p>
-        </div>
-        <div class="actions">
-          <div class="ui red basic cancel inverted button">
-            <i class="remove icon"></i>
-            No
-          </div>
-          <div class="ui green ok inverted button">
-            <i class="checkmark icon"></i>
-            Yes
-          </div>
-        </div>
-      </div>
+      </div>  <!--celled grid one-->
+
+      <!--<div class="ui basic modal">-->
+        <!--<div class="ui icon header">-->
+          <!--&lt;!&ndash;<i class="archive icon"></i>&ndash;&gt;-->
+          <!--Do you want to mulligan?-->
+        <!--</div>-->
+        <!--<div class="content">-->
+          <!--<p>Shuffle your hand into your deck and draw up to one less of what you had before.</p>-->
+        <!--</div>-->
+        <!--<div class="actions">-->
+          <!--<div class="ui red basic cancel inverted button">-->
+            <!--<i class="remove icon"></i>-->
+            <!--No-->
+          <!--</div>-->
+          <!--<div class="ui green ok inverted button">-->
+            <!--<i class="checkmark icon"></i>-->
+            <!--Yes-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div> <!--battle div-->
 
