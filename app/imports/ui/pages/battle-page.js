@@ -4,14 +4,26 @@ import { Template } from 'meteor/templating';
 import { Hand } from '../../api/pHand/pHand.js';
 import { Field } from '../../api/field/field.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Messages } from '../../api/msgs/msgs.js';
 
 let id;
-let opponent = JSON.parse(sessionStorage.getItem('opponent'));
+let opponent;
+
+function scrollToBottom() {
+  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+}
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'), {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
+  });
   // console.log(JSON.parse(sessionStorage.getItem('opponent')));
 });
 
@@ -21,7 +33,9 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
-  id = Meteor.user();
+  // while (Meteor.userId() === undefined);
+  id = JSON.parse(sessionStorage.getItem('user'));
+  opponent = JSON.parse(sessionStorage.getItem('opponent'));
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id);
     Meteor.subscribe('field', id._id, opponent._id);
@@ -48,6 +62,9 @@ Template.Battle_Page.helpers({
   'opMon'() {
     return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
   },
+  'recentMessages'() {
+    return Messages.find({}, { sort: { createdAt: 1 } });
+  },
 });
 
 Template.Battle_Page.events({
@@ -66,7 +83,7 @@ Template.Battle_Page.events({
   'click .redraw'() {
     Meteor.call('mull', id._id);
   },
-  'click .lands'() {
+  'click .lands'(event) {
     card = event.target.getAttribute('src');
     card = Hand.findOne({ path: card });
     $(event.target).popup({
@@ -84,7 +101,7 @@ Template.Battle_Page.events({
             </div>`,
     }).popup('toggle');
   },
-  'click .mons'() {
+  'click .mons'(event) {
     card = event.target.getAttribute('src');
     card = Hand.findOne({ path: card });
     $(event.target).popup({

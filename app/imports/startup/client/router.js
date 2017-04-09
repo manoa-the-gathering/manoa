@@ -37,6 +37,7 @@ FlowRouter.route('/match', {
 FlowRouter.route('/battle/:_identifier', {
   name: 'Battle_Page',
   action() {
+    Session.setDefault('chat', 'general');
     BlazeLayout.render('BattleLayout', { main: 'Battle_Page' });
     BlazeLayout.setRoot('body');
   },
