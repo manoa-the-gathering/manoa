@@ -86,12 +86,14 @@
         </div>
 
         <!--player hand-->
-        <div class="pSide row">
-          <div class="one wide column">
+        <div class="pSide centered row">
+          <div class="two wide column">
             <div class="ui icon header">
               <div class="ui hidden divider"></div>
               <i class="user icon"></i>
               <div class="content" id="name" style="color: black!important;"></div>
+              <div class="ui hidden divider"></div>
+              <a href="#" class="content redraw" style="color: black!important;" data-tooltip="Click to Mulligan" data-position="top center">Mulligan</a>
               <div class="ui hidden divider"></div>
               <a href="#" class="content leave" style="color: black!important;" data-tooltip="Quit Game"
                  data-position="top center">Leave</a>
@@ -99,25 +101,27 @@
 
           </div>
 
-          <div class="thirteen wide pHand column" style="margin: 0 auto">
+          <div class="twelve wide pHand column" style="margin: 0 auto">
             {{#each cardInHand}}
+              <span>
               <img class="card" src="{{this.path}}" />
+              </span>
             {{/each}}
           </div>
 
           <div class="two wide deck column" data-tooltip="Draw Card" data-position="top center" data-inverted="">
-            <img class="ui image" src="/images/card_back.png" style="height: 200px"/>
+            <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
           </div>
         </div>
       </div>
 
       <div class="ui basic modal">
         <div class="ui icon header">
-          <i class="archive icon"></i>
-          Draw
+          <!--<i class="archive icon"></i>-->
+          Do you want to mulligan?
         </div>
         <div class="content">
-          <p>You cannot draw another card at this time</p>
+          <p>Shuffle your hand into your deck and draw up to one less of what you had before.</p>
         </div>
         <div class="actions">
           <div class="ui red basic cancel inverted button">

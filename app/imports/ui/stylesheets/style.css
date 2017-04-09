@@ -209,11 +209,25 @@ body {
   box-shadow: none;
 }
 .ui.celled.grid > .row > img {
-  max-width: 140px;
-  padding: 2px 0;
+  /*max-width: 140px;*/
+  /*padding: 2px 0;*/
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  padding: 2px;
 }
 .ui.celled.grid > .row > .column {
   box-shadow: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  line-height: 0.1em;
+  padding: 0;
+}
+.ui.celled.grid > .row > .column > span {
+  /*display: inline-block;*/
+  flex: 0 1 auto;
 }
 .celled.field.grid {
   height: 100vh;
@@ -243,4 +257,10 @@ body {
 }
 .pHand img{
   height: 200px;
+  max-width: 100%;
+  margin: auto;
+  padding: 0 1px;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 10px;*/
 }
