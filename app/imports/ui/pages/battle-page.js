@@ -21,14 +21,12 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
-  // while (Meteor.userId() === null);
   id = Meteor.user();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id);
     Meteor.subscribe('field', id._id, opponent._id);
   });
-  // Meteor.subscribe('naya');
-  Meteor.call('newGame', id._id);
+  // Meteor.call('newGame', id._id);
 });
 
 Template.Battle_Page.helpers({
@@ -64,6 +62,9 @@ Template.Battle_Page.events({
     if (window.confirm('Are you sure you want to leave this game?')) {
       FlowRouter.go('Home_Page');
     }
+  },
+  'click .redraw'() {
+    Meteor.call('mull', id._id);
   },
   'click .lands'() {
     card = event.target.getAttribute('src');
@@ -120,7 +121,6 @@ Template.Battle_Page.events({
                   <button class="ui button" onclick="Meteor.call('play', card._id)">Play</button>
                   <button class="ui button">Discard</button>
                 </div>
-              <!--<div class="ui inverted actionPlay button">Play</div>-->
             </div>`,
     }).popup('toggle');
   },

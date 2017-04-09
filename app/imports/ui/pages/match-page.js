@@ -58,6 +58,7 @@ Template.Match_Page.events({
           }) !== undefined) {
         Meteor.call('notify', id, selected);
         Meteor.call('cleanup', id._id);
+        Meteor.call('newGame', id._id);
         FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
       }
       else if (Requests.findOne({
@@ -67,6 +68,7 @@ Template.Match_Page.events({
                 }]
             }) !== undefined) {
         Meteor.call('cleanup', id._id);
+        Meteor.call('newGame', id._id);
         FlowRouter.go('Battle_Page', { _identifier: [selected._id, id._id].sort().join('+') });
         }
         else {
