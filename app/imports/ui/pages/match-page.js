@@ -37,7 +37,7 @@ Template.Match_Page.events({
     Session.set('chat', chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
-  'click .ui.button.mRequest'() {
+  'click .ui.button.mRequest'(event) {
     event.preventDefault();
     if (selected === 'Select a User' || selected === 'Please select a user') {
       document.getElementById('select').innerHTML = 'Please select a user';
@@ -46,7 +46,7 @@ Template.Match_Page.events({
       Meteor.call('request', id, selected);
     }
   },
-  'click .ui.button.accept'() {
+  'click .ui.button.accept'(event) {
     event.preventDefault();
     if (selected === 'Select a User' || selected === 'Please select a user') {
       document.getElementById('select').innerHTML = 'Please select a user';
@@ -105,20 +105,14 @@ function scrollToBottom() {
 }
 
 Template.Match_Page.onCreated(function () {
-  id = Meteor.user();
   chatSession = 'general';
   Session.set('chat', chatSession);
   selected = 'Select a user';
   Meteor.subscribe('userStatus');
   Meteor.subscribe('requests');
-  Meteor.autorun(function () {
-    Meteor.subscribe('messages', Session.get('chat'), {
-      onReady() {
-        return scrollToBottom();
-      },
-    });
-  });
-  // while (Meteor.userId() === null);
+  sessionStorage.removeItem('user');
+  id = Meteor.user();
+  sessionStorage.setItem('user', JSON.stringify(id));
 });
 
 Template.Match_Page.onRendered(function () {
@@ -126,6 +120,13 @@ Template.Match_Page.onRendered(function () {
   $('.ui.two.row.main.container').transition('slide down in', '0.4s');
   // document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
   document.getElementById('select').innerHTML = 'Select a User';
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'), {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
+  });
 });
 
 

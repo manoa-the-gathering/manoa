@@ -6,7 +6,7 @@ import { Field } from '../../api/field/field.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 let id;
-let opponent = JSON.parse(sessionStorage.getItem('opponent'));
+let opponent;
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
@@ -21,7 +21,9 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
-  id = Meteor.user();
+  // while (Meteor.userId() === undefined);
+  id = JSON.parse(sessionStorage.getItem('user'));
+  opponent = JSON.parse(sessionStorage.getItem('opponent'));
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id);
     Meteor.subscribe('field', id._id, opponent._id);
@@ -66,7 +68,7 @@ Template.Battle_Page.events({
   'click .redraw'() {
     Meteor.call('mull', id._id);
   },
-  'click .lands'() {
+  'click .lands'(event) {
     card = event.target.getAttribute('src');
     card = Hand.findOne({ path: card });
     $(event.target).popup({
@@ -84,7 +86,7 @@ Template.Battle_Page.events({
             </div>`,
     }).popup('toggle');
   },
-  'click .mons'() {
+  'click .mons'(event) {
     card = event.target.getAttribute('src');
     card = Hand.findOne({ path: card });
     $(event.target).popup({

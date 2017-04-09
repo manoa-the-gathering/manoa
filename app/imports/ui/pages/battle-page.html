@@ -35,51 +35,67 @@
         <div class="cntr row">
           <div class="three wide column">cardzoom</div>
           <div class="ten wide column">
-            <!--<div class="ui celled grid">-->
+            <div class="ui celled cards grid" style="margin: 0">
 
-              <!--&lt;!&ndash;opponent lands&ndash;&gt;-->
-              <!--<div class="opLand centered row">-->
-                <!--{{#each opLand}}-->
-                  <!--{{#if this.tap}}-->
-                    <!--<img class="land" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
-                  <!--{{else}}-->
-                    <!--<img class="land" src="{{this.path}}"/>-->
-                  <!--{{/if}}-->
-                <!--{{/each}}-->
-              <!--</div>-->
+              <!--opponent lands-->
+              <div class="opLand centered row">
+                {{#each opLand}}
+                  {{#if this.tap}}
+                    <span class="c">
+                    <img class="land" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                    </span>
+                  {{else}}
+                    <span class="c">
+                    <img class="land" src="{{this.path}}"/>
+                    </span>
+                  {{/if}}
+                {{/each}}
+              </div>
 
-              <!--&lt;!&ndash;opponent creatures&ndash;&gt;-->
-              <!--<div class="opMon centered row">-->
-                <!--{{#each opMon}}-->
-                  <!--{{#if this.tap}}-->
-                    <!--<img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
-                  <!--{{else}}-->
-                    <!--<img class="mon" src="{{this.path}}"/>-->
-                  <!--{{/if}}-->
-                <!--{{/each}}-->
-              <!--</div>-->
-              <!--&lt;!&ndash;player creatures&ndash;&gt;-->
-              <!--<div class="pMon centered row">-->
-                <!--{{#each pMon}}-->
-                  <!--{{#if this.tap}}-->
-                    <!--<img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
-                  <!--{{else}}-->
-                    <!--<img class="mons" src="{{this.path}}"/>-->
-                  <!--{{/if}}-->
-                <!--{{/each}}-->
-              <!--</div>-->
+              <!--opponent creatures-->
+              <div class="opMon centered row">
+                {{#each opMon}}
+                  {{#if this.tap}}
+                    <span class="c">
+                    <img class="mon" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                    </span>
+                  {{else}}
+                    <span class="c">
+                    <img class="mon" src="{{this.path}}"/>
+                    </span>
+                  {{/if}}
+                {{/each}}
+              </div>
+              <!--player creatures-->
+              <div class="pMon centered row">
+                {{#each pMon}}
+                  {{#if this.tap}}
+                    <span class="c">
+                    <img class="mons" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                    </span>
+                  {{else}}
+                    <span class="c">
+                    <img class="mons" src="{{this.path}}"/>
+                    </span>
+                  {{/if}}
+                {{/each}}
+              </div>
 
-              <!--&lt;!&ndash;player lands&ndash;&gt;-->
-              <!--<div class="pLand centered row">-->
-                <!--{{#each pLand}}-->
-                  <!--{{#if this.tap}}-->
-                    <!--<img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>-->
-                  <!--{{else}}-->
-                    <!--<img class="lands" src="{{this.path}}"/>-->
-                  <!--{{/if}}-->
-                <!--{{/each}}-->
-              <!--</div>-->
-            <!--</div>-->
+              <!--player lands-->
+              <div class="pLand centered row">
+                {{#each pLand}}
+                  {{#if this.tap}}
+                    <span class="c">
+                    <img class="lands" src="{{this.path}}" style="transform: rotate(90deg)"/>
+                    </span>
+                  {{else}}
+                    <span class="c">
+                    <img class="lands" src="{{this.path}}"/>
+                    </span>
+                  {{/if}}
+                {{/each}}
+              </div>
+            </div>
           </div>
           <div class="three wide column">chat</div>
         </div>
