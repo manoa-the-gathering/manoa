@@ -117,7 +117,7 @@ Template.Battle_Page.events({
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
                   <button class="ui button" onclick="Meteor.call('play', card._id)">Play</button>
-                  <button class="ui button">Discard</button>
+                  <button class="ui button" onclick="Meteor.call('discard', card._id)">Discard</button>
                 </div>
             </div>`,
     }).popup('toggle');

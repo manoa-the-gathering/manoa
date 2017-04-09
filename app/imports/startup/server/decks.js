@@ -471,6 +471,9 @@ Meteor.methods({
     Hand.update({ _id: cardId }, { $set: { location: 'field' } });
     Field.insert(Hand.findOne({ _id: cardId }));
   },
+  'discard'(cardId) {
+    Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
+  },
   'tap'(cardId) {
     Field.update({ _id: cardId }, { $set: { tap: true } });
   },
