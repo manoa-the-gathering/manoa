@@ -9,9 +9,20 @@ Meteor.publish('messages', function (identifier) {
   return Messages.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 50 });
 });
 
-Meteor.publish('duelmsg', function (identifier) {
+Meteor.publish('duelmsg', function (identifier, name1, name2) {
+  if (Dmsgs.find({ chat: identifier }).count() === 0) {
+    let rnd = Math.floor(Math.random() * 2);
+    if (rnd) { rnd = name2; }
+    if (!rnd) { rnd = name1; }
+    Dmsgs.insert({
+      messageText: `Welcome! ${rnd} will go first.`,
+      createdAt: new Date(),
+      username: 'MTG',
+      chat: identifier,
+    });
+  }
   return Dmsgs.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 50 });
-})
+});
 
 Meteor.methods({
   'sendMessage'(content, identifier) {
@@ -24,7 +35,6 @@ Meteor.methods({
     });
   },
   'sendDmsg'(content, identifier) {
-    /* add authentication here */
     Dmsgs.insert({
       messageText: content,
       createdAt: new Date(),

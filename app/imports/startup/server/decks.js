@@ -6,6 +6,7 @@ import { Mongo } from 'meteor/mongo';
 // import {_} from 'meteor/underscore';
 import { Hand } from '../../api/pHand/pHand.js';
 import { Field } from '../../api/field/field.js';
+import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 export const results = new Mongo.Collection('results');
 export const draws = new Mongo.Collection('draws');
@@ -480,9 +481,10 @@ Meteor.methods({
   'untap'(cardId) {
     Field.update({ _id: cardId }, { $set: { tap: false } });
   },
-  'quitGame'(userId) {
+  'quitGame'(userId, identifier) {
     Hand.remove({ player: userId });
     Field.remove({ player: userId });
+    Dmsgs.remove({ chat: identifier });
   },
   'mull'(userId) {
     Hand.update({ $and: [{ player: userId }, { location: 'hand' }] }, { $set: { location: 'deck' } }, { multi: true });

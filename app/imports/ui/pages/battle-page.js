@@ -36,7 +36,7 @@ Template.Battle_Page.onRendered(function () {
 
 Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
-  Meteor.call('quitGame', id._id);
+  Meteor.call('quitGame', id._id, identifier);
 });
 
 Template.Battle_Page.onCreated(function () {
@@ -46,7 +46,7 @@ Template.Battle_Page.onCreated(function () {
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
-    Meteor.subscribe('duelmsg', identifier);
+    Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
   });
 });
 
