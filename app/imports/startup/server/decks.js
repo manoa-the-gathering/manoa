@@ -424,8 +424,8 @@ const allCards = [
 //   return Naya.find();
 // });
 
-Meteor.publish('pHand', function (userId) {
-  return Hand.find({ player: userId });
+Meteor.publish('pHand', function (id1, id2) {
+  return Hand.find({ $or: [{ player: id1 }, { $and: [{ player: id2 }, { location: 'grave' }] }] });
 });
 
 Meteor.publish('field', function (id1, id2) {
