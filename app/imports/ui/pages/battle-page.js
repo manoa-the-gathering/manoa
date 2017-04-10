@@ -4,10 +4,12 @@ import { Template } from 'meteor/templating';
 import { Hand } from '../../api/pHand/pHand.js';
 import { Field } from '../../api/field/field.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Messages } from '../../api/msgs/msgs.js';
+// import { Messages } from '../../api/msgs/msgs.js';
+import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 let id;
 let opponent;
+let identifier;
 
 function scrollToBottom() {
   $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
@@ -17,13 +19,13 @@ Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
-  Meteor.autorun(function () {
-    Meteor.subscribe('messages', Session.get('chat'), {
-      onReady() {
-        return scrollToBottom();
-      },
-    });
-  });
+  // Meteor.autorun(function () {
+  //   Meteor.subscribe('duelmsg', Session.get('chat'), {
+  //     onReady() {
+  //       return scrollToBottom();
+  //     },
+  //   });
+  // });
   // console.log(JSON.parse(sessionStorage.getItem('opponent')));
 });
 
@@ -33,14 +35,18 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
-  // while (Meteor.userId() === undefined);
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
+  identifier = [id._id, opponent._id].sort().join();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
+    Meteor.subscribe('duelmsg', identifier, {
+      onReady() {
+        return scrollToBottom();
+      },
+    });
   });
-  // Meteor.call('newGame', id._id);
 });
 
 Template.Battle_Page.helpers({
@@ -69,7 +75,7 @@ Template.Battle_Page.helpers({
     return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
   },
   'recentMessages'() {
-    return Messages.find({}, { sort: { createdAt: 1 } });
+    return Dmsgs.find({}, { sort: { createdAt: 1 } });
   },
 
 });
@@ -155,5 +161,12 @@ Template.Battle_Page.events({
                 </div>
             </div>`,
     }).popup('toggle');
+  },
+  'submit .new-message'(event) {
+    event.preventDefault();
+    const text = event.target.text.value;
+    Meteor.call('sendDmsg', text, identifier);
+    scrollToBottom();
+    event.target.text.value = '';
   },
 });
