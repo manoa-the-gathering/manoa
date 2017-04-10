@@ -11,11 +11,6 @@ let identifier;
 let autoscroll;
 
 function scrollToBottom() {
-  // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
-  // let value = $('#chatbox').scrollHeight;
-  // console.log(value);
-  // value -= $('#chatbox').clientHeight;
-  // console.log(value);
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
@@ -174,20 +169,5 @@ Template.Battle_Page.events({
     Meteor.call('sendDmsg', text, identifier);
     scrollToBottom();
     event.target.text.value = '';
-  },
-  'click .checkbox'() {
-    // $('.ui.checked.checkbox')
-    //     .checkbox({
-    //       'onChecked'() {
-    //         autoscroll = Dmsgs.find().observeChanges({
-    //           'added'() {
-    //             scrollToBottom();
-    //           },
-    //         });
-    //       },
-    //       'onUnchecked'() {
-    //         autoscroll.stop() ;
-    //       },
-    //     });
   },
 });

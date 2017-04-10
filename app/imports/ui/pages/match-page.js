@@ -101,7 +101,8 @@ Template.Match_Page.helpers({
 });
 
 function scrollToBottom() {
-  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+  // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+  $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
 Template.Match_Page.onCreated(function () {
