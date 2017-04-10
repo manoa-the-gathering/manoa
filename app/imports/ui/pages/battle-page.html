@@ -104,7 +104,12 @@
             <div style="height: 50%; width: 100%; background: rgba(0,0,0,0.4)">
               <h2>Instant</h2>
               <img class="ui image" src="/images/card_back.png" style="height: 200px"/>
+              <div class="ui checkbox">
+                <input type="checkbox">
+                <label>Autoscroll Chat</label>
+              </div>
             </div>
+
             <div class="log" id="chatbox" style="height: 50%; width: 100%; overflow: auto; padding: 0 5px 35px;  border: 4px solid black;">
               <div class="ui list">
                 {{#each recentMessages}}

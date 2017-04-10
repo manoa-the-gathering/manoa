@@ -1,32 +1,42 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { Naya } from '../../api/naya/naya.js';
 import { Hand } from '../../api/pHand/pHand.js';
 import { Field } from '../../api/field/field.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { Messages } from '../../api/msgs/msgs.js';
 import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 let id;
 let opponent;
 let identifier;
+let autoscroll;
 
 function scrollToBottom() {
-  $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+  // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+  // let value = $('#chatbox').scrollHeight;
+  // console.log(value);
+  // value -= $('#chatbox').clientHeight;
+  // console.log(value);
+  $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
-  // Meteor.autorun(function () {
-  //   Meteor.subscribe('duelmsg', Session.get('chat'), {
-  //     onReady() {
-  //       return scrollToBottom();
-  //     },
-  //   });
-  // });
-  // console.log(JSON.parse(sessionStorage.getItem('opponent')));
+  $('.ui.checkbox')
+      .checkbox({
+        'onChecked'() {
+          autoscroll = Dmsgs.find().observeChanges({
+            'added'() {
+              scrollToBottom();
+            },
+          });
+        },
+        'onUnchecked'() {
+          autoscroll.stop() ;
+        },
+      });
+  $('.ui.checkbox').checkbox('check');
 });
 
 Template.Battle_Page.onDestroyed(function () {
@@ -41,11 +51,7 @@ Template.Battle_Page.onCreated(function () {
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
-    Meteor.subscribe('duelmsg', identifier, {
-      onReady() {
-        return scrollToBottom();
-      },
-    });
+    Meteor.subscribe('duelmsg', identifier);
   });
 });
 
@@ -168,5 +174,20 @@ Template.Battle_Page.events({
     Meteor.call('sendDmsg', text, identifier);
     scrollToBottom();
     event.target.text.value = '';
+  },
+  'click .checkbox'() {
+    // $('.ui.checked.checkbox')
+    //     .checkbox({
+    //       'onChecked'() {
+    //         autoscroll = Dmsgs.find().observeChanges({
+    //           'added'() {
+    //             scrollToBottom();
+    //           },
+    //         });
+    //       },
+    //       'onUnchecked'() {
+    //         autoscroll.stop() ;
+    //       },
+    //     });
   },
 });
