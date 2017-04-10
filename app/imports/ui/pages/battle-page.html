@@ -135,9 +135,9 @@
               <div class="ui hidden divider" style="margin: 0.5em 0"></div>
               <a href="#" class="content redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
                  data-position="top center">Mulligan</a>
-              <a href="#" class="content" style="color: black!important;" data-tooltip="View opponent graveyard"
-                 data-position="top center">O Graveyard</a>
-              <a href="#" class="content" style="color: black!important;" data-tooltip="View your graveyard"
+              <a href="#" class="content ograve" style="color: black!important;" data-tooltip="View opponent graveyard"
+                 data-position="top center">Graveyard</a>
+              <a href="#" class="content grave" style="color: black!important;" data-tooltip="View your graveyard"
                  data-position="top center">Graveyard</a>
               <!--<div class="ui hidden divider"></div>-->
               <div class="ui hidden divider" style="margin: 0.5em 0"></div>
@@ -162,6 +162,50 @@
         </div>
 
       </div>  <!--celled grid one-->
+
+      <div class="ui fullscreen grave modal">
+        <div class="ui icon header">
+          Graveyard
+        </div>
+        <div class="content" id="gy" style="width: 100%; overflow: hidden; white-space: nowrap">
+          <div class="content">
+            {{#each grave}}
+              <span>
+              <img class="card" src="{{this.path}}"/>
+              </span>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="actions">
+          <i class="black chevron left huge icon"
+             onclick="$('#gy').animate( { scrollLeft: '-=600px' }, 100)"></i>
+          <i class="black chevron right huge icon"
+             onclick="$('#gy').animate( { scrollLeft: '+=600px' }, 100)"></i>
+        </div>
+      </div>
+
+      <div class="ui fullscreen ograve modal">
+        <div class="ui icon header">
+          Opponent's Graveyard
+        </div>
+        <div class="content" id="gy2" style="width: 100%; overflow: hidden; white-space: nowrap">
+          <div class="content">
+            {{#each ograve}}
+              <span>
+              <img class="card" src="{{this.path}}"/>
+              </span>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="actions">
+          <i class="black chevron left huge icon"
+             onclick="$('#gy2').animate( { scrollLeft: '-=600px' }, 100)"></i>
+          <i class="black chevron right huge icon"
+             onclick="$('#gy2').animate( { scrollLeft: '+=600px' }, 100)"></i>
+        </div>
+      </div>
 
       <!--<div class="ui basic modal">-->
         <!--<div class="ui icon header">-->

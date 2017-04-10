@@ -37,7 +37,7 @@ Template.Battle_Page.onCreated(function () {
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
   Meteor.autorun(function () {
-    Meteor.subscribe('pHand', id._id);
+    Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
   });
   // Meteor.call('newGame', id._id);
@@ -49,6 +49,12 @@ Template.Battle_Page.helpers({
   // },
   'cardInHand'() {
     return Hand.find({ location: 'hand' });
+  },
+  'grave'() {
+    return Hand.find({ $and: [{ location: 'grave' }, { player: id._id }] });
+  },
+  'ograve'() {
+    return Hand.find({ $and: [{ location: 'grave' }, { player: opponent._id }] });
   },
   'pLand'() {
     return Field.find({ $and: [{ type: 'land' }, { player: id._id }] });
@@ -65,6 +71,7 @@ Template.Battle_Page.helpers({
   'recentMessages'() {
     return Messages.find({}, { sort: { createdAt: 1 } });
   },
+
 });
 
 Template.Battle_Page.events({
@@ -82,6 +89,16 @@ Template.Battle_Page.events({
   },
   'click .redraw'() {
     Meteor.call('mull', id._id);
+  },
+  'click .grave'() {
+    $('.ui.fullscreen.grave.modal')
+        .modal('setting')
+        .modal('show');
+  },
+  'click .ograve'() {
+    $('.ui.fullscreen.ograve.modal')
+        .modal('setting')
+        .modal('show');
   },
   'click .lands'(event) {
     card = event.target.getAttribute('src');
