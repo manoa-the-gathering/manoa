@@ -16,8 +16,8 @@ function scrollToBottom() {
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
-  document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
+  document.getElementById('name').innerHTML = id.profile.name;
   $('.ui.checkbox')
       .checkbox({
         'onChecked'() {
@@ -79,7 +79,7 @@ Template.Battle_Page.helpers({
     return Dmsgs.find({}, { sort: { createdAt: 1 } });
   },
   'spells'() {
-    return Field.find({ type: 'spell' }).fetch().reverse();
+    return Field.find({ type: 'spell' });
   },
 });
 
@@ -91,7 +91,11 @@ Template.Battle_Page.events({
     //     .modal('setting', 'closable', false)
     //     .modal('show');
   },
-  'click .leave'() {
+  'mouseover img'(event) {
+    card = event.target.getAttribute('src');
+    document.getElementById('zoom').innerHTML = `<img style="width: 100%" src="${card}"/>`;
+  },
+  'c,lick .leave'() {
     if (window.confirm('Are you sure you want to leave this game?')) {
       FlowRouter.go('Home_Page');
     }
