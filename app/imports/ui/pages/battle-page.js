@@ -91,7 +91,10 @@ Template.Battle_Page.events({
     //     .modal('setting', 'closable', false)
     //     .modal('show');
   },
-  'click .leave'() {
+  'mouseover img'() {
+
+  },
+  'c,lick .leave'() {
     if (window.confirm('Are you sure you want to leave this game?')) {
       FlowRouter.go('Home_Page');
     }
