@@ -10,6 +10,7 @@ import './if-logged-in.js';
 import './loading.html';
 import './app-body2.html';
 import './message.html';
+import './life.html';
 import './battlelayout.html';
 import './battlemenu.html';
 import './battlemenu.js';

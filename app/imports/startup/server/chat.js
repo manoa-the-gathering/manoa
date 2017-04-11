@@ -14,14 +14,41 @@ Meteor.publish('duelmsg', function (identifier, name1, name2) {
     let rnd = Math.floor(Math.random() * 2);
     if (rnd) rnd = name2;
     if (!rnd) rnd = name1;
-    Dmsgs.insert({
-      messageText: `Welcome! ${rnd} will go first.`,
-      createdAt: new Date(),
-      username: 'MTG',
-      chat: identifier,
-    });
+    Dmsgs.insert(
+      {
+        messageText: `Welcome! ${rnd} will go first.`,
+        createdAt: new Date(),
+        username: 'MTG',
+        chat: identifier,
+      });
+    // Dmsgs.insert(
+    //   {
+    //     player: name1,
+    //     life: '20',
+    //     createdAt: new Date(),
+    //     chat: identifier,
+    //   });
+    // Dmsgs.insert(
+    //   {
+    //     player: name2,
+    //     life: '20',
+    //     createdAt: new Date(),
+    //     chat: identifier,
+    //   });
+      // {
+      //   player: name1,
+      //   life: '20',
+      //   createdAt: new Date(),
+      //   chat: identifier,
+      // },
+      // {
+      //   player: name2,
+      //   life: '20',
+      //   createdAt: new Date(),
+      //   chat: identifier,
+      // },
   }
-  return Dmsgs.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 50 });
+  return Dmsgs.find({ chat: identifier }, { sort: { createdAt: -1 } });
 });
 
 Meteor.methods({
@@ -44,5 +71,14 @@ Meteor.methods({
   },
   'deleteAll'() {
     Messages.remove({});
+  },
+  'life'(id, num, identifier) {
+    Dmsgs.insert({
+      _id: id._id,
+      player: id.profile.name,
+      createdAt: new Date(),
+      chat: identifier,
+      life: num,
+    });
   },
 });
