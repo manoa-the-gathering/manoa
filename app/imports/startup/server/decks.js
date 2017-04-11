@@ -468,9 +468,10 @@ Meteor.methods({
         ]);
     Hand.update({ _id: draws.findOne()._id }, { $set: { location: 'hand' } });
   },
-  'play'(cardId) {
-    Hand.update({ _id: cardId }, { $set: { location: 'field' } });
-    Field.insert(Hand.findOne({ _id: cardId }));
+  'play'(card) {
+    if (card.type === 'spell') Hand.update({ _id: card._id }, { $set: { location: 'grave' } });
+    else Hand.update({ _id: card._id }, { $set: { location: 'field' } });
+    Field.insert(card);
   },
   'discard'(cardId) {
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
@@ -485,6 +486,9 @@ Meteor.methods({
     Hand.remove({ player: userId });
     Field.remove({ player: userId });
     Dmsgs.remove({ chat: identifier });
+  },
+  'dismiss'(cardId) {
+    Field.remove({ _id: cardId });
   },
   'mull'(userId) {
     Hand.update({ $and: [{ player: userId }, { location: 'hand' }] }, { $set: { location: 'deck' } }, { multi: true });

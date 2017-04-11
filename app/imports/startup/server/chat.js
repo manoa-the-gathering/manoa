@@ -12,8 +12,8 @@ Meteor.publish('messages', function (identifier) {
 Meteor.publish('duelmsg', function (identifier, name1, name2) {
   if (Dmsgs.find({ chat: identifier }).count() === 0) {
     let rnd = Math.floor(Math.random() * 2);
-    if (rnd) { rnd = name2; }
-    if (!rnd) { rnd = name1; }
+    if (rnd) rnd = name2;
+    if (!rnd) rnd = name1;
     Dmsgs.insert({
       messageText: `Welcome! ${rnd} will go first.`,
       createdAt: new Date(),

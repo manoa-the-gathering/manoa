@@ -78,7 +78,9 @@ Template.Battle_Page.helpers({
   'recentMessages'() {
     return Dmsgs.find({}, { sort: { createdAt: 1 } });
   },
-
+  'spells'() {
+    return Field.find({ type: 'spell' }).fetch().reverse();
+  },
 });
 
 Template.Battle_Page.events({
@@ -145,7 +147,7 @@ Template.Battle_Page.events({
   },
   'click .card'(event) {
     card = event.target.getAttribute('src');
-    card = Hand.findOne({ path: card });
+    card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
       // title: 'Popup Title',
       // title: `${card.card}`,
@@ -157,11 +159,30 @@ Template.Battle_Page.events({
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
-                  <button class="ui button" onclick="Meteor.call('play', card._id)">Play</button>
+                  <button class="ui button" onclick="Meteor.call('play', card)">Play</button>
                   <button class="ui button" onclick="Meteor.call('discard', card._id)">Discard</button>
                 </div>
             </div>`,
     }).popup('toggle');
+  },
+  'click .spells'(event) {
+    card = event.target.getAttribute('src');
+    card = Field.findOne({ $and: [{ path: card }, { player: opponent._id }] });
+    if (card !== undefined) {
+      $(event.target).popup({
+        hoverable: false,
+        on: 'click',
+        position: 'left center',
+        variation: 'basic inverted',
+        html: `<div class="ui one column center aligned grid">
+              <div class="column">
+                <h4 class="ui header">${card.card}</h4>
+                <div class="ui vertical basic inverted buttons">
+                  <button class="ui button" onclick="Meteor.call('dismiss', card._id)">Dismiss</button>
+                </div>
+            </div>`,
+      }).popup('toggle');
+    }
   },
   'submit .new-message'(event) {
     event.preventDefault();
