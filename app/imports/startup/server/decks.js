@@ -490,6 +490,9 @@ Meteor.methods({
   'dismiss'(cardId) {
     Field.remove({ _id: cardId });
   },
+  'untapper'(id) {
+    Field.update({ player: id }, { $set: { tap: false } }, { multi: true });
+  },
   'mull'(userId) {
     Hand.update({ $and: [{ player: userId }, { location: 'hand' }] }, { $set: { location: 'deck' } }, { multi: true });
   },

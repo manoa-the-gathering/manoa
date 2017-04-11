@@ -184,6 +184,9 @@ Template.Battle_Page.events({
       }).popup('toggle');
     }
   },
+  'click .untp'() {
+    Meteor.call('untapper', id._id);
+  },
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
