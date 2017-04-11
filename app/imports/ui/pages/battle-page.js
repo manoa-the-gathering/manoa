@@ -16,8 +16,8 @@ function scrollToBottom() {
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
-  document.getElementById('name').innerHTML = id.profile.name;
   document.getElementById('opponent').innerHTML = opponent.profile.name;
+  document.getElementById('name').innerHTML = id.profile.name;
   $('.ui.checkbox')
       .checkbox({
         'onChecked'() {
@@ -79,7 +79,7 @@ Template.Battle_Page.helpers({
     return Dmsgs.find({}, { sort: { createdAt: 1 } });
   },
   'spells'() {
-    return Field.find({ type: 'spell' }).fetch().reverse();
+    return Field.find({ type: 'spell' });
   },
 });
 
