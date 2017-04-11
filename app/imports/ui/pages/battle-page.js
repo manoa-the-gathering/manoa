@@ -91,8 +91,9 @@ Template.Battle_Page.events({
     //     .modal('setting', 'closable', false)
     //     .modal('show');
   },
-  'mouseover img'() {
-
+  'mouseover img'(event) {
+    card = event.target.getAttribute('src');
+    document.getElementById('zoom').innerHTML = `<img style="width: 100%" src="${card}"/>`;
   },
   'c,lick .leave'() {
     if (window.confirm('Are you sure you want to leave this game?')) {
