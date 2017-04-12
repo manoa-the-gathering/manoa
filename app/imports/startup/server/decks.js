@@ -502,8 +502,8 @@ Meteor.methods({
     // console.log(num);
     Dmsgs.update({ _id: id }, { $set: { hand: num } });
   },
-  // 'odeck'(id) {
-  //   const num = Hand.find({ $and: [{ player: id._id }, { location: 'deck' }] }).count();
-  //   console.log(num);
-  // },
+  'sac'(cardId) {
+    Field.remove({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
+  },
 });

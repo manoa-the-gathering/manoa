@@ -131,7 +131,11 @@ Template.Battle_Page.events({
     }
   },
   'click .redraw'() {
+    Meteor.call('mullnotify', id.profile.name, identifier);
     Meteor.call('mull', id._id);
+  },
+  'click .end'() {
+    Meteor.call('end', id.profile.name, identifier);
   },
   'click .grave'() {
     $('.ui.fullscreen.grave.modal')
@@ -157,7 +161,8 @@ Template.Battle_Page.events({
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
                   <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
-                  <button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>
+                  <button class="ui button" onclick="Meteor.call('sac', card._id)">Sacrifice</button>
+                  <!--<button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>-->
                 </div>
             </div>`,
     }).popup('toggle');

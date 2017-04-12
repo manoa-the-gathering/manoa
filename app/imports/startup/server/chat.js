@@ -13,9 +13,8 @@ Meteor.publish('duelmsg', function (identifier, name1, name2) {
     if (!rnd) rnd = name1;
     Dmsgs.insert(
       {
-        messageText: `Welcome! ${rnd} will go first.`,
+        server: `Welcome! ${rnd} will go first.`,
         createdAt: new Date(),
-        username: 'MTG',
         chat: identifier,
       });
   }
@@ -60,5 +59,19 @@ Meteor.methods({
   'min'(id) {
     const z = Dmsgs.findOne({ _id: id }).life;
     Dmsgs.update({ _id: id }, { $set: { life: z - 1 } });
+  },
+  'mullnotify'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} chose to mulligan.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
+  'end'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} has ended their turn.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
   },
 });
