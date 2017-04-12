@@ -1,6 +1,3 @@
-/**
- * Created by irene on 11/14/16.
- */
 import { Meteor } from 'meteor/meteor';
 import { Messages } from '../../api/msgs/msgs.js';
 import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
@@ -21,32 +18,6 @@ Meteor.publish('duelmsg', function (identifier, name1, name2) {
         username: 'MTG',
         chat: identifier,
       });
-    // Dmsgs.insert(
-    //   {
-    //     player: name1,
-    //     life: '20',
-    //     createdAt: new Date(),
-    //     chat: identifier,
-    //   });
-    // Dmsgs.insert(
-    //   {
-    //     player: name2,
-    //     life: '20',
-    //     createdAt: new Date(),
-    //     chat: identifier,
-    //   });
-      // {
-      //   player: name1,
-      //   life: '20',
-      //   createdAt: new Date(),
-      //   chat: identifier,
-      // },
-      // {
-      //   player: name2,
-      //   life: '20',
-      //   createdAt: new Date(),
-      //   chat: identifier,
-      // },
   }
   return Dmsgs.find({ chat: identifier }, { sort: { createdAt: -1 } });
 });
