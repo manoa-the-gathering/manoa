@@ -498,7 +498,7 @@ Meteor.methods({
   },
   'update'(id) {
     const num = Hand.find({ $and: [{ player: id }, { location: 'hand' }] }).count();
-    console.log(num);
+    // console.log(num);
     Dmsgs.update({ _id: id }, { $set: { hand: num } });
   },
 });
