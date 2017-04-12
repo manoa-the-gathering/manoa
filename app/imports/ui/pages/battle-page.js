@@ -145,7 +145,8 @@ Template.Battle_Page.events({
   },
   'click .lands'(event) {
     card = event.target.getAttribute('src');
-    card = Hand.findOne({ path: card });
+    // card = Hand.findOne({ path: card });
+    card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
       hoverable: false,
       on: 'click',
@@ -163,7 +164,8 @@ Template.Battle_Page.events({
   },
   'click .mons'(event) {
     card = event.target.getAttribute('src');
-    card = Hand.findOne({ path: card });
+    // card = Hand.findOne({ path: card });
+    card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
       hoverable: false,
       on: 'click',
