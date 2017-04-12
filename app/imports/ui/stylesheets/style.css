@@ -263,7 +263,7 @@ body {
   background: rgba(0,0,0,0.2);
   overflow: hidden;
 }
-.pHand img{
+.pHand img, .opHand img{
   height: 200px;
   max-width: 100%;
   margin: auto;

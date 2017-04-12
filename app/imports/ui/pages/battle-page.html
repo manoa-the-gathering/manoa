@@ -21,21 +21,21 @@
           </div>
 
           <div class="eleven wide column" style="margin: 0 auto">
-
+            <!--<div class="ui centered small images">-->
+              {{#each olife}}
+                {{#each loop this.hand}}
+                  <span>
+                  <img src="/images/card_back.png"/>
+                  </span>
+                {{/each}}
+              {{/each}}
+            <!--</div>-->
           </div>
           <div class="two wide deck column">
             <img class="ui image" src="/images/card_back.png" style="height: 200px"/>
+            <div style="position: absolute; font-size: 2vw; bottom: 20px; transform: rotate(180deg)">{{odeckcounter}}</div>
           </div>
 
-          <!--<div class="ui centered small images">-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--<img src="/images/card_back.png"/>-->
-          <!--</div>-->
         </div>
         <div class="cntr row">
 
@@ -183,6 +183,7 @@
           <div class="two wide deck column" data-tooltip="Draw Card" data-position="left center" data-inverted=""
                style="margin: auto">
             <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
+            <div style="position: absolute; font-size: 3vw; bottom: 100px">{{deckcounter}}</div>
           </div>
         </div>
 
