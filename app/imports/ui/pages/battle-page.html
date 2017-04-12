@@ -5,9 +5,14 @@
     <div class="centered row">
       <div class="ui celled field grid">
         <!--opponent hand-->
-        <div class="opHand row">
-          <div class="one wide column">
-            <p id="opponent"></p>
+        <div class="opHand row" style="background: rgba(0,0,0,0.2)">
+          <div class="three wide column">
+            <!--<p id="opponent"></p>-->
+            <div style="transform: rotate(180deg); font-size: 2vw; padding-top: 25px">
+              {{#each olife}}
+                {{>Life}}
+              {{/each}}
+            </div>
             <!--<div class="ui icon header">-->
             <!--<div class="ui hidden divider"></div>-->
             <!--<i class="user icon"></i>-->
@@ -15,7 +20,7 @@
             <!--</div>-->
           </div>
 
-          <div class="thirteen wide column" style="margin: 0 auto">
+          <div class="eleven wide column" style="margin: 0 auto">
 
           </div>
           <div class="two wide deck column">
@@ -35,7 +40,7 @@
         <div class="cntr row">
 
           <div class="three wide column">
-            <div class="c" id="zoom" style="height: 100%; margin: auto 0">
+            <div class="c" id="zoom" style="height: 100%; margin: auto 0; box-sizing: content-box">
             <!--<img style="width: 100%" src="/images/card_back.png"/>-->
             </div>
           </div>
@@ -142,27 +147,32 @@
 
         <!--player hand-->
         <div class="pSide centered row">
-          <div class="two wide column">
-            <div class="ui icon header">
-              <!--<div class="ui hidden divider"></div>-->
-              <i class="user icon"></i>
-              <div class="content" id="name" style="color: black!important;"></div>
-              <div class="ui hidden divider" style="margin: 0.5em 0"></div>
-              <a href="#" class="content redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
-                 data-position="top center">Mulligan</a>
-              <a href="#" class="content ograve" style="color: black!important;" data-tooltip="View opponent graveyard"
-                 data-position="top center">Graveyard</a>
-              <a href="#" class="content grave" style="color: black!important;" data-tooltip="View your graveyard"
-                 data-position="top center">Graveyard</a>
-              <!--<div class="ui hidden divider"></div>-->
-              <div class="ui hidden divider" style="margin: 0.5em 0"></div>
-              <a href="#" class="content leave" style="color: black!important;" data-tooltip="Quit Game"
-                 data-position="top center">Leave</a>
+          <div class="three wide info column">
+            <div style="width: 100%;margin: auto; font-size: 1vw">
+              <div class="ui icon header">
+                <!--<div class="ui hidden divider"></div>-->
+                <i class="user icon"></i>
+                {{#each life}}
+                  {{>Life}}
+                {{/each}}
+              </div>
+              <div><i class="big plus square outline icon"></i><i class="big minus square outline icon"></i></div>
+            </div>
+              <!--<div class="content" id="name" style="color: black!important;"></div>-->
+              <div style="width: 100%;line-height: 1.4em; margin: auto; font-size: 1.4vw; font-weight: bold">
+              <a href="#" class="redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
+                 data-position="top center" data-inverted="">Mulligan</a><br/>
+              <a href="#" class="ograve" style="color: black!important;" data-tooltip="View opponent graveyard"
+                 data-position="top center" data-inverted="">Graveyard</a><br/>
+              <a href="#" class="grave" style="color: black!important;" data-tooltip="View your graveyard"
+                 data-position="top center" data-inverted="">Graveyard</a><br/>
+              <a href="#" class="leave" style="color: black!important;" data-tooltip="Quit Game"
+                 data-position="top center" data-inverted="">Leave</a>
             </div>
 
           </div>
 
-          <div class="twelve wide pHand column" style="margin: auto">
+          <div class="eleven wide pHand column" style="margin: auto">
             {{#each cardInHand}}
               <span>
               <img class="card" src="{{this.path}}"/>
@@ -170,7 +180,7 @@
             {{/each}}
           </div>
 
-          <div class="two wide deck column" data-tooltip="Draw Card" data-position="top center" data-inverted=""
+          <div class="two wide deck column" data-tooltip="Draw Card" data-position="left center" data-inverted=""
                style="margin: auto">
             <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
           </div>

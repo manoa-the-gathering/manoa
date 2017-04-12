@@ -256,15 +256,16 @@ body {
   height: calc(100%/4);
 }
 .cntr {
-  height: calc(100% - 288px);
+  height: calc(100% - 265px);
 }
 .pSide {
   text-align: center;
   background: rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 .pHand img{
   height: 200px;
   max-width: 100%;
   margin: auto;
-  padding: 0 1px;
+  padding: 1px;
 }
