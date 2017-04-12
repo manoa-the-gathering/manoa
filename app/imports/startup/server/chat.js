@@ -81,4 +81,12 @@ Meteor.methods({
       life: num,
     });
   },
+  'add'(id) {
+    const z = Dmsgs.findOne({ _id: id }).life;
+    Dmsgs.update({ _id: id }, { $set: { life: z + 1 } });
+  },
+  'min'(id) {
+    const z = Dmsgs.findOne({ _id: id }).life;
+    Dmsgs.update({ _id: id }, { $set: { life: z - 1 } });
+  },
 });

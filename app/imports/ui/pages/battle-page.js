@@ -195,6 +195,12 @@ Template.Battle_Page.events({
       }).popup('toggle');
     }
   },
+  'click .plus'() {
+    Meteor.call('add', id._id);
+  },
+  'click .minus'() {
+    Meteor.call('min', id._id);
+  },
   'click .untp'() {
     Meteor.call('untapper', id._id);
   },
