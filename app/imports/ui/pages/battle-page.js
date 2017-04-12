@@ -74,6 +74,9 @@ Template.Battle_Page.helpers({
   'ograve'() {
     return Hand.find({ $and: [{ location: 'grave' }, { player: opponent._id }] });
   },
+  'fLand'() {
+    return Hand.find({ $and: [{ location: 'deck' }, { player: id._id }, { type: 'land' }] });
+  },
   'pLand'() {
     return Field.find({ $and: [{ type: 'land' }, { player: id._id }] });
   },
@@ -110,6 +113,11 @@ Template.Battle_Page.helpers({
   },
   'odeckcounter'() {
     return Hand.find({ $and: [{ player: opponent._id }, { location: 'deck' }] }).count();
+  },
+  'fetcher'(cardP) {
+    console.log('clicked');
+    // card = event.target.getAttribute('src');
+    // Meteor.call('fetch', id._id, card);
   },
 });
 
@@ -234,6 +242,17 @@ Template.Battle_Page.events({
   'click .untp'() {
     Meteor.call('untapper', id._id);
   },
+  'click .fetch'() {
+    Meteor.call('fetchnot', id.profile.name, identifier);
+    $('.ui.fullscreen.fetchin.modal')
+        .modal('setting')
+        .modal('show');
+  },
+  // 'click .fland img'(event) {
+  //   console.log('clicked');
+  //   card = event.target.getAttribute('src');
+  //   Meteor.call('fetch', id._id, card);
+  // },
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;

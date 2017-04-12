@@ -506,4 +506,9 @@ Meteor.methods({
     Field.remove({ _id: cardId });
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
   },
+  'fetch'(card) {
+    console.log('fetch');
+    Hand.update({ _id: card._id }, { $set: { location: 'field' } });
+    Field.insert(card);
+  },
 });

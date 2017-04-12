@@ -74,4 +74,11 @@ Meteor.methods({
       chat: identifier,
     });
   },
+  'fetchnot'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} is fetching.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
 });
