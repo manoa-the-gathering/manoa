@@ -426,7 +426,8 @@ const allCards = [
 // });
 
 Meteor.publish('pHand', function (id1, id2) {
-  return Hand.find({ $or: [{ player: id1 }, { $and: [{ player: id2 }, { location: 'grave' }] }] });
+  // return Hand.find({ $or: [{ player: id1 }, { $and: [{ player: id2 }, { location: 'grave' }] }] });
+  return Hand.find({ $or: [{ player: id1 }, { player: id2 }] });
 });
 
 Meteor.publish('field', function (id1, id2) {
@@ -501,4 +502,8 @@ Meteor.methods({
     // console.log(num);
     Dmsgs.update({ _id: id }, { $set: { hand: num } });
   },
+  // 'odeck'(id) {
+  //   const num = Hand.find({ $and: [{ player: id._id }, { location: 'deck' }] }).count();
+  //   console.log(num);
+  // },
 });

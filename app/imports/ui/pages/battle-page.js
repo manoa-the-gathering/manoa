@@ -65,7 +65,8 @@ Template.Battle_Page.helpers({
   //   return Naya.find();
   // },
   'cardInHand'() {
-    return Hand.find({ location: 'hand' });
+    return Hand.find({ $and: [{ location: 'hand' }, { player: id._id }] });
+    // return Hand.find({ location: 'hand' });
   },
   'grave'() {
     return Hand.find({ $and: [{ location: 'grave' }, { player: id._id }] });
@@ -106,6 +107,9 @@ Template.Battle_Page.helpers({
   },
   'deckcounter'() {
     return Hand.find({ $and: [{ player: id._id }, { location: 'deck' }] }).count();
+  },
+  'odeckcounter'() {
+    return Hand.find({ $and: [{ player: opponent._id }, { location: 'deck' }] }).count();
   },
 });
 
