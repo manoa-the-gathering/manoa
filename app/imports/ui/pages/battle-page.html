@@ -245,8 +245,8 @@
           <div class="content">
             {{#each fLand}}
               <!--<img src="{{this.path}}" onclick="console.log(this.getAttribute('src'))"/>-->
-              <img src="{{this.path}}" class="{{this.player}}"
-                   onclick="Meteor.call('fetch', this.getAttribute('src'), this.getAttribute('class'))"/>
+              <img src="{{this.path}}" class="{{this._id}}" onclick="
+             Meteor.call('fetch', this.getAttribute('class'));$('.ui.fullscreen.fetchin.modal').modal('hide')"/>
             {{/each}}
           </div>
         </div>

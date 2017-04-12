@@ -15,6 +15,10 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
+function fetcher(cardP) {
+  console.log('fethcer');
+  // const card = Hand.findOne({ path: cardP })
+}
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   // document.getElementById('opponent').innerHTML = opponent.profile.name;

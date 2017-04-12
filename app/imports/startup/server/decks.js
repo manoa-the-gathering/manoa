@@ -506,10 +506,9 @@ Meteor.methods({
     Field.remove({ _id: cardId });
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
   },
-  'fetch'(cardP, id) {
-    // console.log('fetch');
-    const card = Hand.find({ $and: [{ player: id }, { location: 'deck' }, { path: cardP }] });
-    Hand.update({ _id: card._id }, { $set: { location: 'field' } });
+  'fetch'(cardId) {
+    const card = Hand.findOne({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'field' } });
     Field.insert(card);
   },
 });
