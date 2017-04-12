@@ -33,7 +33,6 @@ Template.Battle_Page.onRendered(function () {
         },
       });
   $('.ui.checkbox').checkbox('check');
-  Meteor.call('life', id, 20, identifier);
   handcount = Hand.find({ location: 'hand' }).observeChanges({
     'added'() {
       Meteor.call('update', id._id);
@@ -42,6 +41,17 @@ Template.Battle_Page.onRendered(function () {
       Meteor.call('update', id._id);
     },
   });
+  // $('.ui.fullscreen.fetchin.modal')
+  //     .modal({
+  //       onDeny    : function(){
+  //         window.alert('Wait not yet!');
+  //         return false;
+  //       },
+  //       onApprove : function() {
+  //         window.alert('Approved!');
+  //       },
+  //     });
+  Meteor.call('life', id, 20, identifier);
 });
 
 Template.Battle_Page.onDestroyed(function () {
@@ -113,11 +123,6 @@ Template.Battle_Page.helpers({
   },
   'odeckcounter'() {
     return Hand.find({ $and: [{ player: opponent._id }, { location: 'deck' }] }).count();
-  },
-  'fetcher'(cardP) {
-    console.log('clicked');
-    // card = event.target.getAttribute('src');
-    // Meteor.call('fetch', id._id, card);
   },
 });
 
@@ -244,9 +249,7 @@ Template.Battle_Page.events({
   },
   'click .fetch'() {
     Meteor.call('fetchnot', id.profile.name, identifier);
-    $('.ui.fullscreen.fetchin.modal')
-        .modal('setting')
-        .modal('show');
+    $('.ui.fullscreen.fetchin.modal').modal('show');
   },
   // 'click .fland img'(event) {
   //   console.log('clicked');

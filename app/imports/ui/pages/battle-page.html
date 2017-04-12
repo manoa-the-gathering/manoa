@@ -244,9 +244,9 @@
         <div class="content" id="gy3" style="width: 100%; overflow: hidden; white-space: nowrap">
           <div class="content">
             {{#each fLand}}
-              <span>
-              <img src="{{this.path}}" onclick="{{fetcher this.path}}"/>
-              </span>
+              <!--<img src="{{this.path}}" onclick="console.log(this.getAttribute('src'))"/>-->
+              <img src="{{this.path}}" class="{{this.player}}"
+                   onclick="Meteor.call('fetch', this.getAttribute('src'), this.getAttribute('class'))"/>
             {{/each}}
           </div>
         </div>
