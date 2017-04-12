@@ -104,11 +104,9 @@ Template.Battle_Page.helpers({
     }
     return array;
   },
-  // 'handcount'() {
-  //   let num = [];
-  //   num[Dmsgs.findOne({ player: opponent.profile.name }).hand - 1] = 'undefined';
-  //   return num;
-  // },
+  'deckcounter'() {
+    return Hand.find({ $and: [{ player: id._id }, { location: 'deck' }] }).count();
+  },
 });
 
 Template.Battle_Page.events({
