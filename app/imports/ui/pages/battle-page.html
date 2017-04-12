@@ -21,7 +21,13 @@
           </div>
 
           <div class="eleven wide column" style="margin: 0 auto">
-
+            <div class="ui centered small images">
+              {{#each olife}}
+                {{#each loop this.hand}}
+                  <img src="/images/card_back.png"/>
+                {{/each}}
+              {{/each}}
+            </div>
           </div>
           <div class="two wide deck column">
             <img class="ui image" src="/images/card_back.png" style="height: 200px"/>

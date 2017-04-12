@@ -496,4 +496,9 @@ Meteor.methods({
   'mull'(userId) {
     Hand.update({ $and: [{ player: userId }, { location: 'hand' }] }, { $set: { location: 'deck' } }, { multi: true });
   },
+  'update'(id) {
+    const num = Hand.find({ $and: [{ player: id }, { location: 'hand' }] }).count();
+    console.log(num);
+    Dmsgs.update({ _id: id }, { $set: { hand: num } });
+  },
 });

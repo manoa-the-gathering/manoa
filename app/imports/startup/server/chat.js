@@ -32,11 +32,11 @@ Meteor.methods({
       chat: identifier,
     });
   },
-  'sendDmsg'(content, identifier) {
+  'sendDmsg'(id, content, identifier) {
     Dmsgs.insert({
       messageText: content,
       createdAt: new Date(),
-      username: Meteor.user(),
+      username: id,
       chat: identifier,
     });
   },
@@ -50,6 +50,7 @@ Meteor.methods({
       createdAt: new Date(),
       chat: identifier,
       life: num,
+      hand: 0,
     });
   },
   'add'(id) {

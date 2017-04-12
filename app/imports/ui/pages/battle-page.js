@@ -9,6 +9,7 @@ let id;
 let opponent;
 let identifier;
 let autoscroll;
+let handcount;
 
 function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
@@ -33,6 +34,14 @@ Template.Battle_Page.onRendered(function () {
       });
   $('.ui.checkbox').checkbox('check');
   Meteor.call('life', id, 20, identifier);
+  handcount = Hand.find({ location: 'hand' }).observeChanges({
+    'added'() {
+      Meteor.call('update', id._id);
+    },
+    'removed'() {
+      Meteor.call('update', id._id);
+    },
+  });
 });
 
 Template.Battle_Page.onDestroyed(function () {
@@ -88,6 +97,18 @@ Template.Battle_Page.helpers({
   'life'() {
     return Dmsgs.find({ player: id.profile.name });
   },
+  'loop'(amount) {
+    const array = [];
+    for (let i = 0; i < amount; i++) {
+      array.push(i);
+    }
+    return array;
+  },
+  // 'handcount'() {
+  //   let num = [];
+  //   num[Dmsgs.findOne({ player: opponent.profile.name }).hand - 1] = 'undefined';
+  //   return num;
+  // },
 });
 
 Template.Battle_Page.events({
@@ -207,7 +228,7 @@ Template.Battle_Page.events({
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
-    Meteor.call('sendDmsg', text, identifier);
+    Meteor.call('sendDmsg', id, text, identifier);
     scrollToBottom();
     event.target.text.value = '';
   },
