@@ -42,6 +42,7 @@ Template.Battle_Page.onRendered(function () {
       });
   $('.ui.checkbox').checkbox('check');
   Meteor.call('life', id, 20);
+  $('.ui.checkbox').checkbox('check');
 });
 
 Template.Battle_Page.onDestroyed(function () {
@@ -127,6 +128,16 @@ Template.Battle_Page.events({
     //     .modal('setting', 'closable', false)
     //     .modal('show');
   },
+  'click .lightning'() {
+    if (!atk) {
+      atk = 1;
+      $('.lightning').addClass('red');
+    }
+    else {
+      atk = 0;
+      $('.lightning').removeClass('red');
+    }
+  },
   'mouseover img'(event) {
     const card = event.target.getAttribute('src');
     document.getElementById('zoom').innerHTML = `<img style="width: 100%" src="${card}"/>`;
@@ -192,12 +203,13 @@ Template.Battle_Page.events({
     let card = event.target.getAttribute('src');
     // card = Hand.findOne({ path: card });
     card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
-    $(event.target).popup({
-      hoverable: false,
-      on: 'click',
-      position: 'right center',
-      variation: 'basic inverted',
-      html: `<div class="ui one column center aligned grid">
+    if (!atk) {
+      $(event.target).popup({
+        hoverable: false,
+        on: 'click',
+        position: 'right center',
+        variation: 'basic inverted',
+        html: `<div class="ui one column center aligned grid">
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
@@ -205,13 +217,43 @@ Template.Battle_Page.events({
                   <button class="ui utp button">Untap</button>
                 </div>
             </div>`,
-    }).popup('toggle');
-    $('.ui.tp.button').click(function () {
-      Meteor.call('tap', card._id);
-    });
-    $('.ui.utp.button').click(function () {
-      Meteor.call('untap', card._id);
-    });
+      }).popup('toggle');
+      $('.ui.tp.button').click(function () {
+        Meteor.call('tap', card._id);
+      });
+      $('.ui.utp.button').click(function () {
+        Meteor.call('untap', card._id);
+      });
+    }
+    else {
+      $(event.target).popup({
+        hoverable: false,
+        on: 'click',
+        position: 'right center',
+        variation: 'basic inverted',
+        html: `<div class="ui one column center aligned grid">
+              <div class="column">
+                <h4 class="ui header">${card.card}</h4>
+                <div class="ui vertical basic inverted buttons">
+                  <button class="ui atk button">Attack</button>
+                  <button class="ui blk button">Block</button>
+                  <button class="ui die button">Die</button>
+                </div>
+            </div>`,
+      }).popup('toggle');
+      $('.ui.atk.button').click(function () {
+          Meteor.call('tap', card._id);
+          Meteor.call('atknot', card.card, id._id);
+      });
+      $('.ui.blk.button').click(function () {
+        Meteor.call('tap', card._id);
+        Meteor.call('blknot', card.card, id._id);
+      });
+      $('.ui.die.button').click(function () {
+        Meteor.call('sac', card._id);
+        Meteor.call('dienot', card.card, id._id);
+      });
+    }
   },
   'click .card'(event) {
     let card = event.target.getAttribute('src');

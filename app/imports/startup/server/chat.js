@@ -81,6 +81,27 @@ Meteor.methods({
       chat: identifier,
     });
   },
+  'atknot'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} attacks!`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
+  'blknot'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} blocks.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
+  'dienot'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} dies.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
   'chosen'(card, identifier) {
     Dmsgs.insert({
       server: `${card} has been chosen.`,
