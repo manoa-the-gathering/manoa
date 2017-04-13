@@ -484,6 +484,11 @@ Meteor.methods({
   'untap'(cardId) {
     Field.update({ _id: cardId }, { $set: { tap: false } });
   },
+  'exile'(cardId) {
+    const pick = Hand.findOne({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'exile' } });
+    Meteor.call('exiled', pick.card, pick.player);
+  },
   'quitGame'(userId) {
     Hand.remove({ player: userId });
     Field.remove({ player: userId });

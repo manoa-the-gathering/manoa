@@ -102,6 +102,13 @@ Meteor.methods({
       chat: identifier,
     });
   },
+  'exiled'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} has been exiled.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
   'chosen'(card, identifier) {
     Dmsgs.insert({
       server: `${card} has been chosen.`,

@@ -198,13 +198,15 @@
 
       <div class="ui fullscreen grave modal">
         <div class="ui icon header">
-          Graveyard
+          Graveyard. Select cards to exile for card effects.
         </div>
         <div class="content" id="gy" style="width: 100%; overflow: hidden; white-space: nowrap">
           <div class="content">
             {{#each grave}}
               <span>
-              <img class="card" src="{{this.path}}"/>
+              <!--<img class="card" src="{{this.path}}"/>-->
+                <img src="{{this.path}}" class="{{this._id}}" onclick="
+             Meteor.call('exile', this.getAttribute('class'));$('.ui.fullscreen.grave.modal').modal('hide')"/>
               </span>
             {{/each}}
           </div>
