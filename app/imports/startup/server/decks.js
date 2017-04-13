@@ -483,10 +483,10 @@ Meteor.methods({
   'untap'(cardId) {
     Field.update({ _id: cardId }, { $set: { tap: false } });
   },
-  'quitGame'(userId, identifier) {
+  'quitGame'(userId) {
     Hand.remove({ player: userId });
     Field.remove({ player: userId });
-    Dmsgs.remove({ chat: identifier });
+    Dmsgs.remove({ chat: userId });
   },
   'dismiss'(cardId) {
     Field.remove({ _id: cardId });
@@ -510,5 +510,6 @@ Meteor.methods({
     const card = Hand.findOne({ _id: cardId });
     Hand.update({ _id: cardId }, { $set: { location: 'field' } });
     Field.insert(card);
+    Meteor.call('chosen', card.card, card.player);
   },
 });

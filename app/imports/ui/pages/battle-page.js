@@ -7,7 +7,7 @@ import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 let id;
 let opponent;
-let identifier;
+// let identifier;
 let autoscroll;
 let handcount;
 
@@ -15,10 +15,6 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
-function fetcher(cardP) {
-  console.log('fethcer');
-  // const card = Hand.findOne({ path: cardP })
-}
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   // document.getElementById('opponent').innerHTML = opponent.profile.name;
@@ -55,22 +51,23 @@ Template.Battle_Page.onRendered(function () {
   //         window.alert('Approved!');
   //       },
   //     });
-  Meteor.call('life', id, 20, identifier);
+  Meteor.call('life', id, 20);
 });
 
 Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
-  Meteor.call('quitGame', id._id, identifier);
+  Meteor.call('quitGame', id._id);
 });
 
 Template.Battle_Page.onCreated(function () {
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
-  identifier = [id._id, opponent._id].sort().join();
+  // identifier = [id._id, opponent._id].sort().join();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
-    Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
+    // Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
+    Meteor.subscribe('duelmsg', id._id, opponent._id, id.profile.name, opponent.profile.name);
   });
 });
 
@@ -148,11 +145,11 @@ Template.Battle_Page.events({
     }
   },
   'click .redraw'() {
-    Meteor.call('mullnotify', id.profile.name, identifier);
+    Meteor.call('mullnotify', id.profile.name, id._id);
     Meteor.call('mull', id._id);
   },
   'click .end'() {
-    Meteor.call('end', id.profile.name, identifier);
+    Meteor.call('end', id.profile.name, id._id);
   },
   'click .grave'() {
     $('.ui.fullscreen.grave.modal')
@@ -252,7 +249,7 @@ Template.Battle_Page.events({
     Meteor.call('untapper', id._id);
   },
   'click .fetch'() {
-    Meteor.call('fetchnot', id.profile.name, identifier);
+    Meteor.call('fetchnot', id.profile.name, id._id);
     $('.ui.fullscreen.fetchin.modal').modal('show');
   },
   // 'click .fland img'(event) {
@@ -263,7 +260,7 @@ Template.Battle_Page.events({
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
-    Meteor.call('sendDmsg', id, text, identifier);
+    Meteor.call('sendDmsg', id, text);
     scrollToBottom();
     event.target.text.value = '';
   },

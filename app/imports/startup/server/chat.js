@@ -6,8 +6,8 @@ Meteor.publish('messages', function (identifier) {
   return Messages.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 50 });
 });
 
-Meteor.publish('duelmsg', function (identifier, name1, name2) {
-  if (Dmsgs.find({ chat: identifier }).count() === 0) {
+Meteor.publish('duelmsg', function (id1, id2, name1, name2) {
+  if (Dmsgs.find({ $or: [{ chat: id1 }, { chat: id2 }] }).count() === 0) {
     let rnd = Math.floor(Math.random() * 2);
     if (rnd) rnd = name2;
     if (!rnd) rnd = name1;
@@ -15,10 +15,10 @@ Meteor.publish('duelmsg', function (identifier, name1, name2) {
       {
         server: `Welcome! ${rnd} will go first.`,
         createdAt: new Date(),
-        chat: identifier,
+        chat: id1,
       });
   }
-  return Dmsgs.find({ chat: identifier }, { sort: { createdAt: -1 } });
+  return Dmsgs.find({ $or: [{ chat: id1 }, { chat: id2 }] }, { sort: { createdAt: -1 } });
 });
 
 Meteor.methods({
@@ -31,23 +31,23 @@ Meteor.methods({
       chat: identifier,
     });
   },
-  'sendDmsg'(id, content, identifier) {
+  'sendDmsg'(id, content) {
     Dmsgs.insert({
       messageText: content,
       createdAt: new Date(),
       username: id,
-      chat: identifier,
+      chat: id._id,
     });
   },
   'deleteAll'() {
     Messages.remove({});
   },
-  'life'(id, num, identifier) {
+  'life'(id, num) {
     Dmsgs.insert({
       _id: id._id,
       player: id.profile.name,
       createdAt: new Date(),
-      chat: identifier,
+      chat: id._id,
       life: num,
       hand: 0,
     });
@@ -77,6 +77,13 @@ Meteor.methods({
   'fetchnot'(name, identifier) {
     Dmsgs.insert({
       server: `${name} is fetching.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
+  'chosen'(card, identifier) {
+    Dmsgs.insert({
+      server: `${card} has been chosen.`,
       createdAt: new Date(),
       chat: identifier,
     });
