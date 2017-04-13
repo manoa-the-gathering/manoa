@@ -94,9 +94,12 @@
 
               <!--player lands-->
               <div class="pLand centered row">
-                <div class="untp" style="position: absolute; bottom: 0; left: 0"><i class="big undo icon"></i></div>
+                <div class="untp" style="position: absolute; bottom: 0; left: 0">
+                  <i class="big undo icon"></i></div>
                 <div class="fetch" style="position: absolute; bottom: 0; left: 35px;">
                   <i class="big plus icon"></i></div>
+                <div class="attack" style="position: absolute; bottom: 0; left: 70px;">
+                  <i class="big lightning icon"></i></div>
                 {{#each pLand}}
                   {{#if this.tap}}
                     <span class="c">
@@ -244,7 +247,6 @@
         <div class="content" id="gy3" style="width: 100%; overflow: hidden; white-space: nowrap">
           <div class="content">
             {{#each fLand}}
-              <!--<img src="{{this.path}}" onclick="console.log(this.getAttribute('src'))"/>-->
               <img src="{{this.path}}" class="{{this._id}}" onclick="
              Meteor.call('fetch', this.getAttribute('class'));$('.ui.fullscreen.fetchin.modal').modal('hide')"/>
             {{/each}}

@@ -7,10 +7,10 @@ import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 let id;
 let opponent;
-// let identifier;
 let autoscroll;
-// let card;
 let handcount;
+let atk = 0;
+let mulli = 0;
 
 function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
@@ -18,9 +18,8 @@ function scrollToBottom() {
 
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
-  // document.getElementById('opponent').innerHTML = opponent.profile.name;
-  // document.getElementById('name').innerHTML = id.profile.name;
-  handcount = Hand.find({ location: 'hand' }).observeChanges({
+
+  Hand.find({ location: 'hand' }).observeChanges({
     'added'() {
       Meteor.call('update', id._id);
     },
@@ -120,7 +119,9 @@ Template.Battle_Page.helpers({
 
 Template.Battle_Page.events({
   'click .deck'() {
-    Meteor.call('draw', id._id);
+    if (!atk) {
+      Meteor.call('draw', id._id);
+    }
     // console.log("draw call");
     // $('.ui.basic.modal')
     //     .modal('setting', 'closable', false)
@@ -136,10 +137,19 @@ Template.Battle_Page.events({
     }
   },
   'click .redraw'() {
-    Meteor.call('mullnotify', id.profile.name, id._id);
-    Meteor.call('mull', id._id);
+    if (!mulli) {
+      Meteor.call('mullnotify', id.profile.name, id._id);
+      Meteor.call('mull', id._id);
+    }
+    if (mulli) {
+      $(event.target)
+          .popup({
+            title: 'You can only mulligan on your first move',
+          }).popup('toggle');
+    }
   },
   'click .end'() {
+    mulli = 1;
     Meteor.call('end', id.profile.name, id._id);
   },
   'click .grave'() {
@@ -159,7 +169,7 @@ Template.Battle_Page.events({
     $(event.target).popup({
       hoverable: false,
       on: 'click',
-      position: 'top center',
+      position: 'right center',
       variation: 'basic inverted',
       html: `<div class="ui one column center aligned grid">
               <div class="column">
@@ -185,7 +195,7 @@ Template.Battle_Page.events({
     $(event.target).popup({
       hoverable: false,
       on: 'click',
-      position: 'top center',
+      position: 'right center',
       variation: 'basic inverted',
       html: `<div class="ui one column center aligned grid">
               <div class="column">
@@ -259,17 +269,14 @@ Template.Battle_Page.events({
     Meteor.call('min', id._id);
   },
   'click .untp'() {
-    Meteor.call('untapper', id._id);
+    if (!atk) {
+      Meteor.call('untapper', id._id);
+    }
   },
   'click .fetch'() {
     Meteor.call('fetchnot', id.profile.name, id._id);
     $('.ui.fullscreen.fetchin.modal').modal('show');
   },
-  // 'click .fland img'(event) {
-  //   console.log('clicked');
-  //   card = event.target.getAttribute('src');
-  //   Meteor.call('fetch', id._id, card);
-  // },
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
