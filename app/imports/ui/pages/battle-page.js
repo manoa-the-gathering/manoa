@@ -239,7 +239,7 @@ Template.Battle_Page.events({
       }).popup('toggle');
     }
   },
-  'click .plus'() {
+  'click .plus.square'() {
     Meteor.call('add', id._id);
   },
   'click .minus'() {
