@@ -9,6 +9,7 @@ let id;
 let opponent;
 // let identifier;
 let autoscroll;
+// let card;
 let handcount;
 
 function scrollToBottom() {
@@ -19,6 +20,14 @@ Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
   // document.getElementById('opponent').innerHTML = opponent.profile.name;
   // document.getElementById('name').innerHTML = id.profile.name;
+  handcount = Hand.find({ location: 'hand' }).observeChanges({
+    'added'() {
+      Meteor.call('update', id._id);
+    },
+    'removed'() {
+      Meteor.call('update', id._id);
+    },
+  });
   $('.ui.checkbox')
       .checkbox({
         'onChecked'() {
@@ -33,24 +42,6 @@ Template.Battle_Page.onRendered(function () {
         },
       });
   $('.ui.checkbox').checkbox('check');
-  handcount = Hand.find({ location: 'hand' }).observeChanges({
-    'added'() {
-      Meteor.call('update', id._id);
-    },
-    'removed'() {
-      Meteor.call('update', id._id);
-    },
-  });
-  // $('.ui.fullscreen.fetchin.modal')
-  //     .modal({
-  //       onDeny    : function(){
-  //         window.alert('Wait not yet!');
-  //         return false;
-  //       },
-  //       onApprove : function() {
-  //         window.alert('Approved!');
-  //       },
-  //     });
   Meteor.call('life', id, 20);
 });
 
@@ -136,7 +127,7 @@ Template.Battle_Page.events({
     //     .modal('show');
   },
   'mouseover img'(event) {
-    card = event.target.getAttribute('src');
+    const card = event.target.getAttribute('src');
     document.getElementById('zoom').innerHTML = `<img style="width: 100%" src="${card}"/>`;
   },
   'click .leave'() {
@@ -162,7 +153,7 @@ Template.Battle_Page.events({
         .modal('show');
   },
   'click .lands'(event) {
-    card = event.target.getAttribute('src');
+    let card = event.target.getAttribute('src');
     // card = Hand.findOne({ path: card });
     card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
@@ -174,15 +165,21 @@ Template.Battle_Page.events({
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
-                  <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
-                  <button class="ui button" onclick="Meteor.call('sac', card._id)">Sacrifice</button>
+                  <button class="ui tp button">Tap</button>
+                  <button class="ui sac button">Sacrifice</button>
                   <!--<button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>-->
                 </div>
             </div>`,
     }).popup('toggle');
+    $('.ui.tp.button').click(function () {
+      Meteor.call('tap', card._id);
+    });
+    $('.ui.sac.button').click(function () {
+      Meteor.call('sac', card._id);
+    });
   },
   'click .mons'(event) {
-    card = event.target.getAttribute('src');
+    let card = event.target.getAttribute('src');
     // card = Hand.findOne({ path: card });
     card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
@@ -194,14 +191,20 @@ Template.Battle_Page.events({
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
-                  <button class="ui button" onclick="Meteor.call('tap', card._id)">Tap</button>
-                  <button class="ui button" onclick="Meteor.call('untap', card._id)">Untap</button>
+                  <button class="ui tp button">Tap</button>
+                  <button class="ui utp button">Untap</button>
                 </div>
             </div>`,
     }).popup('toggle');
+    $('.ui.tp.button').click(function () {
+      Meteor.call('tap', card._id);
+    });
+    $('.ui.utp.button').click(function () {
+      Meteor.call('untap', card._id);
+    });
   },
   'click .card'(event) {
-    card = event.target.getAttribute('src');
+    let card = event.target.getAttribute('src');
     card = Hand.findOne({ $and: [{ path: card }, { player: id._id }] });
     $(event.target).popup({
       // title: 'Popup Title',
@@ -214,14 +217,21 @@ Template.Battle_Page.events({
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
-                  <button class="ui button" onclick="Meteor.call('play', card)">Play</button>
-                  <button class="ui button" onclick="Meteor.call('discard', card._id)">Discard</button>
+                  <!--<button class="ui button" onclick="Meteor.call('play', card)">Play</button>-->
+                  <button class="ui ply button">Play</button>
+                  <button class="ui dis button">Discard</button>
                 </div>
             </div>`,
     }).popup('toggle');
+    $('.ui.ply.button').click(function () {
+      Meteor.call('play', card);
+    });
+    $('.ui.dis.button').click(function () {
+      Meteor.call('discard', card._id);
+    });
   },
   'click .spells'(event) {
-    card = event.target.getAttribute('src');
+    let card = event.target.getAttribute('src');
     card = Field.findOne({ $and: [{ path: card }, { player: opponent._id }] });
     if (card !== undefined) {
       $(event.target).popup({
@@ -233,10 +243,13 @@ Template.Battle_Page.events({
               <div class="column">
                 <h4 class="ui header">${card.card}</h4>
                 <div class="ui vertical basic inverted buttons">
-                  <button class="ui button" onclick="Meteor.call('dismiss', card._id)">Dismiss</button>
+                  <button class="ui dismiss button">Dismiss</button>
                 </div>
             </div>`,
       }).popup('toggle');
+      $('.ui.dismiss.button').click(function () {
+        Meteor.call('dismiss', card._id);
+      });
     }
   },
   'click .plus.square'() {

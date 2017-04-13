@@ -469,10 +469,11 @@ Meteor.methods({
         ]);
     Hand.update({ _id: draws.findOne()._id }, { $set: { location: 'hand' } });
   },
-  'play'(card) {
-    if (card.type === 'spell') Hand.update({ _id: card._id }, { $set: { location: 'grave' } });
-    else Hand.update({ _id: card._id }, { $set: { location: 'field' } });
-    Field.insert(card);
+  'play'(pick) {
+    // console.log('play');
+    if (pick.type === 'spell') Hand.update({ _id: pick._id }, { $set: { location: 'grave' } });
+    else Hand.update({ _id: pick._id }, { $set: { location: 'field' } });
+    Field.insert(pick);
   },
   'discard'(cardId) {
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
@@ -507,9 +508,9 @@ Meteor.methods({
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
   },
   'fetch'(cardId) {
-    const card = Hand.findOne({ _id: cardId });
+    const pick = Hand.findOne({ _id: cardId });
     Hand.update({ _id: cardId }, { $set: { location: 'field' } });
-    Field.insert(card);
-    Meteor.call('chosen', card.card, card.player);
+    Field.insert(pick);
+    Meteor.call('chosen', pick.card, pick.player);
   },
 });
