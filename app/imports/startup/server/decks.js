@@ -469,10 +469,14 @@ Meteor.methods({
         ]);
     Hand.update({ _id: draws.findOne()._id }, { $set: { location: 'hand' } });
   },
-  'play'(card) {
-    if (card.type === 'spell') Hand.update({ _id: card._id }, { $set: { location: 'grave' } });
-    else Hand.update({ _id: card._id }, { $set: { location: 'field' } });
-    Field.insert(card);
+  'play'(pick) {
+    // console.log('play');
+    if (pick.type === 'spell') {
+      Hand.update({ _id: pick._id }, { $set: { location: 'grave' } });
+      Meteor.call('spell', pick.card, pick.player);
+    }
+    else Hand.update({ _id: pick._id }, { $set: { location: 'field' } });
+    Field.insert(pick);
   },
   'discard'(cardId) {
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
@@ -483,10 +487,15 @@ Meteor.methods({
   'untap'(cardId) {
     Field.update({ _id: cardId }, { $set: { tap: false } });
   },
-  'quitGame'(userId, identifier) {
+  'exile'(cardId) {
+    const pick = Hand.findOne({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'exile' } });
+    Meteor.call('exiled', pick.card, pick.player);
+  },
+  'quitGame'(userId) {
     Hand.remove({ player: userId });
     Field.remove({ player: userId });
-    Dmsgs.remove({ chat: identifier });
+    Dmsgs.remove({ chat: userId });
   },
   'dismiss'(cardId) {
     Field.remove({ _id: cardId });
@@ -502,8 +511,15 @@ Meteor.methods({
     // console.log(num);
     Dmsgs.update({ _id: id }, { $set: { hand: num } });
   },
-  // 'odeck'(id) {
-  //   const num = Hand.find({ $and: [{ player: id._id }, { location: 'deck' }] }).count();
-  //   console.log(num);
-  // },
+  'sac'(cardId, pl) {
+    Field.remove({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
+    Meteor.call('sacc', pl);
+  },
+  'fetch'(cardId) {
+    const pick = Hand.findOne({ _id: cardId });
+    Hand.update({ _id: cardId }, { $set: { location: 'field' } });
+    Field.insert(pick);
+    Meteor.call('chosen', pick.card, pick.player);
+  },
 });

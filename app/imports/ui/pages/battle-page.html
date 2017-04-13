@@ -94,7 +94,12 @@
 
               <!--player lands-->
               <div class="pLand centered row">
-                <div class="untp" style="position: absolute; bottom: 0; left: 0"><i class="big undo icon"></i></div>
+                <div class="untp" style="position: absolute; bottom: 0; left: 0">
+                  <i class="big undo icon"></i></div>
+                <div class="fetch" style="position: absolute; bottom: 0; left: 35px;">
+                  <i class="big plus icon"></i></div>
+                <div style="position: absolute; bottom: 0; left: 70px;">
+                  <i class="big lightning icon"></i></div>
                 {{#each pLand}}
                   {{#if this.tap}}
                     <span class="c">
@@ -134,7 +139,7 @@
               <div style="height: 37px; position: absolute; bottom: 0px;left: 0; width: 100%">
                 <form class="ui form new-message">
                   <div class="field">
-                    <input type="text" name="text" autofocus placeholder="Enter message here" autocomplete="off"
+                    <input type="text" name="text" id="t" placeholder="Enter message here" autocomplete="off"
                            style="color:black"
                            maxlength="150">
 
@@ -162,12 +167,14 @@
               <div style="width: 100%;line-height: 1.4em; margin: auto; font-size: 1.4vw; font-weight: bold">
               <a href="#" class="redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
                  data-position="top center" data-inverted="">Mulligan</a><br/>
-              <a href="#" class="ograve" style="color: black!important;" data-tooltip="View opponent graveyard"
-                 data-position="top center" data-inverted="">Graveyard</a><br/>
+              <a href="#" class="ograve" style="color: black!important;" data-tooltip="Opponent graveyard"
+                 data-position="top center" data-inverted="">OGY</a>
               <a href="#" class="grave" style="color: black!important;" data-tooltip="View your graveyard"
-                 data-position="top center" data-inverted="">Graveyard</a><br/>
+                 data-position="top center" data-inverted="">GY</a><br/>
               <a href="#" class="leave" style="color: black!important;" data-tooltip="Quit Game"
-                 data-position="top center" data-inverted="">Leave</a>
+                 data-position="left center" data-inverted="">Leave</a>
+                <a href="#" class="end" style="color: black!important;" data-tooltip="End Your Turn"
+                   data-position="right center" data-inverted="">End</a>
             </div>
 
           </div>
@@ -191,13 +198,15 @@
 
       <div class="ui fullscreen grave modal">
         <div class="ui icon header">
-          Graveyard
+          Graveyard. Select cards to exile for card effects.
         </div>
         <div class="content" id="gy" style="width: 100%; overflow: hidden; white-space: nowrap">
           <div class="content">
             {{#each grave}}
               <span>
-              <img class="card" src="{{this.path}}"/>
+              <!--<img class="card" src="{{this.path}}"/>-->
+                <img src="{{this.path}}" class="{{this._id}}" onclick="
+             Meteor.call('exile', this.getAttribute('class'));$('.ui.fullscreen.grave.modal').modal('hide')"/>
               </span>
             {{/each}}
           </div>
@@ -230,6 +239,27 @@
              onclick="$('#gy2').animate( { scrollLeft: '-=600px' }, 100)"></i>
           <i class="black chevron right huge icon"
              onclick="$('#gy2').animate( { scrollLeft: '+=600px' }, 100)"></i>
+        </div>
+      </div>
+
+      <div class="ui fullscreen fetchin modal">
+        <div class="ui icon header">
+          Choose appropriate land to bring into the field.
+        </div>
+        <div class="content" id="gy3" style="width: 100%; overflow: hidden; white-space: nowrap">
+          <div class="content">
+            {{#each fLand}}
+              <img src="{{this.path}}" class="{{this._id}}" onclick="
+             Meteor.call('fetch', this.getAttribute('class'));$('.ui.fullscreen.fetchin.modal').modal('hide')"/>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="actions">
+          <i class="black chevron left huge icon"
+             onclick="$('#gy3').animate( { scrollLeft: '-=600px' }, 100)"></i>
+          <i class="black chevron right huge icon"
+             onclick="$('#gy3').animate( { scrollLeft: '+=600px' }, 100)"></i>
         </div>
       </div>
 
