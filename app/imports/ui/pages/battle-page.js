@@ -40,6 +40,10 @@ Template.Battle_Page.onRendered(function () {
           autoscroll.stop() ;
         },
       });
+  document.addEventListener('keydown', function (e) {
+    if (e.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
+    if (e.keyCode === 27) document.getElementById('t').blur();
+  }, false);
   $('.ui.checkbox').checkbox('check');
   Meteor.call('life', id, 20);
   $('.ui.checkbox').checkbox('check');
@@ -196,7 +200,7 @@ Template.Battle_Page.events({
       Meteor.call('tap', card._id);
     });
     $('.ui.sac.button').click(function () {
-      Meteor.call('sac', card._id);
+      Meteor.call('sac', card._id, id);
     });
   },
   'click .mons'(event) {

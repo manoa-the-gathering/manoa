@@ -109,6 +109,20 @@ Meteor.methods({
       chat: identifier,
     });
   },
+  'spell'(name, identifier) {
+    Dmsgs.insert({
+      server: `${name} activated.`,
+      createdAt: new Date(),
+      chat: identifier,
+    });
+  },
+  'sacc'(id) {
+    Dmsgs.insert({
+      server: `${id.profile.name} sacrificed a land.`,
+      createdAt: new Date(),
+      chat: id._id,
+    });
+  },
   'chosen'(card, identifier) {
     Dmsgs.insert({
       server: `${card} has been chosen.`,

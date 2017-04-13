@@ -471,7 +471,10 @@ Meteor.methods({
   },
   'play'(pick) {
     // console.log('play');
-    if (pick.type === 'spell') Hand.update({ _id: pick._id }, { $set: { location: 'grave' } });
+    if (pick.type === 'spell') {
+      Hand.update({ _id: pick._id }, { $set: { location: 'grave' } });
+      Meteor.call('spell', pick.card, pick.player);
+    }
     else Hand.update({ _id: pick._id }, { $set: { location: 'field' } });
     Field.insert(pick);
   },
@@ -508,9 +511,10 @@ Meteor.methods({
     // console.log(num);
     Dmsgs.update({ _id: id }, { $set: { hand: num } });
   },
-  'sac'(cardId) {
+  'sac'(cardId, pl) {
     Field.remove({ _id: cardId });
     Hand.update({ _id: cardId }, { $set: { location: 'grave' } });
+    Meteor.call('sacc', pl);
   },
   'fetch'(cardId) {
     const pick = Hand.findOne({ _id: cardId });
