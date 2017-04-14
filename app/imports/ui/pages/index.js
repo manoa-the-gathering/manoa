@@ -12,6 +12,10 @@ import './match-page.js';
 import './battle-page.html';
 import './battle-page.js';
 
+// deck builder
+import './deck-builder.html';
+import './deck-builder.js';
+
 // tutorial
 import './tutorial-page.html';
 import './tutorial-page.js';

@@ -1,0 +1,81 @@
+<template name="Deck_Builder">
+  {{#If_Logged_In}}
+    <div class="ui two row main container">
+      <div class="centered row" style="height: 60%">
+        <img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">
+        <div class="ui two column grid container">
+          <div class="thirteen wide column log">
+              <div class="row" style="height: 30px">
+                <h2>Current Deck</h2>
+              </div>
+              <!--<div class="ui checkbox" style="position:absolute;bottom:3px;left:3px">-->
+                <!--<input type="checkbox">-->
+                <!--<label style="color: white">Autoscroll Chat</label>-->
+              <!--</div>-->
+              <div class="row" id="chatbox" style="height: calc(100% - 30px);overflow: auto; text-align: center ">
+                <!--<div class="ui list" style="margin-left: 10px;">-->
+                  {{#each cardInDeck}}
+                    <img src="{{this.path}}" />
+                  {{/each}}
+                  <!--<div style="height: 25px;"></div>-->
+                <!--</div>-->
+              </div>
+          </div>
+
+          <div class="three wide column userList">
+            <div class="row">
+              <h2>Database</h2>
+            </div>
+            <div class="row" id="uList">
+              <div class="ui user list">
+                {{#each listUsers}}
+                  <div class="item">{{this.profile.name}}</div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="row" style="height: 37px; width: calc(100% - 45px); position:absolute;bottom: 4px">
+              <form class="ui form new-message">
+                <div class="field">
+                  <input type="text" name="text" id="t" autofocus placeholder="Search for a card" autocomplete="off"
+                         style="color:black"
+                         maxlength="150">
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+
+      <div class="centered row" style="height: 40%">
+        <div class="ui two column grid container">
+          <div class="eleven wide column log" style="height: 19vh">
+            <div class="row container" style="height: 100%;">
+              <div class="row" id="rlog" style="height: calc(100% - 37px); overflow: auto">
+                <p>
+                  {{#each listRequests}}
+                    {{this.requestString}}<br/>
+                  {{/each}}
+                </p>
+              </div>
+
+            </div>
+          </div>
+          <div class="five wide column userList" style="height: 19vh;">
+            <div class="ui bt container" style="overflow: auto;">
+              <div class="ui vertical buttons">
+                <button class="ui  basic inverted button cache">Cache</button>
+                <button class="ui  basic inverted button mRequest">New Deck</button>
+                <button class="ui  basic inverted button accept">Load Deck</button>
+              </div>
+              <p style="font-size: 12px" id="select"></p>
+            </div>
+          </div>
+        </div>
+        <div class="push" style="height: 83px"></div>
+      </div>
+    </div>
+  {{/If_Logged_In}}
+</template>
