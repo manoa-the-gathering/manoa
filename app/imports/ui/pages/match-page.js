@@ -109,15 +109,14 @@ Template.Match_Page.events({
   },
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
+    if (selected === id.profile.name) return;
     selected = Meteor.users.findOne({ 'profile.name': selected });
-    if (selected !== id.profile.name) {
-      sessionStorage.removeItem('opponent');
-      sessionStorage.setItem('opponent', JSON.stringify(selected));
-      chatSession = [selected.profile.name, id.profile.name].sort().join("+");
-      Session.set('chat', chatSession);
-      Template.instance.cht.set(chatSession);
-      document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
-    }
+    sessionStorage.removeItem('opponent');
+    sessionStorage.setItem('opponent', JSON.stringify(selected));
+    chatSession = [selected.profile.name, id.profile.name].sort().join("+");
+    Session.set('chat', chatSession);
+    Template.instance.cht.set(chatSession);
+    document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'(event) {
     event.preventDefault();
