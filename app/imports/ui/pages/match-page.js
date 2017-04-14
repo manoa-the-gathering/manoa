@@ -4,6 +4,7 @@ import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Requests } from '../../api/requests/requests.js';
 import { Messages } from '../../api/msgs/msgs.js';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 let id;
 let selected = 'Select a User';
@@ -35,6 +36,7 @@ Template.Match_Page.events({
     sessionStorage.setItem('opponent', JSON.stringify(selected));
     chatSession = [selected.profile.name, id.profile.name].sort().join("+");
     Session.set('chat', chatSession);
+    Template.instance.cht.set(chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'(event) {
@@ -77,8 +79,9 @@ Template.Match_Page.events({
     }
   },
   'click .ui.button.gChat'() {
-    chatSession = 'general';
+    chatSession = 'General';
     Session.set('chat', chatSession);
+    Template.instance.cht.set(chatSession);
     document.getElementById('select').innerHTML = 'Please select a user';
   },
 });
@@ -98,6 +101,9 @@ Template.Match_Page.helpers({
   listRequests() {
     return Requests.find({ 'targetUser.profile.name': id.profile.name });
   },
+  cht() {
+    return Template.instance.cht.get();
+  },
 });
 
 function scrollToBottom() {
@@ -106,7 +112,8 @@ function scrollToBottom() {
 }
 
 Template.Match_Page.onCreated(function () {
-  chatSession = 'general';
+  chatSession = 'General';
+  Template.instance.cht = new ReactiveVar(chatSession);
   Session.set('chat', chatSession);
   selected = 'Select a user';
   Meteor.subscribe('userStatus');

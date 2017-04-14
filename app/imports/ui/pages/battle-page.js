@@ -8,12 +8,17 @@ import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 let id;
 let opponent;
 let autoscroll;
-let handcount;
+// let handcount;
 let atk = 0;
 let mulli = 0;
 
 function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
+}
+
+function keybinder() {
+  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
+  if (event.keyCode === 27) document.getElementById('t').blur();
 }
 
 Template.Battle_Page.onRendered(function () {
@@ -40,10 +45,6 @@ Template.Battle_Page.onRendered(function () {
           autoscroll.stop() ;
         },
       });
-  document.addEventListener('keydown', function (e) {
-    if (e.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
-    if (e.keyCode === 27) document.getElementById('t').blur();
-  }, false);
   $('.ui.checkbox').checkbox('check');
   Meteor.call('life', id, 20);
   $('.ui.checkbox').checkbox('check');
@@ -52,6 +53,7 @@ Template.Battle_Page.onRendered(function () {
 Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
   Meteor.call('quitGame', id._id);
+  document.body.removeEventListener('keydown', keybinder, false);
 });
 
 Template.Battle_Page.onCreated(function () {
@@ -64,6 +66,7 @@ Template.Battle_Page.onCreated(function () {
     // Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
     Meteor.subscribe('duelmsg', id._id, opponent._id, id.profile.name, opponent.profile.name);
   });
+  document.body.addEventListener('keydown', keybinder, false);
 });
 
 Template.Battle_Page.helpers({
