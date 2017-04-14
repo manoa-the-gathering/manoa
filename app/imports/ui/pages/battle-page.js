@@ -89,6 +89,8 @@ Template.Battle_Page.onDestroyed(function () {
 });
 
 Template.Battle_Page.onCreated(function () {
+  atk = 0;
+  mulli = 0;
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
   Meteor.autorun(function () {
