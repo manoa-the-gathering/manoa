@@ -70,6 +70,7 @@ Template.Match_Page.onRendered(function () {
 Template.Match_Page.onDestroyed(function () {
   $('body').removeClass('matchbg');
   $('body').removeClass('matchbg2');
+  document.body.removeEventListener('keydown', keybinder, false);
   scroll.stop();
 });
 
