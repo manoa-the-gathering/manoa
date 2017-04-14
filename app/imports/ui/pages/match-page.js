@@ -52,9 +52,9 @@ Template.Match_Page.onRendered(function () {
       });
   $('body').addClass('matchbg');
   $('.ui.two.row.main.container').transition('slide down in', '0.4s');
-  $('.ui.checkbox').checkbox('check');
   document.getElementById('select').innerHTML = 'Select a User';
   document.body.addEventListener('keydown', keybinder, false);
+  $('.ui.checkbox').checkbox('check');
 });
 
 Template.Match_Page.onDestroyed(function () {
