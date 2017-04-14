@@ -14,6 +14,7 @@ Template.Deck_Builder.onRendered(function () {
 
 Template.Deck_Builder.onDestroyed(function () {
   $('body').removeClass('battlebg');
+  Meteor.call('quitGame', id._id);
 });
 
 Template.Deck_Builder.onCreated(function () {

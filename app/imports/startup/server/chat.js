@@ -38,7 +38,7 @@ Meteor.methods({
     Dmsgs.insert({
       messageText: content,
       createdAt: new Date(),
-      username: id,
+      username: id.profile.name,
       chat: id._id,
     });
   },
