@@ -415,16 +415,6 @@ const allCards = [
   },
 ];
 
-// if (Naya.find().count() === 0) {
-//   _.each(nayaBurnCards, function seedNaya(stuff) {
-//     Naya.insert(stuff);
-//   });
-// }
-
-// Meteor.publish('naya', function () {
-//   return Naya.find();
-// });
-
 Meteor.publish('pHand', function (id1, id2) {
   // return Hand.find({ $or: [{ player: id1 }, { $and: [{ player: id2 }, { location: 'grave' }] }] });
   return Hand.find({ $or: [{ player: id1 }, { player: id2 }] });

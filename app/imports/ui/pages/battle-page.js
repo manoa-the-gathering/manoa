@@ -16,9 +16,40 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
-function keybinder() {
-  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
-  if (event.keyCode === 27) document.getElementById('t').blur();
+function keybinder(event) {
+  switch (event.keyCode) {
+    case 73:
+      if (!$('#t').is(':focus')) {
+        event.preventDefault();
+        document.getElementById('t').focus();
+      }
+      break;
+    // ESC
+    case 27:
+      atk = 0;
+      document.getElementById('t').blur();
+      $('.lightning').removeClass('red');
+      break;
+    case 65:
+      if (!$('#t').is(':focus')) {
+        atk = 1;
+        $('.lightning').addClass('red');
+      }
+      break;
+    case 65:
+      if (!$('#t').is(':focus')) {
+        atk = 1;
+        $('.lightning').addClass('red');
+      }
+      break;
+    case 85:
+      if (!$('#t').is(':focus')) {
+        if (!atk) {
+          Meteor.call('untapper', id._id);
+        }
+      }
+      break;
+  }
 }
 
 Template.Battle_Page.onRendered(function () {
