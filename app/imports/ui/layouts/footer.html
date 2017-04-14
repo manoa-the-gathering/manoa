@@ -17,6 +17,9 @@
       </a>
 
       {{#if currentUser}}
+        <a class="{{ isActiveRoute 'Deck_Builder'}} item" href="{{ pathFor 'Deck_Builder'}}">
+          <span class="mitem">deck builder</span>
+        </a>
       <a class="item" href="#">
         <span class="mitem cas-logout">logout</span>
       </a>

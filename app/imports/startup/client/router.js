@@ -43,6 +43,14 @@ FlowRouter.route('/battle/:_identifier', {
   },
 });
 
+FlowRouter.route('/deckbuilder', {
+  name: 'Deck_Builder',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Deck_Builder' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
 FlowRouter.route('/terms', {
   name: 'Terms_Page',
   action() {
