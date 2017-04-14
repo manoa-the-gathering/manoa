@@ -16,10 +16,15 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
+function keybinder() {
+  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
+  if (event.keyCode === 27) document.getElementById('t').blur();
+}
+
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
 
-  Hand.find({ location: 'hand' }).observeChanges({
+  handcount = Hand.find({ location: 'hand' }).observeChanges({
     'added'() {
       Meteor.call('update', id._id);
     },
@@ -37,13 +42,9 @@ Template.Battle_Page.onRendered(function () {
           });
         },
         'onUnchecked'() {
-          autoscroll.stop() ;
+          autoscroll.stop();
         },
       });
-  document.addEventListener('keydown', function (e) {
-    if (e.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
-    if (e.keyCode === 27) document.getElementById('t').blur();
-  }, false);
   $('.ui.checkbox').checkbox('check');
   Meteor.call('life', id, 20);
   $('.ui.checkbox').checkbox('check');
@@ -52,6 +53,8 @@ Template.Battle_Page.onRendered(function () {
 Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
   Meteor.call('quitGame', id._id);
+  document.body.removeEventListener('keydown', keybinder, false);
+  handcount.stop();
 });
 
 Template.Battle_Page.onCreated(function () {
@@ -64,6 +67,7 @@ Template.Battle_Page.onCreated(function () {
     // Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
     Meteor.subscribe('duelmsg', id._id, opponent._id, id.profile.name, opponent.profile.name);
   });
+  document.body.addEventListener('keydown', keybinder, false);
 });
 
 Template.Battle_Page.helpers({
@@ -96,7 +100,7 @@ Template.Battle_Page.helpers({
     return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
   },
   'recentMessages'() {
-    return Dmsgs.find({}, { sort: { createdAt: 1 } });
+    return Dmsgs.find();
   },
   'spells'() {
     return Field.find({ type: 'spell' });

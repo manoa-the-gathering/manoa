@@ -3,7 +3,9 @@ import { Messages } from '../../api/msgs/msgs.js';
 import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 
 Meteor.publish('messages', function (identifier) {
-  return Messages.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 50 });
+  // return Messages.find({ chat: identifier }, { sort: { createdAt: -1 }, limit: 100 });
+  // sort and limit on server
+  return Messages.find({ chat: identifier }, { sort: { createdAt: 1 }, limit: 100 });
 });
 
 Meteor.publish('duelmsg', function (id1, id2, name1, name2) {
@@ -18,7 +20,7 @@ Meteor.publish('duelmsg', function (id1, id2, name1, name2) {
         chat: id1,
       });
   }
-  return Dmsgs.find({ $or: [{ chat: id1 }, { chat: id2 }] }, { sort: { createdAt: -1 } });
+  return Dmsgs.find({ $or: [{ chat: id1 }, { chat: id2 }] }, { sort: { createdAt: 1 } });
 });
 
 Meteor.methods({

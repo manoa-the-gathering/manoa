@@ -12,7 +12,7 @@ Meteor.publish('requests', function () {
 Meteor.methods({
   'request'(rqUser, targetUsr) {
     Requests.remove({});
-    Requests.insert({ targetUser: targetUsr, requestString: `${rqUser.profile.name} battle` });
+    Requests.insert({ targetUser: targetUsr, requestString: `Duel request from ${rqUser.profile.name}` });
     Requests.insert({ targetUser: rqUser, requestString: `Request sent to ${targetUsr.profile.name}` });
   },
   'acceptError'(user) {

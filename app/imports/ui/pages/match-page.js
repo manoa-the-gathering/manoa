@@ -4,16 +4,85 @@ import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Requests } from '../../api/requests/requests.js';
 import { Messages } from '../../api/msgs/msgs.js';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 let id;
 let selected = 'Select a User';
 let chatSession = 'general';
+let scroll;
+
+function scrollToBottom() {
+  // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
+  $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
+}
+
+function keybinder() {
+  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
+  if (event.keyCode === 27) document.getElementById('t').blur();
+}
+
+Template.Match_Page.onCreated(function () {
+  chatSession = 'General';
+  Template.instance.cht = new ReactiveVar(chatSession);
+  Session.set('chat', chatSession);
+  selected = 'Select a user';
+  Meteor.subscribe('userStatus');
+  Meteor.subscribe('requests');
+  Meteor.autorun(function () {
+    Meteor.subscribe('messages', Session.get('chat'));
+  });
+  sessionStorage.removeItem('user');
+  id = Meteor.user();
+  sessionStorage.setItem('user', JSON.stringify(id));
+});
+
+Template.Match_Page.onRendered(function () {
+  $('.ui.checkbox')
+      .checkbox({
+        'onChecked'() {
+          scroll = Messages.find().observeChanges({
+            'added'() {
+              scrollToBottom();
+            },
+          });
+        },
+        'onUnchecked'() {
+          scroll.stop();
+        },
+      });
+  $('body').addClass('matchbg');
+  $('.ui.two.row.main.container').transition('slide down in', '0.4s');
+  document.getElementById('select').innerHTML = 'Select a User';
+  document.body.addEventListener('keydown', keybinder, false);
+  $('.ui.checkbox').checkbox('check');
+});
+
+Template.Match_Page.onDestroyed(function () {
+  $('body').removeClass('matchbg');
+  $('body').removeClass('matchbg2');
+  scroll.stop();
+});
+
+Template.Match_Page.helpers({
+  recentMessages() {
+    return Messages.find();
+  },
+  listUsers() {
+    return Meteor.users.find();
+  },
+  listRequests() {
+    return Requests.find({ 'targetUser.profile.name': id.profile.name });
+  },
+  cht() {
+    return Template.instance.cht.get();
+  },
+});
 
 Template.Match_Page.events({
   'submit .new-message'(event) {
     event.preventDefault();
     const text = event.target.text.value;
-    let chat = Session.get('chat');
+    const chat = Session.get('chat');
     if (text === 'rainbows') {
       $('body').addClass('matchbg2');
       event.target.text.value = '';
@@ -35,6 +104,7 @@ Template.Match_Page.events({
     sessionStorage.setItem('opponent', JSON.stringify(selected));
     chatSession = [selected.profile.name, id.profile.name].sort().join("+");
     Session.set('chat', chatSession);
+    Template.instance.cht.set(chatSession);
     document.getElementById('select').innerHTML = `Selected User is ${selected.profile.name}`;
   },
   'click .ui.button.mRequest'(event) {
@@ -54,7 +124,7 @@ Template.Match_Page.events({
     else {
       if (Requests.findOne({
             $and: [{ 'targetUser._id': id._id },
-              { requestString: `${selected.profile.name} battle` }]
+              { requestString: `Duel request from ${selected.profile.name}` }]
           }) !== undefined) {
         Meteor.call('notify', id, selected);
         Meteor.call('cleanup', id._id);
@@ -77,57 +147,9 @@ Template.Match_Page.events({
     }
   },
   'click .ui.button.gChat'() {
-    chatSession = 'general';
+    chatSession = 'General';
     Session.set('chat', chatSession);
+    Template.instance.cht.set(chatSession);
     document.getElementById('select').innerHTML = 'Please select a user';
   },
 });
-
-Template.Match_Page.onDestroyed(function () {
-  $('body').removeClass('matchbg');
-  $('body').removeClass('matchbg2');
-});
-
-Template.Match_Page.helpers({
-  recentMessages() {
-    return Messages.find({}, { sort: { createdAt: 1 } });
-  },
-  listUsers() {
-    return Meteor.users.find();
-  },
-  listRequests() {
-    return Requests.find({ 'targetUser.profile.name': id.profile.name });
-  },
-});
-
-function scrollToBottom() {
-  // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight + $('#chatbox').height());
-  $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
-}
-
-Template.Match_Page.onCreated(function () {
-  chatSession = 'general';
-  Session.set('chat', chatSession);
-  selected = 'Select a user';
-  Meteor.subscribe('userStatus');
-  Meteor.subscribe('requests');
-  sessionStorage.removeItem('user');
-  id = Meteor.user();
-  sessionStorage.setItem('user', JSON.stringify(id));
-});
-
-Template.Match_Page.onRendered(function () {
-  $('body').addClass('matchbg');
-  $('.ui.two.row.main.container').transition('slide down in', '0.4s');
-  // document.getElementById('result').innerHTML = `You are ${id.profile.name}`;
-  document.getElementById('select').innerHTML = 'Select a User';
-  Meteor.autorun(function () {
-    Meteor.subscribe('messages', Session.get('chat'), {
-      onReady() {
-        return scrollToBottom();
-      },
-    });
-  });
-});
-
-
