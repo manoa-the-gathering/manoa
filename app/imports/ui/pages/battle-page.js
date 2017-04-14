@@ -8,7 +8,7 @@ import { Dmsgs } from '../../api/duelmsgs/duelmsgs.js';
 let id;
 let opponent;
 let autoscroll;
-// let handcount;
+let handcount;
 let atk = 0;
 let mulli = 0;
 
@@ -24,7 +24,7 @@ function keybinder() {
 Template.Battle_Page.onRendered(function () {
   $('body').addClass('battlebg');
 
-  Hand.find({ location: 'hand' }).observeChanges({
+  handcount = Hand.find({ location: 'hand' }).observeChanges({
     'added'() {
       Meteor.call('update', id._id);
     },
@@ -42,7 +42,7 @@ Template.Battle_Page.onRendered(function () {
           });
         },
         'onUnchecked'() {
-          autoscroll.stop() ;
+          autoscroll.stop();
         },
       });
   $('.ui.checkbox').checkbox('check');
@@ -54,6 +54,7 @@ Template.Battle_Page.onDestroyed(function () {
   $('body').removeClass('battlebg');
   Meteor.call('quitGame', id._id);
   document.body.removeEventListener('keydown', keybinder, false);
+  handcount.stop();
 });
 
 Template.Battle_Page.onCreated(function () {
@@ -99,7 +100,7 @@ Template.Battle_Page.helpers({
     return Field.find({ $and: [{ type: 'creature' }, { player: opponent._id }] });
   },
   'recentMessages'() {
-    return Dmsgs.find({}, { sort: { createdAt: 1 } });
+    return Dmsgs.find();
   },
   'spells'() {
     return Field.find({ type: 'spell' });
