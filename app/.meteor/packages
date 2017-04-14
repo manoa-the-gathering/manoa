@@ -14,7 +14,6 @@ jquery@1.11.10
 tracker@1.1.1
 es5-shim@4.6.15
 ecmascript@0.6.1
-underscore@1.0.10
 ejson@1.0.13
 check@1.2.4
 standard-minifier-js@1.2.1
@@ -54,6 +53,5 @@ accounts-password@1.3.3
 mizzao:user-status
 reactive-var@1.0.11
 percolate:momentum
-cfs:standard-packages
-cfs:gridfs
 meteorhacks:aggregate
+underscore
