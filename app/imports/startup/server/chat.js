@@ -26,10 +26,11 @@ Meteor.publish('duelmsg', function (id1, id2, name1, name2) {
 Meteor.methods({
   'sendMessage'(content, identifier) {
     /* add authentication here */
+    const user = Meteor.user();
     Messages.insert({
       messageText: content,
       createdAt: new Date(),
-      username: Meteor.user(),
+      username: user.profile.name,
       chat: identifier,
     });
   },

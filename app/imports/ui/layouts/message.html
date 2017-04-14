@@ -1,7 +1,7 @@
 <template name="Message">
   <div class="item">
-    {{#if username.profile.name}}
-    <div style="font-weight:bold; color: red; display:inline">{{username.profile.name}}</div>
+    {{#if username}}
+    <div style="font-weight:bold; color: red; display:inline">{{username}}</div>
       {{/if}}
     {{#if messageText}}
     <div class="message-text" style="display:inline;word-break: normal">{{messageText}}</div>
