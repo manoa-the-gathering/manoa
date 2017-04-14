@@ -16,9 +16,19 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
-function keybinder() {
-  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
-  if (event.keyCode === 27) document.getElementById('t').blur();
+function keybinder(event) {
+  switch (event.keyCode) {
+    case 73:
+      if (!$('#t').is(':focus')) {
+        event.preventDefault();
+        document.getElementById('t').focus();
+      }
+      break;
+      // ESC
+    case 27:
+      document.getElementById('t').blur();
+      break;
+  }
 }
 
 Template.Match_Page.onCreated(function () {
@@ -60,6 +70,7 @@ Template.Match_Page.onRendered(function () {
 Template.Match_Page.onDestroyed(function () {
   $('body').removeClass('matchbg');
   $('body').removeClass('matchbg2');
+  document.body.removeEventListener('keydown', keybinder, false);
   scroll.stop();
 });
 
@@ -99,6 +110,7 @@ Template.Match_Page.events({
   },
   'click .ui.user.list div'(event) {
     selected = event.target.innerHTML;
+    if (selected === id.profile.name) return;
     selected = Meteor.users.findOne({ 'profile.name': selected });
     sessionStorage.removeItem('opponent');
     sessionStorage.setItem('opponent', JSON.stringify(selected));

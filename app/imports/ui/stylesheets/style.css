@@ -4,7 +4,9 @@ body {
   background: url("/images/landingv2.jpg")
             black center center no-repeat;
   background-size: cover;
-
+}
+img {
+  border-radius: 8px;
 }
 /* SCROLL BAR
 ::-webkit-scrollbar {
@@ -260,11 +262,12 @@ body {
 }
 .pSide {
   text-align: center;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.8);
   overflow: hidden;
+  height: 200px;
 }
 .pHand img, .opHand img{
-  height: 200px;
+  height: 190px;
   max-width: 100%;
   margin: auto;
   padding: 1px;

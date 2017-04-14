@@ -16,9 +16,40 @@ function scrollToBottom() {
   $('#chatbox').animate({ scrollTop: $('#chatbox')[0].scrollHeight - $('#chatbox')[0].clientHeight + 37 }, 200);
 }
 
-function keybinder() {
-  if (event.keyCode === 73) { event.preventDefault(); document.getElementById('t').focus();}
-  if (event.keyCode === 27) document.getElementById('t').blur();
+function keybinder(event) {
+  switch (event.keyCode) {
+    case 73:
+      if (!$('#t').is(':focus')) {
+        event.preventDefault();
+        document.getElementById('t').focus();
+      }
+      break;
+    // ESC
+    case 27:
+      atk = 0;
+      document.getElementById('t').blur();
+      $('.lightning').removeClass('red');
+      break;
+    case 65:
+      if (!$('#t').is(':focus')) {
+        atk = 1;
+        $('.lightning').addClass('red');
+      }
+      break;
+    case 65:
+      if (!$('#t').is(':focus')) {
+        atk = 1;
+        $('.lightning').addClass('red');
+      }
+      break;
+    case 85:
+      if (!$('#t').is(':focus')) {
+        if (!atk) {
+          Meteor.call('untapper', id._id);
+        }
+      }
+      break;
+  }
 }
 
 Template.Battle_Page.onRendered(function () {
@@ -60,11 +91,9 @@ Template.Battle_Page.onDestroyed(function () {
 Template.Battle_Page.onCreated(function () {
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
-  // identifier = [id._id, opponent._id].sort().join();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
-    // Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
     Meteor.subscribe('duelmsg', id._id, opponent._id, id.profile.name, opponent.profile.name);
   });
   document.body.addEventListener('keydown', keybinder, false);
@@ -76,7 +105,6 @@ Template.Battle_Page.helpers({
   // },
   'cardInHand'() {
     return Hand.find({ $and: [{ location: 'hand' }, { player: id._id }] });
-    // return Hand.find({ location: 'hand' });
   },
   'grave'() {
     return Hand.find({ $and: [{ location: 'grave' }, { player: id._id }] });
