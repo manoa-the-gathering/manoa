@@ -32,7 +32,7 @@ if (Meteor.users.find().count() === 0) {
   });
   Accounts.createUser({
     username: 'John',
-    password: 'stuff2',
+    password: 'stuffjohn',
     profile: { name: 'John' },
   });
 }

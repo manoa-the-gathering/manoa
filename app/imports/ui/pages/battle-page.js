@@ -91,11 +91,9 @@ Template.Battle_Page.onDestroyed(function () {
 Template.Battle_Page.onCreated(function () {
   id = JSON.parse(sessionStorage.getItem('user'));
   opponent = JSON.parse(sessionStorage.getItem('opponent'));
-  // identifier = [id._id, opponent._id].sort().join();
   Meteor.autorun(function () {
     Meteor.subscribe('pHand', id._id, opponent._id);
     Meteor.subscribe('field', id._id, opponent._id);
-    // Meteor.subscribe('duelmsg', identifier, id.profile.name, opponent.profile.name);
     Meteor.subscribe('duelmsg', id._id, opponent._id, id.profile.name, opponent.profile.name);
   });
   document.body.addEventListener('keydown', keybinder, false);
@@ -107,7 +105,6 @@ Template.Battle_Page.helpers({
   // },
   'cardInHand'() {
     return Hand.find({ $and: [{ location: 'hand' }, { player: id._id }] });
-    // return Hand.find({ location: 'hand' });
   },
   'grave'() {
     return Hand.find({ $and: [{ location: 'grave' }, { player: id._id }] });

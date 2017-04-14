@@ -5,19 +5,13 @@
     <div class="centered row">
       <div class="ui celled field grid">
         <!--opponent hand-->
-        <div class="opHand row" style="background: rgba(0,0,0,0.2)">
+        <div class="opHand row" style="background: rgba(0,0,0,0.8)">
           <div class="three wide column">
-            <!--<p id="opponent"></p>-->
             <div style="transform: rotate(180deg); font-size: 2vw; padding-top: 25px">
               {{#each olife}}
                 {{>Life}}
               {{/each}}
             </div>
-            <!--<div class="ui icon header">-->
-            <!--<div class="ui hidden divider"></div>-->
-            <!--<i class="user icon"></i>-->
-            <!--<div class="content" id="opponent"></div>-->
-            <!--</div>-->
           </div>
 
           <div class="eleven wide column" style="margin: 0 auto">
@@ -40,13 +34,12 @@
         <div class="cntr row">
 
           <div class="three wide column">
-            <div class="c" id="zoom" style="height: 100%; margin: auto 0; box-sizing: content-box">
-            <!--<img style="width: 100%" src="/images/card_back.png"/>-->
+            <div class="c" id="zoom" style="background:rgba(0,0,0,0.4);height: 100%; margin: auto 0; box-sizing: content-box">
             </div>
           </div>
 
-          <div class="ten wide column">
-            <div class="ui celled cards grid" style="margin: 0; background: rgba(0,0,0,0.5)">
+          <div class="ten wide column" style="background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(35,63,91,0.4) 0%,rgba(12,10,25,0.4) 100%);">
+            <div class="ui celled cards grid" style="margin: 0;">
 
               <!--opponent lands-->
               <div class="opLand centered row">
@@ -156,24 +149,23 @@
             <div style="width: 100%;margin: auto; font-size: 1vw">
               <div class="ui icon header">
                 <!--<div class="ui hidden divider"></div>-->
-                <i class="user icon"></i>
+                <i class="blue user icon"></i>
                 {{#each life}}
                   {{>Life}}
                 {{/each}}
               </div>
-              <div><i class="big plus square outline icon"></i><i class="big minus square outline icon"></i></div>
+              <div><i class="green big plus square outline icon"></i><i class="red big minus square outline icon"></i></div>
             </div>
-              <!--<div class="content" id="name" style="color: black!important;"></div>-->
               <div style="width: 100%;line-height: 1.4em; margin: auto; font-size: 1.4vw; font-weight: bold">
-              <a href="#" class="redraw" style="color: black!important;" data-tooltip="Click to Mulligan"
+              <a href="#" class="redraw" style="color: white!important;" data-tooltip="Click to Mulligan"
                  data-position="top center" data-inverted="">Mulligan</a><br/>
-              <a href="#" class="ograve" style="color: black!important;" data-tooltip="Opponent graveyard"
+              <a href="#" class="ograve" style="color: white!important;" data-tooltip="Opponent graveyard"
                  data-position="top center" data-inverted="">OGY</a>
-              <a href="#" class="grave" style="color: black!important;" data-tooltip="View your graveyard"
+              <a href="#" class="grave" style="color: white!important;" data-tooltip="View your graveyard"
                  data-position="top center" data-inverted="">GY</a><br/>
-              <a href="#" class="leave" style="color: black!important;" data-tooltip="Quit Game"
+              <a href="#" class="leave" style="color: white!important;" data-tooltip="Quit Game"
                  data-position="left center" data-inverted="">Leave</a>
-                <a href="#" class="end" style="color: black!important;" data-tooltip="End Your Turn"
+                <a href="#" class="end" style="color: white!important;" data-tooltip="End Your Turn"
                    data-position="right center" data-inverted="">End</a>
             </div>
 
@@ -189,7 +181,7 @@
 
           <div class="two wide deck column" data-tooltip="Draw Card" data-position="left center" data-inverted=""
                style="margin: auto">
-            <img class="ui image" src="/images/card_back.png" style="height: 200px; max-width: 100%"/>
+            <img class="ui image" src="/images/card_back.png" style="height: 190px; max-width: 100%"/>
             <div style="position: absolute; font-size: 3vw; bottom: 100px">{{deckcounter}}</div>
           </div>
         </div>
@@ -204,7 +196,6 @@
           <div class="content">
             {{#each grave}}
               <span>
-              <!--<img class="card" src="{{this.path}}"/>-->
                 <img src="{{this.path}}" class="{{this._id}}" onclick="
              Meteor.call('exile', this.getAttribute('class'));$('.ui.fullscreen.grave.modal').modal('hide')"/>
               </span>
