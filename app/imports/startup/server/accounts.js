@@ -35,4 +35,19 @@ if (Meteor.users.find().count() === 0) {
     password: 'stuffjohn',
     profile: { name: 'John' },
   });
+  Accounts.createUser({
+    username: 'Irene',
+    password: 'stuffirene',
+    profile: { name: 'Irene' },
+  });
+  Accounts.createUser({
+    username: 'Paulo',
+    password: 'stuffpaulo',
+    profile: { name: 'Paulo' },
+  });
+  Accounts.createUser({
+    username: 'Scott',
+    password: 'stuffscott',
+    profile: { name: 'Scott' },
+  });
 }
