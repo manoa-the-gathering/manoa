@@ -32,5 +32,10 @@ import './play-page.js';
 import './decks-page.html';
 import './decks-page.js';
 
+// betaplayer
+import './betaplayer.html';
+import './betaplayer.js';
+
+
 // code of conduct
 import './siterules-page.html';
