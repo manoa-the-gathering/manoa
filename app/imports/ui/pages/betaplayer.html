@@ -1,0 +1,96 @@
+<template name="Betaplayer">
+
+  <div class="ui main container" style="width: 100%; height: auto; background: black">
+    <div class="centered row">
+      <!--<img class="ui left image item" src="/images/manoa90.png" style="padding: 20px; height: 100px">-->
+      <div class="ui info container" style="text-align: center">
+        <h1 style="font-size: 40px; text-align: left">Navigation in current system</h1>
+        <h2 style="color: yellow">Currently, only supports google chrome. Account creation locked.</h2>
+
+        <p style="font-size: 28px;">
+          <img class="ui centered huge image" src="/images/landing.png"><br/>
+          <span style="color:yellow;">After signing in,</span> load the <span style="color: yellow">deck builder</span>. Click <span style="color: yellow">cache</span>, and then <span style="color:yellow">home</span>.
+        </p>
+        <p style="font-size: 12px">
+        This is to load all the images for smoother gameplay. Ability for custom decks not coded yet.
+        Feel free to look at the cards in your starting deck.
+        </p>
+        <p style="font-size: 28px">
+          Choose <span style="color:yellow">Find a match</span> to enter the main chatroom.
+        </p>
+      </div>
+    </div>
+
+    <div class="centered row" style="background:black; text-align: center">
+      <img class="ui centered huge image" src="/images/chatroom.png">
+      <p style="padding: 20px; font-size: 28px;
+      background:rgba(0,0,0,0.85)">
+        <span style="color:yellow">Direct message</span> other online users by selecting their name.
+      </p>
+      <p style="font-size: 12px; padding-bottom: 40px">
+        No chat notifications atm. Return to main chatroom channel with the button.
+      </p>
+    </div>
+
+    <div class="ui two column grid container" style="background:black; text-align: center; padding-bottom: 40px">
+      <div class="column">
+        <img class="ui image" src="/images/request.png"/>
+        <p style="font-size: 20px; padding-top: 10px">
+          You can send requests to selected users. <br/>You will be notified if they accepted.<br/>
+          Select their name and choose accept if so.
+        </p>
+      </div>
+      <div class="column">
+        <img class="ui image" src="/images/accept.png"/>
+        <p style="font-size: 20px; padding-top: 10px;">
+          Incoming requests from other users will be shown below. Choose a user from the online list to accept.
+        </p>
+      </div>
+    </div>
+
+    <div class="centered row" style="background:black; text-align: center">
+      <img class="ui centered huge image" src="/images/duel.png">
+      <p style="padding: 20px; font-size: 28px;
+      background:rgba(0,0,0,0.85)">
+          No game logic. Draw cards by clicking on deck. Options on left. <br/>
+        Chat on right to help resolve effects/choices.
+      </p>
+
+    </div>
+    <div class="ui two column grid container" style="background:black; text-align: left; padding-bottom: 40px">
+
+      <div class="column">
+        <h2 style="color: yellow">Current hotkey bindings. May create option for custom binds.</h2>
+        <p style="padding: 20px; font-size: 28px;
+      background:rgba(0,0,0,0.85)">
+          <span style="color:red">i</span> to type messages in chat window<br/>
+          <span style="color:red">a</span> to enter attack/block mode<br/>
+          <span style="color:red">u</span> to untap all cards when your turn<br/>
+          <span style="color:red">x</span> to end your turn<br/>
+          <span style="color:red">ESC</span> to cancel actions.<br/>
+        </p>
+      </div>
+      <div class="column">
+        <p style="font-size: 28px; padding-top: 10px"><br/><br/>
+          Lightning bolt to bring up combat options. <br/>
+          Fetch lands through the plus icon.<br/>
+          Played spells will go to the stack.<br/>
+          Click to dismiss after resolving their effects.<br/>
+          Untap all cards with the arrow.
+        </p>
+      </div>
+    </div>
+
+
+    <div style="padding: 15px 0; font-size: 20px" class="ui center aligned container">
+      <p style="font-size: 18px; padding-bottom: 40px">
+        Test out the system. Leave comments/bugs/improvements as a direct message to Creighton.
+      </p>
+      <hr/>
+      <p><em>Intended for Experienced Magic Players. Rules are self enforced. Current system only has one deck implemented.</em></p>
+
+      <div class="push"></div>
+    </div>
+  </div>
+
+</template>

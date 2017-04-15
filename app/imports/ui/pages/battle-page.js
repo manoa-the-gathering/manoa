@@ -49,6 +49,12 @@ function keybinder(event) {
         }
       }
       break;
+    case 88:
+      if (!$('#t').is(':focus')) {
+        mulli = 1;
+        Meteor.call('end', id.profile.name, id._id);
+      }
+      break;
   }
 }
 

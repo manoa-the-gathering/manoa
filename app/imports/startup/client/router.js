@@ -51,6 +51,14 @@ FlowRouter.route('/deckbuilder', {
   },
 });
 
+FlowRouter.route('/betaplayer', {
+  name: 'Betaplayer',
+  action() {
+    BlazeLayout.render('App_Body2', { main: 'Betaplayer' });
+    BlazeLayout.setRoot('body');
+  },
+});
+
 FlowRouter.route('/terms', {
   name: 'Terms_Page',
   action() {
